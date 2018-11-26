@@ -18,9 +18,11 @@
 
 #ifdef __UNREAL__
 #include "Nakama/Private/NUnrealTransport.h"
+#elif COCOS2D
+#include "Nakama/Private/NCocosTransport.h"
 #endif
 
-#include "NibbleAndAHalf/base64.h"
+#include "PlatfromIntegration.h"
 
 #include <string>
 
@@ -39,6 +41,8 @@ namespace Nakama {
 
 #ifdef __UNREAL__
 		transport = new NUnrealTransport();
+#elif COCOS2D
+		transport = new NCocosTransport();
 #else
 		// TODO: Could use another transport here?
 		//transport = new SomeGenericTransport()?
@@ -53,7 +57,7 @@ namespace Nakama {
 			for (size_t i = 0; i < OnDisconnect.size(); i++) OnDisconnect[i]();
 		});
 
-		transport->SetOnMessageCallBack([=](const std::vector<uint8> data) {
+		transport->SetOnMessageCallBack([=](const std::vector<uint8_t> data) {
 			Envelope message;
 			message.ParseFromArray(data.data(), data.size());
 			NLogger::Format(Trace, "NClient->RcvdMessage: %d", (int)message.payload_case());
@@ -85,20 +89,18 @@ namespace Nakama {
 		const std::function<void(NSession*)> &callback,
 		const std::function<void(const NError &)> &errback)
 	{
-
 		// Add a collation ID for logs
-		payload->set_collationid(TCHAR_TO_UTF8(*FGuid::NewGuid().ToString()));
+		payload->set_collationid(generateGuid());
 
 		std::string uri;
 		uri.append(ssl ? "https://" : "http://").append(host).append(":").append(std::to_string(port)).append(path);
 
 		//Logger.TraceFormatIf(Trace, "Url={0}, Payload={1}", uri.str(), payload);
 
-		int rLen = 0;
-		char* auth = base64((serverKey + ":").c_str(), serverKey.length() + 1, &rLen);
-		std::string authHeader = "Basic " + std::string(auth);
+		std::string auth = base64((serverKey + ":").c_str(), serverKey.length() + 1);
+		std::string authHeader = "Basic " + auth;
 
-		int64 span = FDateTime::UtcNow().ToUnixTimestamp();
+		int64_t span = getCurrentTime();
 		transport->Post(uri, payload, authHeader, langHeader, timeout, connectTimeout,
 			[=](std::vector<uint8_t> data) {
 			AuthenticateResponse authResponse;
@@ -119,7 +121,7 @@ namespace Nakama {
 				break;
 			}
 		},
-			[errback](int32 e) {
+			[errback](int32_t e) {
 			if (errback != NULL) errback(NError("Error: " + std::to_string(e)));
 		}
 		);
@@ -130,7 +132,7 @@ namespace Nakama {
 		if (serverTime < 1)
 		{
 			// Time has not been set via socket yet.
-			return FDateTime::UtcNow().ToUnixTimestamp();
+			return getCurrentTime();
 		}
 		return serverTime;
 	}
@@ -188,7 +190,7 @@ namespace Nakama {
 	void NClient::Send(INCollatedMessage& message, std::function<void(void*)> callback, std::function<void(NError)> errback)
 	{
 		// Set a collation ID to dispatch callbacks on receive
-		std::string collationId = TCHAR_TO_UTF8(*FGuid::NewGuid().ToString());
+		std::string collationId = generateGuid();
 		message.SetCollationId(collationId);
 
 		// Track callbacks for message

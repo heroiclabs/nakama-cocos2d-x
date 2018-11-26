@@ -29,7 +29,7 @@ namespace Nakama {
 		~NConsoleLogSink() {}
 		
 		void Log(const NLogMessage& msg) {
-			fwrite(msg.message, sizeof(char), msg.messageSize, stderr);
+			fwrite(msg.message.c_str(), sizeof(char), msg.message.size(), stderr);
 			Flush();
 		}
 

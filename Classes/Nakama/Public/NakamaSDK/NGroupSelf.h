@@ -22,7 +22,7 @@
 
 namespace Nakama {
 	
-	enum class NAKAMA_API GroupState : uint8 { Admin = 0, Member, Join };
+	enum class NAKAMA_API GroupState : uint8_t { Admin = 0, Member, Join };
 
 	class NAKAMA_API NGroupSelf : public NGroup {
 

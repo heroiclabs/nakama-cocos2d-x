@@ -33,7 +33,7 @@ namespace Nakama {
 
 		std::vector<T> GetResults() { return results; }
 		NCursor GetCursor() { return cursor; }
-		int32 Size() { return results.size(); }
+		int32_t Size() { return results.size(); }
 
 		T operator [](int i)
 		{

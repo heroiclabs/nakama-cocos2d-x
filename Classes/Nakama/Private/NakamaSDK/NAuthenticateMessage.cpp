@@ -58,7 +58,7 @@ namespace Nakama {
 		return NAuthenticateMessage(payload);
 	}
 
-	NAuthenticateMessage NAuthenticateMessage::GameCenter(std::string playerId, std::string bundleId, int64 timestamp, std::string salt, std::string signature, std::string publicKeyUrl)
+	NAuthenticateMessage NAuthenticateMessage::GameCenter(std::string playerId, std::string bundleId, int64_t timestamp, std::string salt, std::string signature, std::string publicKeyUrl)
 	{
 		AuthenticateRequest* payload = new AuthenticateRequest();
 		AuthenticateRequest_GameCenter* gameCenter = new AuthenticateRequest_GameCenter();

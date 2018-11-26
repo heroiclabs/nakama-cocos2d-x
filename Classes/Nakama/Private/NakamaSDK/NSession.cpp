@@ -15,10 +15,10 @@
 */
 
 #include "NSession.h"
-#include "NibbleAndAHalf/base64.h"
-#include "rapidjson/document.h"
-#include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
+#include "PlatfromIntegration.h"
+#include "json/document.h"
+#include "json/writer.h"
+#include "json/stringbuffer.h"
 
 using namespace rapidjson;
 using namespace std::chrono;
@@ -73,13 +73,12 @@ namespace Nakama {
 		std::string payload = token.substr(dotIndex1 + 1, dotIndex2 - dotIndex1 - 1);
 
 		// the segment is base64 encoded, so decode it...
-		int decodedLen = 0;
-		unsigned char* decoded = unbase64(payload.c_str(), payload.length(), &decodedLen);
+		std::string decoded = unbase64_to_str(payload.c_str(), payload.length());
 
 		// now we have some json to parse.
 		// e.g.: {"exp":1489862293,"uid":"3c01e3ee-878a-4ec4-8923-40d51a86f91f"}
 		Document d;
-		d.Parse((const char*)decoded, decodedLen);
+		d.Parse(decoded.c_str(), decoded.size());
 
 		if (d.HasMember("han")) {
 			Value& val = d["han"];

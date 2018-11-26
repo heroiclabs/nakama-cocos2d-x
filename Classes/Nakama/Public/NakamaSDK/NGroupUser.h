@@ -21,7 +21,7 @@
 
 namespace Nakama {
 	
-	enum class NAKAMA_API UserState : uint8 { Admin = 0, Member, Join };
+	enum class NAKAMA_API UserState : uint8_t { Admin = 0, Member, Join };
 
 	class NAKAMA_API NGroupUser {
 

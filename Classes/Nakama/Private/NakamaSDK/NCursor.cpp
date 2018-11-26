@@ -15,19 +15,15 @@
 */
 
 #include "NCursor.h"
-#include "NibbleAndAHalf/base64.h"
+#include "PlatfromIntegration.h"
 
 namespace Nakama {
 
 	std::string NCursor::Serialize() {
-		int rLen = 0;
-		char* enc = base64(value.c_str(), value.length(), &rLen);
-		return std::string(enc);
+		return base64(value.c_str(), value.length());
 	}
 
 	void NCursor::Restore(std::string serialized) {
-		int rLen = 0;
-		char* dec = (char*)unbase64(serialized.c_str(), serialized.length(), &rLen);
-		value = std::string(dec);
+		value = unbase64_to_str(serialized.c_str(), serialized.length());
 	}
 }

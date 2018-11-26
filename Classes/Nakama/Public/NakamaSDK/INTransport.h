@@ -45,7 +45,7 @@ namespace Nakama {
 			unsigned timeout,
 			unsigned connectTimeout,
 			const std::function<void(const std::vector<uint8_t> &)> &successAction,
-			const std::function<void(const int32 &)> &errorAction) = 0;
+			const std::function<void(const int32_t &)> &errorAction) = 0;
 
 		virtual void Connect(const std::string host, const unsigned port, const std::string& path, const bool ssl) = 0;
 		virtual void Close() = 0;

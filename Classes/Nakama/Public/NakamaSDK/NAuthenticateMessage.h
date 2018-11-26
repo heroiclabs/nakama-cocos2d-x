@@ -39,7 +39,7 @@ namespace Nakama {
 		static NAuthenticateMessage Facebook(std::string oauthToken);
 		static NAuthenticateMessage GameCenter(std::string playerId,
 			std::string bundleId,
-			int64 timestamp,
+			int64_t timestamp,
 			std::string salt,
 			std::string signature,
 			std::string publicKeyUrl);

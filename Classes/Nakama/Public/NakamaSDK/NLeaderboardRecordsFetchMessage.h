@@ -19,6 +19,7 @@
 #include "INCollatedMessage.h"
 
 #include "Defines.h"
+#include "NCursor.h"
 
 using namespace server;
 

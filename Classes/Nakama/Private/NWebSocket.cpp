@@ -17,10 +17,15 @@
 #include "NWebSocket.h"
 
 #ifndef PLATFORM_MAC
+
+#ifdef __UNREAL__
 #include "Ssl.h"
+#elif COCOS2D
+//#include "external\openssl\include\win32\openssl\ssl.h"
+#include "openssl\ssl.h"
 #endif
 
-#include <string>
+#endif // PLATFORM_MAC
 
 namespace Nakama {
 
@@ -35,7 +40,7 @@ namespace Nakama {
 		SetLWSLogLevel();
 
 		Protocols = new WebSocketInternalProtocol[3];
-		FMemory::Memzero(Protocols, sizeof(WebSocketInternalProtocol) * 3);
+		memset(Protocols, 0, sizeof(WebSocketInternalProtocol) * 3);
 
 		Protocols[0].name = "binary";
 		Protocols[0].callback = unreal_networking_client;
@@ -55,7 +60,8 @@ namespace Nakama {
 		ContextInfo.uid = -1;
 		ContextInfo.user = this;
 		Context = lws_create_context(&ContextInfo);
-		check(Context);
+		assert(Context);
+		//check(Context);
 	}
 
 	NWebSocket::~NWebSocket()
@@ -68,7 +74,7 @@ namespace Nakama {
 			Context = nullptr;
 		}
 		if (Protocols) {
-			delete Protocols;
+			delete []Protocols;
 			Protocols = NULL;
 		}
 	}
@@ -131,14 +137,15 @@ namespace Nakama {
 
 	}
 
-	bool NWebSocket::Send(uint8* Data, uint32 Size)
+	bool NWebSocket::Send(uint8_t* Data, uint32_t Size)
 	{
-		TArray<uint8> Buffer;
+		Buffer buffer;
 
-		Buffer.AddDefaulted(LWS_PRE); // Reserve space for WS header data
+		buffer.reserve(LWS_PRE); // Reserve space for WS header data
 
-		Buffer.Append((uint8*)Data, Size);
-		OutgoingBuffer.Add(Buffer);
+		buffer.assign(Data, Data + Size);
+
+		OutgoingBuffer.push_back(buffer);
 
 		return true;
 	}
@@ -158,8 +165,9 @@ namespace Nakama {
 
 	void NWebSocket::Flush()
 	{
-		auto PendingMesssages = OutgoingBuffer.Num();
-		while (OutgoingBuffer.Num() > 0)
+		auto PendingMesssages = OutgoingBuffer.size();
+
+		while (OutgoingBuffer.size() > 0)
 		{
 			if (Protocols)
 			{
@@ -170,7 +178,8 @@ namespace Nakama {
 				lws_callback_on_writable(LwsConnection);
 			}
 			HandlePacket();
-			if (PendingMesssages >= OutgoingBuffer.Num())
+
+			if (PendingMesssages >= OutgoingBuffer.size())
 			{
 				NLogger::Warn("Unable to flush all of OutgoingBuffer in FWebSocket.");
 				break;
@@ -183,10 +192,10 @@ namespace Nakama {
 		lws_close_reason(LwsConnection, lws_close_status::LWS_CLOSE_STATUS_NORMAL, NULL, 0);
 	}
 
-	void NWebSocket::OnRawReceive(void* Data, uint32 Size, uint32 Remaining)
+	void NWebSocket::OnRawReceive(void* Data, uint32_t Size, uint32_t Remaining)
 	{
-		auto charData = (const uint8*)Data;
-		ReceivedBuffer.insert(ReceivedBuffer.end(), charData, charData + (Size * sizeof(uint8))); // consumes all of Data
+		auto charData = (const uint8_t*)Data;
+		ReceivedBuffer.insert(ReceivedBuffer.end(), charData, charData + (Size * sizeof(uint8_t))); // consumes all of Data
 		if (Remaining == 0)
 		{
 			if (ReceivedCallBack) ReceivedCallBack(ReceivedBuffer);
@@ -201,17 +210,17 @@ namespace Nakama {
 			return;
 		}
 
-		if (OutgoingBuffer.Num() == 0)
+		if (OutgoingBuffer.size() == 0)
 			return;
 
-		TArray <uint8>& Packet = OutgoingBuffer[0];
+		Buffer& Packet = OutgoingBuffer.front();
 
-		uint32 TotalDataSize = Packet.Num() - LWS_PRE;
-		uint32 DataToSend = TotalDataSize;
+		uint32_t TotalDataSize = Packet.size() - LWS_PRE;
+		uint32_t DataToSend = TotalDataSize;
 		// TODO: We could break this up to send over multiple ticks instead.
 		while (DataToSend)
 		{
-			int Sent = lws_write(LwsConnection, Packet.GetData() + LWS_PRE + (DataToSend - TotalDataSize), DataToSend, (lws_write_protocol)LWS_WRITE_BINARY);
+			int Sent = lws_write(LwsConnection, Packet.data() + LWS_PRE + (DataToSend - TotalDataSize), DataToSend, (lws_write_protocol)LWS_WRITE_BINARY);
 			if (Sent < 0)
 			{
 				if (ErrorCallBack) ErrorCallBack("Fatal error on lws_write.");
@@ -220,7 +229,7 @@ namespace Nakama {
 				Context = nullptr;
 				return;
 			}
-			if ((uint32)Sent < DataToSend)
+			if ((uint32_t)Sent < DataToSend)
 			{
 				NLogger::Format(Warn, "Could not write all '%d' bytes to socket", DataToSend);
 			}
@@ -228,9 +237,10 @@ namespace Nakama {
 		}
 
 		// FIXME: replace with more efficient data structure.
-		OutgoingBuffer.RemoveAt(0);
+		// FXED: replaced with list
+		OutgoingBuffer.pop_front();
 
-		if (OutgoingBuffer.Num() > 0) {
+		if (OutgoingBuffer.size() > 0) {
 			lws_callback_on_writable(LwsConnection);
 		}
 	}
@@ -267,8 +277,8 @@ namespace Nakama {
 			// XXX: SSL not currently supported on Mac - HTTP and SSL modules collide with each other.
 			// XXX: Could maybe support this by direct use of OpenSSL?
 #ifndef PLATFORM_MAC
-			SSL_CTX* SslContext = reinterpret_cast<SSL_CTX*>(User);
-			FSslModule::Get().GetCertificateManager().AddCertificatesToSslContext(SslContext);
+			//SSL_CTX* SslContext = reinterpret_cast<SSL_CTX*>(User);
+			//FSslModule::Get().GetCertificateManager().AddCertificatesToSslContext(SslContext);
 #endif
 			break;
 		}
@@ -277,7 +287,7 @@ namespace Nakama {
 			NLogger::Trace("WebSocket->Connection Established.");
 			Self->isConnecting = false;
 			Self->LwsConnection = Instance;
-			if (Self->OutgoingBuffer.Num() != 0)
+			if (Self->OutgoingBuffer.size() != 0)
 			{
 				lws_callback_on_writable(Self->LwsConnection);
 			}
@@ -296,7 +306,7 @@ namespace Nakama {
 		{
 			NLogger::Trace("WebSocket->Connection Receive.");
 			auto bytesLeft = lws_remaining_packet_payload(Instance);
-			Self->OnRawReceive(In, (uint32)Len, (uint32)bytesLeft);
+			Self->OnRawReceive(In, (uint32_t)Len, (uint32_t)bytesLeft);
 		}
 		case LWS_CALLBACK_CLIENT_WRITEABLE:
 		case LWS_CALLBACK_SERVER_WRITEABLE:

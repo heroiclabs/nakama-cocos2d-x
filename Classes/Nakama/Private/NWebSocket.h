@@ -25,6 +25,8 @@
 
 #include <functional>
 #include <string>
+#include <vector>
+#include <list>
 
 #if PLATFORM_WINDOWS
 #include "AllowWindowsPlatformTypes.h"
@@ -32,9 +34,14 @@
 
 #define UI UI_ST
 #ifndef LWS_INCLUDED
-#include "libwebsockets.h"
-#define LWS_INCLUDED
-#endif
+    #if COCOS2D
+        #define LWS_DLL
+        #include "websockets\include\win32\libwebsockets.h"
+    #else
+        #include "libwebsockets.h"
+    #endif
+    #define LWS_INCLUDED
+#endif // !LWS_INCLUDED
 #undef UI
 
 #if PLATFORM_WINDOWS
@@ -67,7 +74,7 @@ namespace Nakama {
 		void SetClosedCallBack(NConnUpdateCallback callBack) { ClosedCallBack = callBack; }
 
 		/** Send raw data to remote end point. */
-		bool Send(uint8* Data, uint32 Size);
+		bool Send(uint8_t* Data, uint32_t Size);
 
 		/** service libwebsocket.			   */
 		void Tick();
@@ -87,7 +94,7 @@ namespace Nakama {
 		bool isConnecting;
 
 		void HandlePacket();
-		void OnRawReceive(void* Data, uint32 Size, uint32 Remaining);
+		void OnRawReceive(void* Data, uint32_t Size, uint32_t Remaining);
 		void OnWebSocketWritable();
 		void SetLWSLogLevel();
 
@@ -105,8 +112,8 @@ namespace Nakama {
 		NConnUpdateCallback ClosedCallBack;
 
 		/**  Recv and Send Buffers, serviced during the Tick */
-		std::vector<uint8> ReceivedBuffer;
-		TArray<TArray<uint8>> OutgoingBuffer;
+		Buffer ReceivedBuffer;
+		std::list<Buffer> OutgoingBuffer;
 
 		/** libwebsocket internal context*/
 		WebSocketInternalContext* Context = nullptr;
