@@ -17,7 +17,7 @@
 #include "NCocosTransport.h"
 #include "NCocosLogSink.h"
 #include "NWebSocket.h"
-#include "network\HttpClient.h"
+#include "network/HttpClient.h"
 
 namespace Nakama {
 	using namespace cocos2d::network;

@@ -21,8 +21,7 @@
 #ifdef __UNREAL__
 #include "Ssl.h"
 #elif COCOS2D
-//#include "external\openssl\include\win32\openssl\ssl.h"
-#include "openssl\ssl.h"
+#include "openssl/ssl.h"
 #endif
 
 #endif // PLATFORM_MAC

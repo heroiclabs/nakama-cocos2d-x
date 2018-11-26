@@ -36,10 +36,8 @@
 #ifndef LWS_INCLUDED
     #if COCOS2D
         #define LWS_DLL
-        #include "websockets\include\win32\libwebsockets.h"
-    #else
-        #include "libwebsockets.h"
     #endif
+    #include "libwebsockets.h"
     #define LWS_INCLUDED
 #endif // !LWS_INCLUDED
 #undef UI
