@@ -62,9 +62,9 @@ namespace Nakama {
 
 		~NError() {}
 
-		std::string GetErrorMessage() { return message; }
-		ErrorCode GetErrorCode() { return code; }
-		std::string GetCollationId() { return collationId; }
+		std::string GetErrorMessage() const { return message; }
+		ErrorCode GetErrorCode() const { return code; }
+		std::string GetCollationId() const { return collationId; }
 
 	private:
 		std::string message;

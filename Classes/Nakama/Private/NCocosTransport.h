@@ -18,12 +18,6 @@
 
 #include "INTransport.h"
 
-namespace cocos2d {
-    namespace network {
-        class HttpClient;
-    }
-}
-
 namespace Nakama {
 
 	class NWebSocket;
@@ -50,7 +44,6 @@ namespace Nakama {
 		virtual void Tick(float DeltaTime) override;
 
 	private:
-		cocos2d::network::HttpClient* httpClient = nullptr;
 		NWebSocket* socket = nullptr;
 		void CreateWebSocket(const std::string host, const unsigned port, const std::string& path, const bool ssl);
 	};

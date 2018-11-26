@@ -79,7 +79,7 @@ namespace Nakama {
 		});
 
 		// Kick off processing
-		httpClient->send(httpRequest);
+		cocos2d::network::HttpClient::getInstance()->send(httpRequest);
 	}
 
 	void NCocosTransport::CreateWebSocket(const std::string host, const unsigned port, const std::string& path, const bool ssl)

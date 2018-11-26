@@ -138,20 +138,20 @@ namespace Nakama {
 	}
 
 
-	inline void NClient::Tick(float DeltaTime) {
+	void NClient::Tick(float DeltaTime) {
 		if (transport) {
 			transport->Tick(DeltaTime);
 		}
 	}
 
-	inline void NClient::Register(NAuthenticateMessage message,
+	void NClient::Register(NAuthenticateMessage message,
 		const std::function<void(NSession*)> callback,
 		const std::function<void(const NError)> errback)
 	{
 		Authenticate("/user/register", message.GetPayload(), lang, callback, errback);
 	}
 
-	inline void NClient::Login(NAuthenticateMessage message,
+	void NClient::Login(NAuthenticateMessage message,
 		const std::function<void(NSession*)> callback,
 		const std::function<void(const NError)> errback)
 	{
@@ -231,7 +231,7 @@ namespace Nakama {
 		});
 	}
 
-	inline std::string NClient::GetWebsocketPath(NSession* session)
+	std::string NClient::GetWebsocketPath(NSession* session)
 	{
 		std::string path;
 		path.append("/api?serverkey=").append(serverKey);
