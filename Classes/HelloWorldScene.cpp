@@ -1,11 +1,17 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "NLeaderboardRecordsFetchMessage.h"
 
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
     return HelloWorld::create();
+}
+
+HelloWorld::~HelloWorld()
+{
+    delete m_client;
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -91,9 +97,53 @@ bool HelloWorld::init()
         // add the sprite as a child to this layer
         this->addChild(sprite, 0);
     }
+
+    m_client = &NClient::Builder("<Server key>")
+        .Host("127.0.0.1")
+        .Port(7350)
+        .Build();
+
+    auto loginFailedCallback = [](const NError error)
+    {
+        CCLOGERROR("Login failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
+    };
+
+    CCLOGINFO("Login...");
+    m_client->Login(
+        NAuthenticateMessage::Email("test@google.com", "123"),
+        std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
+        loginFailedCallback);
+
     return true;
 }
 
+void HelloWorld::onLoginSucceeded(NSession* session)
+{
+    CCLOGINFO("Login succeeded - session id %s", session->GetId().c_str());
+
+    CCLOGINFO("Connect...");
+    m_client->Connect(session, [this](bool)
+    {
+        CCLOGINFO("Connected");
+
+        NLeaderboardRecordsFetchMessage msg = NLeaderboardRecordsFetchMessage::Builder("<leaderboard_id>")
+            .Limit(10)
+            .Build();
+
+        m_client->Send(msg, [](void* data)
+        {
+            NResultSet<Nakama::NLeaderboardRecord>* result = (NResultSet<Nakama::NLeaderboardRecord>*)data;
+
+            auto records = result->GetResults();
+
+            delete result;
+
+        }, [](NError error)
+        {
+            CCLOGERROR("LeaderboardsList failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
+        });
+    });
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
