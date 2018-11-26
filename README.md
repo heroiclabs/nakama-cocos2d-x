@@ -26,30 +26,32 @@ To use nakama-cocos2d-x in your cocos2d-x project, you'll need to copy the nakam
 3. Copy the Nakama and ThirdParty folders from the nakama-cocos2d-x release you downloaded, into Classes folder.
 
 Folder structure should be as following:
+```
 <Your Project Root>
    cocos2d
    Classes
        Nakama
        ThirdParty
+```
 
 4. Now add all .cpp, .cc files from Nakama folder to your project:
-    a) Windows - proj.win32\<Project Name>.sln
-    b) Android - proj.android\jni\Android.mk
-    c) iOS/Mac - proj.ios_mac\NakamaCocos2d.xcodeproj
+    * Windows - proj.win32\<Project Name>.sln
+    * Android - proj.android\jni\Android.mk
+    * iOS/Mac - proj.ios_mac\NakamaCocos2d.xcodeproj
 
 5. Add link libraries to your project:
-    libprotobuf - from Classes\ThirdParty\lib\<platform>
-    websockets  - cocos2d\external\websockets\prebuilt\<platform>
+    * libprotobuf - from Classes\ThirdParty\lib\<platform>
+    * websockets  - cocos2d\external\websockets\prebuilt\<platform>
 
 6. Add defines for project:
-    NAKAMA_API=
-    COCOS2D
+    * NAKAMA_API=
+    * COCOS2D
 
 7. Add include directories for project:
-    Classes\Nakama\Public\NakamaSDK
-    Classes\Nakama\Public
-    Classes\Nakama\Private
-    Classes\ThirdParty\include
+    * Classes\Nakama\Public\NakamaSDK
+    * Classes\Nakama\Public
+    * Classes\Nakama\Private
+    * Classes\ThirdParty\include
 
 At this point, you are done. Try to build.
 
