@@ -29,6 +29,7 @@ namespace Nakama {
 	{
 
 	public:
+        virtual ~INTransport() {}
 
 		/************************************************************************/
 		/* Set various callbacks for Events										*/
