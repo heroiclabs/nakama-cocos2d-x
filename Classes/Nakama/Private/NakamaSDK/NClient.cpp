@@ -174,10 +174,10 @@ namespace Nakama {
 
 	void NClient::Logout()
 	{
-		Envelope* payload = new Envelope();
-		payload->set_allocated_logout(new server::Logout());
-		std::string str = payload->SerializeAsString();
-		transport->Send(str.c_str(), [](bool comp) {});
+		Envelope envelope;
+		envelope.set_allocated_logout(new server::Logout());
+		std::string payload = envelope.SerializeAsString();
+		transport->Send(payload.c_str());
 	}
 
 	void NClient::Disconnect()
