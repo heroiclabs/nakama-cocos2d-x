@@ -244,7 +244,7 @@ namespace Nakama {
 			return;
 		case Envelope::PayloadCase::kLiveNotifications:
 			for (size_t i = 0; i < OnNotification.size(); i++) 
-				for (int j = 0; j < message.live_notifications().notifications_size(); i++)
+				for (int j = 0; j < message.live_notifications().notifications_size(); j++)
 					OnNotification[i](NNotification(message.live_notifications().notifications().Get(j)));
 			return;
 		}
