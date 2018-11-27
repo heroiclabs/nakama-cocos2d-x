@@ -49,7 +49,7 @@ namespace Nakama {
 #endif
 
 		transport->SetOnConnectCallBack([=]() {
-			if (OnConnected) OnConnected(true);
+			if (OnConnected) OnConnected();
 		});
 
 		transport->SetOnCloseCallBack([=]() {
@@ -157,15 +157,8 @@ namespace Nakama {
 	{
 		Authenticate("/user/login", message.GetPayload(), lang, callback, errback);
 	}
-	
-	void  NClient::Connect(NSession* session)
-	{
-		NLogger::Info("Nakama::Client->Connect() - Connecting to API");
-		OnConnected = nullptr;
-		transport->Connect(host, port, GetWebsocketPath(session), ssl);
-	}
 
-	void NClient::Connect(NSession* session, std::function<void(const bool)> callback)
+	void NClient::Connect(NSession* session, std::function<void()> callback)
 	{
 		NLogger::Info("Nakama::Client->Connect() - Connecting to API");
 		OnConnected = callback;
@@ -189,43 +182,30 @@ namespace Nakama {
 
 	void NClient::Send(INCollatedMessage& message, std::function<void(void*)> callback, std::function<void(NError)> errback)
 	{
-		// Set a collation ID to dispatch callbacks on receive
-		std::string collationId = generateGuid();
-		message.SetCollationId(collationId);
+		std::string collationId;
 
-		// Track callbacks for message
-		NCallbacks callbacks = NCallbacks(callback, errback);
-		collationIds.insert(std::make_pair(collationId, callbacks));
+		if (callback)
+		{
+			// Set a collation ID to dispatch callbacks on receive
+			collationId = generateGuid();
+			message.SetCollationId(collationId);
+
+			// Track callbacks for message
+			NCallbacks callbacks = NCallbacks(callback, errback);
+			collationIds.insert(std::make_pair(collationId, callbacks));
+		}
 
 		std::string str = message.GetPayload()->SerializeAsString();
 
-		Envelope e = Envelope();
-		e.ParseFromString(str);
-
-		transport->Send(str, [=](bool completed) mutable {
-			if (!completed)
+		transport->Send(str, [=](bool sent) mutable {
+			if (!sent)
 			{
-				// The write may have failed; don't track it
-				collationIds.erase(collationId);
-				if (errback) errback(NError("Message send error"));
-			}
-		});
-	}
+				if (!collationId.empty())
+				{
+					// The write may have failed; don't track it
+					collationIds.erase(collationId);
+				}
 
-	void NClient::Send(INUncollatedMessage& message, std::function<void()> callback, std::function<void(NError)> errback)
-	{
-		std::string str = message.GetPayload()->SerializeAsString();
-
-		Envelope e = Envelope();
-		e.ParseFromString(str);
-
-		transport->Send(str, [=](bool completed) mutable {
-			if (completed)
-			{
-				if (callback) callback();
-			}
-			else
-			{
 				if (errback) errback(NError("Message send error"));
 			}
 		});

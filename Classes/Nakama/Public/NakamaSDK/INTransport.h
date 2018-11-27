@@ -29,7 +29,7 @@ namespace Nakama {
 	{
 
 	public:
-        virtual ~INTransport() {}
+		virtual ~INTransport() {}
 
 		/************************************************************************/
 		/* Set various callbacks for Events										*/
@@ -50,10 +50,9 @@ namespace Nakama {
 
 		virtual void Connect(const std::string host, const unsigned port, const std::string& path, const bool ssl) = 0;
 		virtual void Close() = 0;
-		virtual void Send(std::string data, std::function<void(bool)> callback) = 0;
+		virtual void Send(std::string data, std::function<void(bool)> callback = nullptr) = 0;
 		virtual void Tick(float DeltaTime) = 0;
 
-	
 	protected:
 
 		/************************************************************************/

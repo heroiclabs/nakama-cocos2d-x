@@ -79,18 +79,13 @@ namespace Nakama {
 			const std::function<void(NSession*)> callback,
 			const std::function<void(const NError)> errback);
 
-		void Connect(NSession* session);
-		void Connect(NSession* session, std::function<void(const bool)> callback);
+		void Connect(NSession* session, std::function<void()> callback = nullptr);
 		void Logout();
 		void Disconnect();
 
 		void Send(INCollatedMessage &message,
-			std::function<void(void*)> callback,
-			std::function<void(NError)> errback);
-
-		void Send(INUncollatedMessage &message,
-			std::function<void()> callback,
-			std::function<void(NError)> errback);
+			std::function<void(void*)> callback = nullptr,
+			std::function<void(NError)> errback = nullptr);
 
 		static NClient& Default(std::string serverKey);
 
@@ -123,7 +118,7 @@ namespace Nakama {
 			NCallbacks
 		> collationIds;
 
-		std::function<void(const bool)> OnConnected;
+		std::function<void()> OnConnected;
 
 		void SetServerTime(long serverTime);
 		void Authenticate(std::string path, AuthenticateRequest* payload, std::string langHeader,

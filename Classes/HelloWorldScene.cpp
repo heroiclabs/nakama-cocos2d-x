@@ -122,7 +122,7 @@ void HelloWorld::onLoginSucceeded(NSession* session)
     CCLOGINFO("Login succeeded - session id %s", session->GetId().c_str());
 
     CCLOGINFO("Connect...");
-    m_client->Connect(session, [this](bool)
+    m_client->Connect(session, [this]()
     {
         CCLOGINFO("Connected");
 

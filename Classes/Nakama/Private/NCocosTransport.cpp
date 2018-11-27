@@ -135,12 +135,12 @@ namespace Nakama {
 
 	void NCocosTransport::Send(std::string data, std::function<void(bool)> callback)
 	{
+		bool success = false;
+
 		if (socket) {
-			bool success = socket->Send((uint8_t*)data.data(), data.size());
-			if (callback) callback(success);
+			success = socket->Send((uint8_t*)data.data(), data.size());
 		}
-		else {
-			if (callback) callback(false);
-		}
+
+		if (callback) callback(success);
 	}
 }
