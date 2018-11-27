@@ -35,11 +35,11 @@ namespace Nakama {
 		{
 			ticket = NMatchmakeTicket(message.ticket());
 			token = NMatchToken(message.token());
-			for (size_t i = 0; i < message.presences_size(); i++) {
+			for (int i = 0; i < message.presences_size(); i++) {
 				presence.push_back(NUserPresence(message.presences(i)));
 			}
 			self = NUserPresence(message.self());
-			for (size_t i = 0; i < message.properties_size(); i++) {
+			for (int i = 0; i < message.properties_size(); i++) {
 				userProperties.push_back(NMatchmakeUserProperty(message.properties(i)));
 			}
 		}

@@ -33,7 +33,7 @@ namespace Nakama {
 		NMatchmakeTermFilter(MatchmakeFilter_TermFilter filter)
 		{
 			matchAllTerms = filter.matchallterms();
-			for (size_t i = 0; i < filter.terms_size(); i++) {
+			for (int i = 0; i < filter.terms_size(); i++) {
 				terms.push_back(filter.terms(i));
 			}
 		}
