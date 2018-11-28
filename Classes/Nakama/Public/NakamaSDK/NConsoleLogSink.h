@@ -28,7 +28,7 @@ namespace Nakama {
 	public:
 		~NConsoleLogSink() {}
 		
-		void Log(const NLogMessage& msg) {
+		void Log(const NLogMessage& msg) override {
 			fwrite(msg.message.c_str(), sizeof(char), msg.message.size(), stderr);
 			Flush();
 		}

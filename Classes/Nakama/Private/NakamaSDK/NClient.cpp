@@ -247,6 +247,8 @@ namespace Nakama {
 				for (int j = 0; j < message.live_notifications().notifications_size(); j++)
 					OnNotification[i](NNotification(message.live_notifications().notifications().Get(j)));
 			return;
+        default:
+            break;
 		}
 
 		std::string collationId = message.collation_id();

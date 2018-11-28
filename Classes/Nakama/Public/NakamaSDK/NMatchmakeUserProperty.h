@@ -55,6 +55,8 @@ namespace Nakama {
 					boolProperties[item.key()] = item.boolvalue();
 					break;
 				}
+                default:
+                    break;
 				}
 			}
 

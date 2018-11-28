@@ -28,7 +28,7 @@ namespace Nakama {
 	public:
 		~NCocosLogSink() {}
 
-		void Log(const NLogMessage& msg) {
+		void Log(const NLogMessage& msg) override {
 			switch (msg.level) {
 			case NLogLevel::Trace:
 				CCLOG("%s", msg.message.c_str());
