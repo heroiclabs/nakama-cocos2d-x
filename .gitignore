@@ -35,3 +35,4 @@ Release.Win32
 *.sdf
 *.opensdf
 *.suo
+.vs
