@@ -23,10 +23,16 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
-*.lib
 
 # Executables
-*.exe
 *.out
 *.app
+
+cocos2d
+bin
+Debug.Win32
+Release.Win32
+*.sdf
+*.opensdf
+*.suo
+.vs
