@@ -57,7 +57,7 @@ namespace Nakama {
 			for (size_t i = 0; i < OnDisconnect.size(); i++) OnDisconnect[i]();
 		});
 
-		transport->SetOnMessageCallBack([=](const std::vector<uint8_t> data) {
+		transport->SetOnMessageCallBack([=](const std::vector<uint8_t>& data) {
 			Envelope message;
 			message.ParseFromArray(data.data(), data.size());
 			NLogger::Format(Trace, "NClient->RcvdMessage: %d", (int)message.payload_case());
@@ -86,8 +86,8 @@ namespace Nakama {
 	}
 
 	void NClient::Authenticate(std::string path, AuthenticateRequest* payload, std::string langHeader,
-		const std::function<void(NSession*)> &callback,
-		const std::function<void(const NError &)> &errback)
+		const std::function<void(NSession*)> callback,
+		const std::function<void(const NError &)> errback)
 	{
 		// Add a collation ID for logs
 		payload->set_collationid(generateGuid());
@@ -102,7 +102,7 @@ namespace Nakama {
 
 		int64_t span = getCurrentTime();
 		transport->Post(uri, payload, authHeader, langHeader, timeout, connectTimeout,
-			[=](std::vector<uint8_t> data) {
+			[=](const std::vector<uint8_t>& data) {
 			AuthenticateResponse authResponse;
 			authResponse.ParseFromArray(&data[0], data.size());
 
@@ -114,15 +114,16 @@ namespace Nakama {
 				if (callback) callback(new NSession(authResponse.session().token().c_str(), std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::seconds(span))));
 				break;
 			case AuthenticateResponse::IdCase::kError:
-				if (errback) errback(NError(authResponse.error(), authResponse.collation_id()));
+				if (errback) errback(NError(authResponse.error()));
 				break;
 			default:
 				NLogger::Error("Received invalid response from server");
 				break;
 			}
 		},
-			[errback](int32_t e) {
-			if (errback != NULL) errback(NError("Error: " + std::to_string(e)));
+			[errback](int32_t httpError) {
+			if (errback != NULL)
+                errback(NError(httpError));
 		}
 		);
 	}
@@ -220,7 +221,7 @@ namespace Nakama {
 		return path;
 	}
 
-	void NClient::onMessage(Envelope message) {
+	void NClient::onMessage(const Envelope& message) {
 		// Handle realtime messages
 		switch (message.payload_case())
 		{
@@ -266,7 +267,7 @@ namespace Nakama {
 		}
 
 		case Envelope::PayloadCase::kError: {
-			NError error = NError(message.error(), collationId);
+			NError error = NError(message.error());
 			if (callbacks) {
 				callbacks->OnError(error);
 			}

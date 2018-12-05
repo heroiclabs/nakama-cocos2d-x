@@ -18,6 +18,8 @@
 
 #ifdef __UNREAL__
 #include "NUnrealLogSink.h"
+#elif COCOS2D
+#include "NCocosLogSink.h"
 #else
 #include "NConsoleLogSink.h"
 #endif
@@ -30,6 +32,8 @@ namespace Nakama {
 
 #ifdef __UNREAL__
 		sink = new NUnrealLogSink();
+#elif COCOS2D
+        sink = new NCocosLogSink();
 #else
 		sink = new NConsoleLogSink();
 #endif

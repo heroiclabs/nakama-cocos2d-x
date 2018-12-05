@@ -42,7 +42,7 @@ namespace Nakama {
 		memset(Protocols, 0, sizeof(WebSocketInternalProtocol) * 3);
 
 		Protocols[0].name = "binary";
-		Protocols[0].callback = unreal_networking_client;
+		Protocols[0].callback = websocket_callback;
 		Protocols[0].per_session_data_size = 0;
 		Protocols[0].rx_buffer_size = 10 * 1024 * 1024;
 
@@ -244,7 +244,7 @@ namespace Nakama {
 		}
 	}
 
-	int NWebSocket::unreal_networking_client(
+	int NWebSocket::websocket_callback(
 		WebSocketInternal *Instance,
 		WebSocketInternalCallback Reason,
 		void *User,
@@ -281,6 +281,9 @@ namespace Nakama {
 #endif
 			break;
 		}
+        case LWS_CALLBACK_WSI_CREATE:
+            NLogger::Trace("WebSocket->Connection Created.");
+            break;
 		case LWS_CALLBACK_CLIENT_ESTABLISHED:
 		{
 			NLogger::Trace("WebSocket->Connection Established.");

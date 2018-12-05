@@ -22,7 +22,7 @@ using namespace server;
 
 namespace Nakama {
 	
-	enum NAKAMA_API ErrorCode {
+	enum class NAKAMA_API ErrorCode {
 		Unknown = 0,
 		RuntimeException,
 		UnrecognizedPayload,
@@ -47,29 +47,43 @@ namespace Nakama {
 	public:
 		NError(std::string message = std::string()) :
 			message(message), code(ErrorCode::Unknown) {}
-		NError(const AuthenticateResponse_Error error, std::string collationId) :
-			message(error.message()), collationId(collationId) {
+		NError(const AuthenticateResponse_Error error) : message(error.message())
+        {
 			auto c = error.code();
-			if (c >= Unknown && c <= MatchNotFound) code = (ErrorCode)c;
+			if (c >= (int)ErrorCode::Unknown && c <= (int)ErrorCode::MatchNotFound) code = (ErrorCode)c;
 			else code = ErrorCode::Unknown;
 		}
-		NError(server::Error error, std::string collationId) :
-			message(error.message()), collationId(collationId) {
+		NError(server::Error error) : message(error.message())
+        {
 			auto c = error.code();
-			if (c >= Unknown && c <= MatchNotFound) code = (ErrorCode)c;
+			if (c >= (int)ErrorCode::Unknown && c <= (int)ErrorCode::MatchNotFound) code = (ErrorCode)c;
 			else code = ErrorCode::Unknown;
 		}
+        NError(int32_t httpError)
+        {
+            message = "HTTP Error " + std::to_string(httpError);
+
+            switch (httpError)
+            {
+            case 401:
+                message += ": UNAUTHORIZED";
+                code = ErrorCode::AuthError;
+                break;
+
+            default:
+                code = ErrorCode::Unknown;
+                break;
+            }
+        }
 
 		~NError() {}
 
 		std::string GetErrorMessage() const { return message; }
 		ErrorCode GetErrorCode() const { return code; }
-		std::string GetCollationId() const { return collationId; }
 
 	private:
 		std::string message;
 		ErrorCode code;
-		std::string collationId;
 	};
 
 }

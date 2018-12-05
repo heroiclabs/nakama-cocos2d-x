@@ -22,6 +22,8 @@ public:
     CREATE_FUNC(HelloWorld);
 
 protected:
+    std::string getDeviceId();
+    void registerDevice();
     void onLoginSucceeded(NSession* session);
 
 private:

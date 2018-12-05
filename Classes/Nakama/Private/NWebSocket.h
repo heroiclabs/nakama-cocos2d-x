@@ -15,7 +15,7 @@
  */
 
 //
-// Wrapper around libwebsocket - modified from Unreal's WebSocket.h
+// Wrapper around libwebsocket
 //
 
 #pragma once
@@ -122,7 +122,7 @@ namespace Nakama {
 		/** libwebsocket Protocols that can be serviced by this implemenation*/
 		WebSocketInternalProtocol* Protocols = nullptr;
 
-		static int unreal_networking_client(WebSocketInternal *Instance, WebSocketInternalCallback reason, void *user, void *in, size_t len);
+		static int websocket_callback(WebSocketInternal *Instance, WebSocketInternalCallback reason, void *user, void *in, size_t len);
 	};
 
 }

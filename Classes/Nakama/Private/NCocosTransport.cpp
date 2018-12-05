@@ -24,8 +24,10 @@ namespace Nakama {
 
 	NCocosTransport::~NCocosTransport()
 	{
-		delete socket;
-		socket = nullptr;
+        if (socket)
+        {
+            socket->Close();
+        }
 	}
 
 	void NCocosTransport::Post(std::string uri, AuthenticateRequest* payload, std::string authHeader, std::string langHeader, unsigned timeout, unsigned connectTimeout,
@@ -41,8 +43,8 @@ namespace Nakama {
 		httpRequest->setRequestType(HttpRequest::Type::POST);
 
 		// Add Headers
-		headers.push_back("Content-Type: application/octet-stream;");
-		headers.push_back("Accept: application/octet-stream;");
+		headers.push_back("Content-Type: application/octet-stream");
+		headers.push_back("Accept: application/octet-stream");
 		std::string agent = "nakama-cocossdk/";
 		agent += cocos2d::cocos2dVersion();
 		headers.push_back("User-Agent: " + agent);
@@ -92,10 +94,10 @@ namespace Nakama {
 		});
 
 		// OnClosed callback + cleanup
-		socket->SetClosedCallBack([=]() { 
+		socket->SetClosedCallBack([this]() { 
 			// Release socket handle
-				delete socket;
-				socket = nullptr;
+			delete socket;
+			socket = nullptr;
 
 			NLogger::Trace("Socket Closed.");
 			if (CloseCallback) CloseCallback(); 

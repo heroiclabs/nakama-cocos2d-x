@@ -98,33 +98,61 @@ bool HelloWorld::init()
         this->addChild(sprite, 0);
     }
 
-    m_client = &NClient::Builder("<Server key>")
+    NLogger::getInstance().SetLevel(NLogLevel::Debug);
+
+    m_client = &NClient::Builder("defaultkey")
         .Host("127.0.0.1")
         .Port(7350)
         .Build();
 
-    auto loginFailedCallback = [](const NError error)
+    getScheduler()->schedule(std::bind(&NClient::Tick, m_client, std::placeholders::_1), this, 0.05f /*sec*/, CC_REPEAT_FOREVER, 0, false, "nakama-tick");
+
+    auto loginFailedCallback = [this](const NError error)
     {
         CCLOGERROR("Login failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
+
+        if (error.GetErrorCode() == ErrorCode::AuthError)
+        {
+            registerDevice();
+        }
     };
 
-    CCLOGINFO("Login...");
+    CCLOG("Login...");
     m_client->Login(
-        NAuthenticateMessage::Email("test@google.com", "123"),
+        NAuthenticateMessage::Device(getDeviceId()),
         std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         loginFailedCallback);
 
     return true;
 }
 
+std::string HelloWorld::getDeviceId()
+{
+    return "pcdevice123456";
+}
+
+void HelloWorld::registerDevice()
+{
+    auto registerFailedCallback = [this](const NError error)
+    {
+        CCLOGERROR("Register failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
+    };
+
+    CCLOG("Register...");
+    m_client->Register(
+        NAuthenticateMessage::Device(getDeviceId()),
+        std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
+        registerFailedCallback);
+}
+
 void HelloWorld::onLoginSucceeded(NSession* session)
 {
-    CCLOGINFO("Login succeeded - session id %s", session->GetId().c_str());
+    CCLOG("Login succeeded - session id %s", session->GetId().c_str());
 
-    CCLOGINFO("Connect...");
+    CCLOG("Connect...");
     m_client->Connect(session, [this]()
     {
-        CCLOGINFO("Connected");
+        CCLOG("Connected");
 
         NLeaderboardRecordsFetchMessage msg = NLeaderboardRecordsFetchMessage::Builder("<leaderboard_id>")
             .Limit(10)

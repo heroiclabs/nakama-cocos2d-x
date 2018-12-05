@@ -122,11 +122,11 @@ namespace Nakama {
 
 		void SetServerTime(long serverTime);
 		void Authenticate(std::string path, AuthenticateRequest* payload, std::string langHeader,
-			const std::function<void(NSession*)> &callback,
-			const std::function<void(const NError &)> &errback);
+			const std::function<void(NSession*)> callback,
+			const std::function<void(const NError &)> errback);
 		std::string GetWebsocketPath(NSession* session);
 
-		void onMessage(Envelope message);
+		void onMessage(const Envelope& message);
 
 	};
 
