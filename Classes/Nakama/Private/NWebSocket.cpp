@@ -133,7 +133,6 @@ namespace Nakama {
 			NLogger::Error("Unable to initialize connection!");
 			return;
 		}
-
 	}
 
 	bool NWebSocket::Send(uint8_t* Data, uint32_t Size)
@@ -233,8 +232,6 @@ namespace Nakama {
 			DataToSend -= Sent;
 		}
 
-		// FIXME: replace with more efficient data structure.
-		// FXED: replaced with list
 		OutgoingBuffer.pop_front();
 
 		if (OutgoingBuffer.size() > 0) {
@@ -319,6 +316,11 @@ namespace Nakama {
 			NLogger::Trace("WebSocket->Connection Closed.");
 			if (Self->ClosedCallBack) Self->ClosedCallBack();
 			return -1;
+		}
+		case LWS_CALLBACK_WSI_DESTROY:
+		{
+			NLogger::Trace("WebSocket->Connection Destroyed.");
+			break;
 		}
 		default:
 			NLogger::Format(Warn, "WebSocket->Connection Received unhandled message: %d", (int)Reason);

@@ -72,18 +72,19 @@ namespace Nakama {
 		void Tick(float DeltaTime);
 
 		void Register(NAuthenticateMessage message,
-			const std::function<void(NSession*)> callback,
+			const std::function<void()> callback,
 			const std::function<void(const NError)> errback);
 		
 		void Login(NAuthenticateMessage message,
-			const std::function<void(NSession*)> callback,
+			const std::function<void()> callback,
 			const std::function<void(const NError)> errback);
 
-		void Connect(NSession* session, std::function<void()> callback = nullptr);
+		void Connect(std::function<void()> callback = nullptr);
 		void Logout();
 		void Disconnect();
+		NSession* GetSession() { return session; }
 
-		void Send(INCollatedMessage &message,
+		void Send(INCollatedMessage& message,
 			std::function<void(void*)> callback = nullptr,
 			std::function<void(NError)> errback = nullptr);
 
@@ -111,7 +112,8 @@ namespace Nakama {
 		bool ssl;
 		unsigned timeout;
 		int64_t serverTime;
-		INTransport* transport;
+		INTransport* transport = nullptr;
+		NSession* session = nullptr;
 
 		std::map<
 			std::string, // Key is collationId
@@ -122,12 +124,11 @@ namespace Nakama {
 
 		void SetServerTime(long serverTime);
 		void Authenticate(std::string path, AuthenticateRequest* payload, std::string langHeader,
-			const std::function<void(NSession*)> callback,
+			const std::function<void()> callback,
 			const std::function<void(const NError &)> errback);
 		std::string GetWebsocketPath(NSession* session);
 
 		void onMessage(const Envelope& message);
-
 	};
 
 	class NAKAMA_API NClient::Builder

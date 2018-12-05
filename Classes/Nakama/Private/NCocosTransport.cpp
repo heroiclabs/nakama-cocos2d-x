@@ -24,10 +24,10 @@ namespace Nakama {
 
 	NCocosTransport::~NCocosTransport()
 	{
-        if (socket)
-        {
-            socket->Close();
-        }
+		if (socket)
+		{
+			socket->Close();
+		}
 	}
 
 	void NCocosTransport::Post(std::string uri, AuthenticateRequest* payload, std::string authHeader, std::string langHeader, unsigned timeout, unsigned connectTimeout,
@@ -95,16 +95,22 @@ namespace Nakama {
 
 		// OnClosed callback + cleanup
 		socket->SetClosedCallBack([this]() { 
+			NLogger::Trace("Nakama::NTransport->Socket Closed.");
+
 			// Release socket handle
-			delete socket;
+			//delete socket;
 			socket = nullptr;
 
-			NLogger::Trace("Socket Closed.");
-			if (CloseCallback) CloseCallback(); 
+			if (CloseCallback) CloseCallback();
 		});
 
 		// OnError callback
-		socket->SetErrorCallBack([=](const std::string &msg) { if (ErrorCallback) ErrorCallback(msg); });
+		socket->SetErrorCallBack([=](const std::string &msg)
+		{
+			NLogger::Error("Nakama::NTransport->Error: " + msg);
+
+			if (ErrorCallback) ErrorCallback(msg);
+		});
 		
 		// OnMessageReceived callback
 		socket->SetReceiveCallBack([=](const std::vector<uint8_t> data) {
@@ -135,7 +141,7 @@ namespace Nakama {
 		}
 	}
 
-	void NCocosTransport::Send(std::string data, std::function<void(bool)> callback)
+	void NCocosTransport::Send(const std::string& data, std::function<void(bool)> callback)
 	{
 		bool success = false;
 

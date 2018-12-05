@@ -28,7 +28,7 @@ namespace Nakama {
 
 	public:
 		NTopic() {}
-		NTopic(server::TTopics_Topic message) : 
+		NTopic(const server::TTopics_Topic& message) : 
 			topic(NTopicId(message.topic())),
 			self(NUserPresence(message.self()))
 		{
@@ -40,9 +40,9 @@ namespace Nakama {
 
 		~NTopic() {}
 
-		NTopicId GetTopic() { return topic; }
-		std::vector<NUserPresence> GetPresence() { return presence; }
-		NUserPresence GetSelf() { return self; }
+		const NTopicId& GetTopicId() const { return topic; }
+		const std::vector<NUserPresence>& GetPresence() const { return presence; }
+		const NUserPresence& GetSelf() const { return self; }
 
 	private:
 		NTopicId topic;

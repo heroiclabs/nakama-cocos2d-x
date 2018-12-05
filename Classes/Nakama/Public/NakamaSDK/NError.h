@@ -48,37 +48,37 @@ namespace Nakama {
 		NError(std::string message = std::string()) :
 			message(message), code(ErrorCode::Unknown) {}
 		NError(const AuthenticateResponse_Error error) : message(error.message())
-        {
+		{
 			auto c = error.code();
 			if (c >= (int)ErrorCode::Unknown && c <= (int)ErrorCode::MatchNotFound) code = (ErrorCode)c;
 			else code = ErrorCode::Unknown;
 		}
 		NError(server::Error error) : message(error.message())
-        {
+		{
 			auto c = error.code();
 			if (c >= (int)ErrorCode::Unknown && c <= (int)ErrorCode::MatchNotFound) code = (ErrorCode)c;
 			else code = ErrorCode::Unknown;
 		}
-        NError(int32_t httpError)
-        {
-            message = "HTTP Error " + std::to_string(httpError);
+		NError(int32_t httpError)
+		{
+			message = "HTTP Error " + std::to_string(httpError);
 
-            switch (httpError)
-            {
-            case 401:
-                message += ": UNAUTHORIZED";
-                code = ErrorCode::AuthError;
-                break;
+			switch (httpError)
+			{
+			case 401:
+				message += ": UNAUTHORIZED";
+				code = ErrorCode::AuthError;
+				break;
 
-            default:
-                code = ErrorCode::Unknown;
-                break;
-            }
-        }
+			default:
+				code = ErrorCode::Unknown;
+				break;
+			}
+		}
 
 		~NError() {}
 
-		std::string GetErrorMessage() const { return message; }
+		const std::string& GetErrorMessage() const { return message; }
 		ErrorCode GetErrorCode() const { return code; }
 
 	private:
