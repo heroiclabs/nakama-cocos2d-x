@@ -138,11 +138,9 @@ namespace Nakama {
 
 	bool NWebSocket::Send(uint8_t* Data, uint32_t Size)
 	{
-		Buffer buffer;
+		Buffer buffer(LWS_PRE); // Reserve space for WS header data
 
-		buffer.reserve(LWS_PRE); // Reserve space for WS header data
-
-		buffer.assign(Data, Data + Size);
+		buffer.insert(buffer.end(), Data, Data + Size);
 
 		OutgoingBuffer.push_back(buffer);
 
