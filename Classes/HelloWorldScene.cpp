@@ -167,6 +167,12 @@ void HelloWorld::connect()
 
 void HelloWorld::joinTopic(const std::string& topicName)
 {
+	m_client->OnTopicMessage.push_back([this](const NTopicMessage& msg)
+	{
+		// msg.GetData() is JSON string
+		CCLOG("OnTopicMessage %s", msg.GetData().c_str());
+	});
+
 	NTopicJoinMessage msg = NTopicJoinMessage::Builder()
 		.TopicRoom(topicName)
 		.Build();
@@ -198,6 +204,7 @@ void HelloWorld::joinTopic(const std::string& topicName)
 
 void HelloWorld::sendTopicMessage(const std::string& message)
 {
+	// data must be JSON
 	std::string data = "{\"msg\":\"" + message + "\"}";
 	NTopicMessageSendMessage msg = NTopicMessageSendMessage::Default(m_topic.GetTopicId(), data);
 
