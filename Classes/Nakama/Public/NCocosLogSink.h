@@ -37,7 +37,7 @@ namespace Nakama {
 				CCLOG("%s", msg.message.c_str());
 				break;
 			case NLogLevel::Info:
-				CCLOGINFO("%s", msg.message.c_str());
+				CCLOG("%s", msg.message.c_str());
 				break;
 			case NLogLevel::Warn:
 				CCLOGWARN("%s", msg.message.c_str());
