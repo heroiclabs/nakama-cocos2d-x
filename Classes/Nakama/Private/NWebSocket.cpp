@@ -185,7 +185,10 @@ namespace Nakama {
 
 	void NWebSocket::Close()
 	{
-		lws_close_reason(LwsConnection, lws_close_status::LWS_CLOSE_STATUS_NORMAL, NULL, 0);
+        if (LwsConnection)
+        {
+            lws_close_reason(LwsConnection, lws_close_status::LWS_CLOSE_STATUS_NORMAL, NULL, 0);
+        }
 	}
 
 	void NWebSocket::OnRawReceive(void* Data, uint32_t Size, uint32_t Remaining)
