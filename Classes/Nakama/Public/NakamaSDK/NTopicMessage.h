@@ -29,7 +29,7 @@ namespace Nakama {
 
 	public:
 		NTopicMessage() {}
-		NTopicMessage(TopicMessage message) : 
+		NTopicMessage(const TopicMessage& message) : 
 			topic(NTopicId(message.topic()))
 		{
 			userId = message.user_id();
@@ -65,14 +65,14 @@ namespace Nakama {
 
 		~NTopicMessage() {}
 
-		NTopicId GetTopic() { return topic; }
-		std::string GetUserId() { return userId; }
-		std::string GetMessageId() { return messageId; }
-		int64_t GetCreatedAt() { return createdAt; }
-		int64_t GetExpiresAt() { return expiresAt; }
-		std::string GetHandle() { return handle; }
-		TopicMessageType GetType() { return type; }
-		std::string GetData() { return data; }
+		const NTopicId& GetTopic() const { return topic; }
+		const std::string& GetUserId() const { return userId; }
+		const std::string& GetMessageId() const { return messageId; }
+		int64_t GetCreatedAt() const { return createdAt; }
+		int64_t GetExpiresAt() const { return expiresAt; }
+		const std::string& GetHandle() const { return handle; }
+		TopicMessageType GetType() const { return type; }
+		const std::string& GetData() const { return data; }
 
 	private:
 		NTopicId topic;

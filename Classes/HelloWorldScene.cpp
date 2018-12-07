@@ -1,6 +1,8 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "NLeaderboardRecordsFetchMessage.h"
+#include "NTopicJoinMessage.h"
+#include "NTopicMessageSendMessage.h"
 
 USING_NS_CC;
 
@@ -98,51 +100,127 @@ bool HelloWorld::init()
         this->addChild(sprite, 0);
     }
 
-    m_client = &NClient::Builder("<Server key>")
+    NLogger::getInstance().SetLevel(NLogLevel::Debug);
+
+    m_client = &NClient::Builder("defaultkey")
         .Host("127.0.0.1")
         .Port(7350)
         .Build();
 
-    auto loginFailedCallback = [](const NError error)
+    getScheduler()->schedule(std::bind(&NClient::Tick, m_client, std::placeholders::_1), this, 0.05f /*sec*/, CC_REPEAT_FOREVER, 0, false, "nakama-tick");
+
+    auto loginFailedCallback = [this](const NError error)
     {
         CCLOGERROR("Login failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
+
+        if (error.GetErrorCode() == ErrorCode::AuthError)
+        {
+            registerDevice();
+        }
     };
 
-    CCLOGINFO("Login...");
+    CCLOG("Login...");
     m_client->Login(
-        NAuthenticateMessage::Email("test@google.com", "123"),
-        std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
+        NAuthenticateMessage::Device(getDeviceId()),
+        std::bind(&HelloWorld::onLoginSucceeded, this),
         loginFailedCallback);
 
     return true;
 }
 
-void HelloWorld::onLoginSucceeded(NSession* session)
+std::string HelloWorld::getDeviceId()
 {
-    CCLOGINFO("Login succeeded - session id %s", session->GetId().c_str());
+    return "pcdevice123456";
+}
 
-    CCLOGINFO("Connect...");
-    m_client->Connect(session, [this]()
+void HelloWorld::registerDevice()
+{
+    auto registerFailedCallback = [this](const NError error)
     {
-        CCLOGINFO("Connected");
+        CCLOGERROR("Register failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
+    };
 
-        NLeaderboardRecordsFetchMessage msg = NLeaderboardRecordsFetchMessage::Builder("<leaderboard_id>")
-            .Limit(10)
-            .Build();
+    CCLOG("Register...");
+    m_client->Register(
+        NAuthenticateMessage::Device(getDeviceId()),
+        std::bind(&HelloWorld::onLoginSucceeded, this),
+        registerFailedCallback);
+}
 
-        m_client->Send(msg, [](void* data)
-        {
-            NResultSet<Nakama::NLeaderboardRecord>* result = (NResultSet<Nakama::NLeaderboardRecord>*)data;
+void HelloWorld::onLoginSucceeded()
+{
+    CCLOG("Login succeeded", m_client->GetSession()->GetId().c_str());
 
-            auto records = result->GetResults();
+    connect();
+}
 
-            delete result;
+void HelloWorld::connect()
+{
+	CCLOG("Connect...");
+	m_client->Connect([this]()
+	{
+		CCLOG("Connected");
 
-        }, [](NError error)
-        {
-            CCLOGERROR("LeaderboardsList failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
-        });
-    });
+		joinTopic("chat-room");
+	});
+}
+
+void HelloWorld::joinTopic(const std::string& topicName)
+{
+	m_client->OnTopicMessage.push_back([this](const NTopicMessage& msg)
+	{
+		// msg.GetData() is JSON string
+		CCLOG("OnTopicMessage %s", msg.GetData().c_str());
+	});
+
+	NTopicJoinMessage msg = NTopicJoinMessage::Builder()
+		.TopicRoom(topicName)
+		.Build();
+
+	CCLOG("Joining room %s", topicName.c_str());
+
+	m_client->Send(msg, [this](void* data)
+	{
+		NResultSet<NTopic>* result = (NResultSet<NTopic>*)data;
+
+		auto& records = result->GetResults();
+
+		if (records.size() > 0)
+		{
+			m_topic = records[0];
+
+			CCLOG("Joined topic id %s", m_topic.GetTopicId().GetId().c_str());
+
+			sendTopicMessage("Hey dude!");
+		}
+
+		delete result;
+
+	}, [](NError error)
+	{
+		CCLOGERROR("JoinTopic failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
+	});
+}
+
+void HelloWorld::sendTopicMessage(const std::string& message)
+{
+	// data must be JSON
+	std::string data = "{\"msg\":\"" + message + "\"}";
+	NTopicMessageSendMessage msg = NTopicMessageSendMessage::Default(m_topic.GetTopicId(), data);
+
+	CCLOG("sending topic message %s", message.c_str());
+
+	m_client->Send(msg, [this](void* data)
+	{
+		NTopicMessageAck* ack = (NTopicMessageAck*)data;
+
+		CCLOG("Sent OK. message id %s", ack->GetMessageId().c_str());
+
+		delete data;
+	}, [](NError error)
+	{
+		CCLOGERROR("Send topic message failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
+	});
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

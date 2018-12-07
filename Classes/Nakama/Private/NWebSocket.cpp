@@ -42,7 +42,7 @@ namespace Nakama {
 		memset(Protocols, 0, sizeof(WebSocketInternalProtocol) * 3);
 
 		Protocols[0].name = "binary";
-		Protocols[0].callback = unreal_networking_client;
+		Protocols[0].callback = websocket_callback;
 		Protocols[0].per_session_data_size = 0;
 		Protocols[0].rx_buffer_size = 10 * 1024 * 1024;
 
@@ -133,16 +133,13 @@ namespace Nakama {
 			NLogger::Error("Unable to initialize connection!");
 			return;
 		}
-
 	}
 
 	bool NWebSocket::Send(uint8_t* Data, uint32_t Size)
 	{
-		Buffer buffer;
+		Buffer buffer(LWS_PRE); // Reserve space for WS header data
 
-		buffer.reserve(LWS_PRE); // Reserve space for WS header data
-
-		buffer.assign(Data, Data + Size);
+		buffer.insert(buffer.end(), Data, Data + Size);
 
 		OutgoingBuffer.push_back(buffer);
 
@@ -235,8 +232,6 @@ namespace Nakama {
 			DataToSend -= Sent;
 		}
 
-		// FIXME: replace with more efficient data structure.
-		// FXED: replaced with list
 		OutgoingBuffer.pop_front();
 
 		if (OutgoingBuffer.size() > 0) {
@@ -244,7 +239,7 @@ namespace Nakama {
 		}
 	}
 
-	int NWebSocket::unreal_networking_client(
+	int NWebSocket::websocket_callback(
 		WebSocketInternal *Instance,
 		WebSocketInternalCallback Reason,
 		void *User,
@@ -281,6 +276,9 @@ namespace Nakama {
 #endif
 			break;
 		}
+        case LWS_CALLBACK_WSI_CREATE:
+            NLogger::Trace("WebSocket->Connection Created.");
+            break;
 		case LWS_CALLBACK_CLIENT_ESTABLISHED:
 		{
 			NLogger::Trace("WebSocket->Connection Established.");
@@ -318,6 +316,11 @@ namespace Nakama {
 			NLogger::Trace("WebSocket->Connection Closed.");
 			if (Self->ClosedCallBack) Self->ClosedCallBack();
 			return -1;
+		}
+		case LWS_CALLBACK_WSI_DESTROY:
+		{
+			NLogger::Trace("WebSocket->Connection Destroyed.");
+			break;
 		}
 		default:
 			NLogger::Format(Warn, "WebSocket->Connection Received unhandled message: %d", (int)Reason);

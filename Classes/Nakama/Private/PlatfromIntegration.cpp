@@ -62,8 +62,22 @@ Buffer unbase64(const char* ascii, int len)
     Buffer result;
     unsigned char* buffer = nullptr;
     int buffLen;
+    int remaining = strlen(ascii) % 4;
 
-    buffLen = cocos2d::base64Decode((const unsigned char*)ascii, len, &buffer);
+    if (remaining == 0)
+    {
+        buffLen = cocos2d::base64Decode((const unsigned char*)ascii, len, &buffer);
+    }
+    else
+    {
+        // '=' is missing, let's fix it
+        std::string tmp(ascii);
+
+        for (int i = 0; i < remaining; ++i)
+            tmp.push_back('=');
+
+        buffLen = cocos2d::base64Decode((const unsigned char*)tmp.c_str(), tmp.size(), &buffer);
+    }
 
     result.assign(buffer, buffer + buffLen);
 
@@ -75,14 +89,9 @@ Buffer unbase64(const char* ascii, int len)
 std::string unbase64_to_str(const char* ascii, int len)
 {
     std::string result;
-    unsigned char* buffer = nullptr;
-    int buffLen;
 
-    buffLen = cocos2d::base64Decode((const unsigned char*)ascii, len, &buffer);
-
-    result.assign(buffer, buffer + buffLen);
-
-    free(buffer);
+    Buffer buffer = unbase64(ascii, len);
+    result.assign(buffer.begin(), buffer.end());
 
     return result;
 }

@@ -52,13 +52,12 @@ namespace Nakama {
 
 		~NTopicId() {}
 
-		std::string GetId() { return id; }
-		TopicType GetType() { return type; }
+		const std::string& GetId() const { return id; }
+		TopicType GetType() const { return type; }
 
 	private:
 		std::string id;
 		TopicType type;
-
 	};
 
 }

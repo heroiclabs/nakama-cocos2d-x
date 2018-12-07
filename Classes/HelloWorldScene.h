@@ -22,10 +22,16 @@ public:
     CREATE_FUNC(HelloWorld);
 
 protected:
-    void onLoginSucceeded(NSession* session);
+    std::string getDeviceId();
+    void registerDevice();
+    void onLoginSucceeded();
+    void connect();
+    void joinTopic(const std::string& topicName);
+    void sendTopicMessage(const std::string& message);
 
 private:
     NClient* m_client = nullptr;
+    NTopic m_topic;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

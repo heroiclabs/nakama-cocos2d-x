@@ -25,17 +25,17 @@ namespace Nakama {
 	class NAKAMA_API NResultSet {
 
 	public:
-		NResultSet(std::vector<T> &res, NCursor cur) :
+		NResultSet(const std::vector<T>& res, const NCursor& cur) :
 			results(res),
 			cursor(cur) {}
 
 		~NResultSet() {}
 
-		std::vector<T> GetResults() { return results; }
-		NCursor GetCursor() { return cursor; }
+		const std::vector<T>& GetResults() const { return results; }
+		const NCursor& GetCursor() const { return cursor; }
 		int32_t Size() { return results.size(); }
 
-		T operator [](int i)
+		const T& operator [](int i) const
 		{
 			return results[i];
 		}

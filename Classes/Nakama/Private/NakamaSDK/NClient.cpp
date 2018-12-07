@@ -52,12 +52,16 @@ namespace Nakama {
 			if (OnConnected) OnConnected();
 		});
 
+		transport->SetOnErrorCallBack([=](const std::string& msg) {
+			NLogger::Error("NClient->OnError: " + msg);
+		});
+
 		transport->SetOnCloseCallBack([=]() {
 			collationIds.clear();
 			for (size_t i = 0; i < OnDisconnect.size(); i++) OnDisconnect[i]();
 		});
 
-		transport->SetOnMessageCallBack([=](const std::vector<uint8_t> data) {
+		transport->SetOnMessageCallBack([=](const std::vector<uint8_t>& data) {
 			Envelope message;
 			message.ParseFromArray(data.data(), data.size());
 			NLogger::Format(Trace, "NClient->RcvdMessage: %d", (int)message.payload_case());
@@ -69,6 +73,8 @@ namespace Nakama {
 	{
 		delete transport;
 		transport = nullptr;
+		delete session;
+		session = nullptr;
 	}
 
 	NClient& NClient::Default(std::string serverKey)
@@ -86,8 +92,8 @@ namespace Nakama {
 	}
 
 	void NClient::Authenticate(std::string path, AuthenticateRequest* payload, std::string langHeader,
-		const std::function<void(NSession*)> &callback,
-		const std::function<void(const NError &)> &errback)
+		const std::function<void()> callback,
+		const std::function<void(const NError &)> errback)
 	{
 		// Add a collation ID for logs
 		payload->set_collationid(generateGuid());
@@ -101,8 +107,9 @@ namespace Nakama {
 		std::string authHeader = "Basic " + auth;
 
 		int64_t span = getCurrentTime();
+
 		transport->Post(uri, payload, authHeader, langHeader, timeout, connectTimeout,
-			[=](std::vector<uint8_t> data) {
+			[this, callback, errback, span](const std::vector<uint8_t>& data) {
 			AuthenticateResponse authResponse;
 			authResponse.ParseFromArray(&data[0], data.size());
 
@@ -111,18 +118,35 @@ namespace Nakama {
 			switch (authResponse.id_case())
 			{
 			case AuthenticateResponse::IdCase::kSession:
-				if (callback) callback(new NSession(authResponse.session().token().c_str(), std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::seconds(span))));
-				break;
-			case AuthenticateResponse::IdCase::kError:
-				if (errback) errback(NError(authResponse.error(), authResponse.collation_id()));
-				break;
-			default:
-				NLogger::Error("Received invalid response from server");
+			{
+				delete session;
+				session = new NSession(authResponse.session().token().c_str(), std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::seconds(span)));
+				if (callback) callback();
 				break;
 			}
+			case AuthenticateResponse::IdCase::kError:
+			{
+				NError error(authResponse.error());
+				NLogger::Error("Nakama::Client->Authenticate - server error: " + error.GetErrorMessage());
+				if (errback) errback(error);
+				break;
+			}
+			default:
+			{
+				NError error(authResponse.error());
+				NLogger::Error("Nakama::Client->Authenticate - Received invalid response from server. " + error.GetErrorMessage());
+				if (errback) errback(error);
+				break;
+			}
+			}
 		},
-			[errback](int32_t e) {
-			if (errback != NULL) errback(NError("Error: " + std::to_string(e)));
+		[errback](int32_t httpError)
+		{
+			NError error(httpError);
+			NLogger::Error("Nakama::Client->Authenticate - " + error.GetErrorMessage());
+
+			if (errback)
+				errback(error);
 		}
 		);
 	}
@@ -145,21 +169,27 @@ namespace Nakama {
 	}
 
 	void NClient::Register(NAuthenticateMessage message,
-		const std::function<void(NSession*)> callback,
+		const std::function<void()> callback,
 		const std::function<void(const NError)> errback)
 	{
 		Authenticate("/user/register", message.GetPayload(), lang, callback, errback);
 	}
 
 	void NClient::Login(NAuthenticateMessage message,
-		const std::function<void(NSession*)> callback,
+		const std::function<void()> callback,
 		const std::function<void(const NError)> errback)
 	{
 		Authenticate("/user/login", message.GetPayload(), lang, callback, errback);
 	}
 
-	void NClient::Connect(NSession* session, std::function<void()> callback)
+	void NClient::Connect(std::function<void()> callback)
 	{
+		if (!session)
+		{
+			NLogger::Error("Nakama::Client->Connect() - ERROR: no session. Call Register or Login before");
+			return;
+		}
+
 		NLogger::Info("Nakama::Client->Connect() - Connecting to API");
 		OnConnected = callback;
 		transport->Connect(host, port, GetWebsocketPath(session), ssl);
@@ -220,7 +250,7 @@ namespace Nakama {
 		return path;
 	}
 
-	void NClient::onMessage(Envelope message) {
+	void NClient::onMessage(const Envelope& message) {
 		// Handle realtime messages
 		switch (message.payload_case())
 		{
@@ -266,7 +296,9 @@ namespace Nakama {
 		}
 
 		case Envelope::PayloadCase::kError: {
-			NError error = NError(message.error(), collationId);
+			NError error = NError(message.error());
+			NLogger::Error("server error: " + error.GetErrorMessage());
+
 			if (callbacks) {
 				callbacks->OnError(error);
 			}
@@ -378,8 +410,10 @@ namespace Nakama {
 
 		case Envelope::PayloadCase::kTopics: {
 			if (callbacks) {
-				auto msgTopics = message.topics().topics();
+				auto& msgTopics = message.topics().topics();
 				auto topics = std::vector<NTopic>();
+				topics.reserve(msgTopics.size());
+
 				for (size_t i = 0, maxI = msgTopics.size(); i < maxI; i++) {
 					topics.push_back(NTopic(msgTopics[i]));
 				}

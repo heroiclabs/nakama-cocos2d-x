@@ -87,15 +87,12 @@ namespace Nakama {
 
 		if (d.HasMember("exp")) {
 			Value& val = d["exp"];
-			expiresAt = milliseconds(std::atol(val.GetString()) * 1000L);
+			expiresAt = milliseconds(val.GetInt64() * 1000L);
 		}
 
 		if (d.HasMember("uid")) {
 			Value& val = d["uid"];
-			std::string guid = std::string(val.GetString(), val.GetStringLength());
-
-			// we now need to turn this into a byte sequence.  We still store in a string for convenience.
-			id = ConvertGuidStringToBytes(guid);
+			id = std::string(val.GetString(), val.GetStringLength());
 		}
 	}
 

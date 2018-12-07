@@ -1,7 +1,7 @@
 Nakama Cocos2d-x
 =============
 
-> Cocos2d-x 3.16 client for Nakama server.
+> Cocos2d-x 3.16 client for Nakama server 1.4.
 
 Nakama is an open-source distributed server for social and realtime games. For more information have a look at the [server documentation](https://heroiclabs.com/docs/).
 
@@ -57,7 +57,7 @@ At this point, you are done. Try to build.
 
 #### Server connect
 
-To create a client and connect to the Nakama server with the default settings:
+To create a client and connect to the Nakama server 1.4 with the default settings:
 
 ```c++
 #include "NClient.h"
