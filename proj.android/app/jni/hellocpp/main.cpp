@@ -22,16 +22,21 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __MAIN_H__
-#define __MAIN_H__
+#include <memory>
 
-#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
+#include <android/log.h>
+#include <jni.h>
 
-// Windows Header Files:
-#include <windows.h>
-#include <tchar.h>
+#include "AppDelegate.h"
 
-// C RunTime Header Files
-#include "platform/CCStdC.h"
+#define  LOG_TAG    "main"
+#define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
 
-#endif    // __MAIN_H__
+namespace {
+std::unique_ptr<AppDelegate> appDelegate;
+}
+
+void cocos_android_app_init(JNIEnv* env) {
+    LOGD("cocos_android_app_init");
+    appDelegate.reset(new AppDelegate());
+}
