@@ -240,7 +240,7 @@ void HelloWorld::sendTopicMessage(const std::string& message)
 
 		CCLOG("Sent OK. message id %s", ack->GetMessageId().c_str());
 
-		delete data;
+		delete ack;
 	}, [](NError error)
 	{
 		CCLOGERROR("Send topic message failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
