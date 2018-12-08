@@ -173,7 +173,7 @@ void HelloWorld::registerDevice()
 
 void HelloWorld::onLoginSucceeded()
 {
-    CCLOG("Login succeeded", m_client->GetSession()->GetId().c_str());
+    CCLOG("Login succeeded. session id: %s", m_client->GetSession()->GetId().c_str());
 
     connect();
 }
