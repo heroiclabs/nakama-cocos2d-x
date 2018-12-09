@@ -69,7 +69,6 @@ namespace Nakama {
 		unsigned GetTimeout() { return timeout; }
 
 		long GetServerTime();
-		void Tick(float DeltaTime);
 
 		void Register(NAuthenticateMessage message,
 			const std::function<void()> callback,
