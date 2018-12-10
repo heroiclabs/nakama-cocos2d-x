@@ -51,7 +51,6 @@ namespace Nakama {
 		virtual void Connect(const std::string host, const unsigned port, const std::string& path, const bool ssl) = 0;
 		virtual void Close() = 0;
 		virtual void Send(const std::string& data, std::function<void(bool)> callback = nullptr) = 0;
-		virtual void Tick(float DeltaTime) = 0;
 
 	protected:
 

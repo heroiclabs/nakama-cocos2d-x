@@ -26,6 +26,6 @@
 //#define check(expr) { if(!(expr)) { CCA FDebug::LogAssertFailedMessage( #expr, __FILE__, __LINE__ ); _DebugBreakAndPromptForRemote(); FDebug::AssertFailed( #expr, __FILE__, __LINE__ ); CA_ASSUME(expr); } }
 
 typedef std::function<void(const std::string &)>            NErrorCallback;
-typedef std::function<void(const std::vector<uint8_t>)>     NDataRcvdCallback;
+typedef std::function<void(const std::vector<uint8_t>&)>    NDataRcvdCallback;
 typedef std::function<void()>                               NConnUpdateCallback;
 typedef std::vector<uint8_t>                                Buffer;

@@ -131,8 +131,6 @@ bool HelloWorld::init()
         .Port(7350)
         .Build();
 
-    getScheduler()->schedule(std::bind(&NClient::Tick, m_client, std::placeholders::_1), this, 0.05f /*sec*/, CC_REPEAT_FOREVER, 0, false, "nakama-tick");
-
     auto loginFailedCallback = [this](const NError error)
     {
         CCLOGERROR("Login failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());

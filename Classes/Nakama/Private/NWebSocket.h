@@ -14,115 +14,75 @@
  * limitations under the License.
  */
 
-//
-// Wrapper around libwebsocket
-//
+ //
+ // Cocos2d wrappper for WebSocket
+ //
 
 #pragma once
 
 #include "Defines.h"
 #include "NLogger.h"
+#include "network/WebSocket.h"
 
 #include <functional>
 #include <string>
-#include <vector>
-#include <list>
-
-#if PLATFORM_WINDOWS
-#include "AllowWindowsPlatformTypes.h"
-#endif
-
-#define UI UI_ST
-#ifndef LWS_INCLUDED
-    #if COCOS2D
-        #define LWS_DLL
-    #endif
-    #include "libwebsockets.h"
-    #define LWS_INCLUDED
-#endif // !LWS_INCLUDED
-#undef UI
-
-#if PLATFORM_WINDOWS
-#include "HideWindowsPlatformTypes.h"
-#endif
-
-typedef struct lws_context				WebSocketInternalContext;
-typedef struct lws						WebSocketInternal;
-typedef struct lws_protocols			WebSocketInternalProtocol;
-typedef enum lws_callback_reasons		WebSocketInternalCallback;
 
 namespace Nakama {
 
-	class NWebSocket
-	{
+    class NWebSocket : public cocos2d::network::WebSocket::Delegate
+    {
 
-	public:
-		// Initialize with given url
-		NWebSocket(const std::string& host, const unsigned port, const std::string& path, const bool ssl);
+    public:
+        // Initialize with given url
+        NWebSocket(const std::string& host, const unsigned port, const std::string& path, const bool ssl);
 
-		// clean up.
-		~NWebSocket();
+        // clean up.
+        ~NWebSocket();
 
-		/************************************************************************/
-		/* Set various callbacks for Socket Events                              */
-		/************************************************************************/
-		void SetConnectedCallBack(NConnUpdateCallback callBack) { ConnectedCallBack = callBack; }
-		void SetErrorCallBack(NErrorCallback callBack) { ErrorCallBack = callBack; }
-		void SetReceiveCallBack(NDataRcvdCallback callBack) { ReceivedCallBack = callBack; }
-		void SetClosedCallBack(NConnUpdateCallback callBack) { ClosedCallBack = callBack; }
+        /************************************************************************/
+        /* Set various callbacks for Socket Events                              */
+        /************************************************************************/
+        void SetConnectedCallBack(NConnUpdateCallback callBack) { ConnectedCallBack = callBack; }
+        void SetErrorCallBack(NErrorCallback callBack) { ErrorCallBack = callBack; }
+        void SetReceiveCallBack(NDataRcvdCallback callBack) { ReceivedCallBack = callBack; }
+        void SetClosedCallBack(NConnUpdateCallback callBack) { ClosedCallBack = callBack; }
 
-		/** Send raw data to remote end point. */
-		bool Send(uint8_t* Data, uint32_t Size);
+        /** Send raw data to remote end point. */
+        bool Send(const uint8_t* Data, uint32_t Size);
 
-		/** service libwebsocket.			   */
-		void Tick();
+        /** Send string to remote end point. */
+        bool Send(const std::string& str);
 
-		/** service libwebsocket until outgoing buffer is empty */
-		void Flush();
+        /** initiate the websocket connection using the currently set connection info and callbacks */
+        void Connect();
 
-		/** initiate the websocket connection using the currently set connection info and callbacks */
-		void Connect();
+        /** Close the websocket */
+        void Close();
 
-		/** Close the websocket                */
-		void Close();
+    private:
+        // cocos2d::network::WebSocket::Delegate implementation
+        void onOpen(cocos2d::network::WebSocket* ws) override;
+        void onMessage(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::Data& data) override;
+        void onClose(cocos2d::network::WebSocket* ws) override;
+        void onError(cocos2d::network::WebSocket* ws, const cocos2d::network::WebSocket::ErrorCode& error) override;
 
-	private:
-		static void lwsLogger(int level, const char *line);
+        std::string Host;
+        unsigned Port;
+        std::string Path;
+        bool UseSSL;
 
-		bool isConnecting;
+        /************************************************************************/
+        /*	Various Socket callbacks											*/
+        /************************************************************************/
+        NConnUpdateCallback ConnectedCallBack;
+        NErrorCallback ErrorCallBack;
+        NDataRcvdCallback ReceivedCallBack;
+        NConnUpdateCallback ClosedCallBack;
 
-		void HandlePacket();
-		void OnRawReceive(void* Data, uint32_t Size, uint32_t Remaining);
-		void OnWebSocketWritable();
-		void SetLWSLogLevel();
+        /**  Recv Buffer */
+        Buffer ReceivedBuffer;
 
-		std::string Host;
-		unsigned Port;
-		std::string Path;
-		bool UseSSL;
-
-		/************************************************************************/
-		/*	Various Socket callbacks											*/
-		/************************************************************************/
-		NConnUpdateCallback ConnectedCallBack;
-		NErrorCallback ErrorCallBack;
-		NDataRcvdCallback ReceivedCallBack;
-		NConnUpdateCallback ClosedCallBack;
-
-		/**  Recv and Send Buffers, serviced during the Tick */
-		Buffer ReceivedBuffer;
-		std::list<Buffer> OutgoingBuffer;
-
-		/** libwebsocket internal context*/
-		WebSocketInternalContext* Context = nullptr;
-
-		/** libwebsocket web socket */
-		WebSocketInternal* LwsConnection = nullptr;
-
-		/** libwebsocket Protocols that can be serviced by this implemenation*/
-		WebSocketInternalProtocol* Protocols = nullptr;
-
-		static int websocket_callback(WebSocketInternal *Instance, WebSocketInternalCallback reason, void *user, void *in, size_t len);
-	};
+        cocos2d::network::WebSocket websocket;
+    };
 
 }

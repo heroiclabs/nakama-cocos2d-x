@@ -113,18 +113,12 @@ namespace Nakama {
 		});
 		
 		// OnMessageReceived callback
-		socket->SetReceiveCallBack([=](const std::vector<uint8_t> data) {
+		socket->SetReceiveCallBack([=](const std::vector<uint8_t>& data) {
 			if (MessageReceiveCallback) MessageReceiveCallback(data); 
 		});
 
 		// Now that we're all setup, connect!
 		socket->Connect();
-	}
-
-	void NCocosTransport::Tick(float DeltaTime) {
-		if (socket != nullptr) {
-			socket->Tick();
-		}
 	}
 
 	void NCocosTransport::Connect(const std::string host, const unsigned port, const std::string& path, const bool ssl)

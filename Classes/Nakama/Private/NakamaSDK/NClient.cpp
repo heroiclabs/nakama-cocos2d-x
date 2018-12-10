@@ -161,13 +161,6 @@ namespace Nakama {
 		return serverTime;
 	}
 
-
-	void NClient::Tick(float DeltaTime) {
-		if (transport) {
-			transport->Tick(DeltaTime);
-		}
-	}
-
 	void NClient::Register(NAuthenticateMessage message,
 		const std::function<void()> callback,
 		const std::function<void(const NError)> errback)
