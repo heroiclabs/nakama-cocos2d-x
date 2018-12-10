@@ -36,3 +36,4 @@ Release.Win32
 *.opensdf
 *.suo
 .vs
+.idea
