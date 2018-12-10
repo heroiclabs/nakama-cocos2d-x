@@ -29,6 +29,7 @@
 #include "NClient.h"
 
 using namespace Nakama;
+USING_NS_CC;
 
 class HelloWorld : public cocos2d::Scene
 {
@@ -54,6 +55,7 @@ protected:
     void sendTopicMessage(const std::string& message);
 
 private:
+    Label* m_label = nullptr;
     NClient* m_client = nullptr;
     NTopic m_topic;
 };
