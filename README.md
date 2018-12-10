@@ -19,15 +19,15 @@ To get started using Nakama in Cocos2d-x, you will need the following:
 
 #### Supported platforms
 
-Windows, iOS, Mac
+Windows, Android, iOS, Mac
 
 #### Setup
 
 To use nakama-cocos2d-x in your cocos2d-x project, you'll need to copy the nakama-cocos2d-x files you downloaded into the appropriate place. To do this:
 
 1. Open your cocos2d-x project folder in Explorer or Finder.
-2. Copy cocos2d-x engine folder to cocos2d folder
-3. Copy the Nakama and ThirdParty folders from the nakama-cocos2d-x release you downloaded, into Classes folder.
+2. Copy `cocos2d-x` engine folder to `cocos2d` folder
+3. Copy the `Nakama` and `ThirdParty` folders from the nakama-cocos2d-x release you downloaded, into `Classes` folder.
 
 Folder structure should be as following:
 ```
