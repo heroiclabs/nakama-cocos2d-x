@@ -37,3 +37,4 @@ Release.Win32
 *.suo
 .vs
 .idea
+*.iml
