@@ -24,9 +24,8 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "NLeaderboardRecordsFetchMessage.h"
-#include "NTopicJoinMessage.h"
-#include "NTopicMessageSendMessage.h"
+#include "NCocosLogSink.h"
+#include "NWebSocket.h"
 
 USING_NS_CC;
 
@@ -37,7 +36,6 @@ Scene* HelloWorld::createScene()
 
 HelloWorld::~HelloWorld()
 {
-    delete m_client;
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -124,27 +122,38 @@ bool HelloWorld::init()
         this->addChild(sprite, 0);
     }
 
-    NLogger::getInstance().SetLevel(NLogLevel::Debug);
+    NLogger::init(std::make_shared<NCocosLogSink>(), NLogLevel::Debug);
 
-    m_client = &NClient::Builder("defaultkey")
-        .Host("127.0.0.1")
-        .Port(7350)
-        .Build();
+    auto tickCallback = [this](float dt)
+    {
+        m_client->tick();
+
+        if (m_rtClient)
+            m_rtClient->tick();
+    };
+
+    getScheduler()->schedule(tickCallback, this, 0.05f /*sec*/, CC_REPEAT_FOREVER, 0, false, "nakama-tick");
+
+    DefaultClientParameters parameters;
+
+    parameters.host = "192.168.1.6";
+
+    m_client = createDefaultClient(parameters);
 
     auto loginFailedCallback = [this](const NError error)
     {
-        CCLOGERROR("Login failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
-
-        if (error.GetErrorCode() == ErrorCode::AuthError)
+        if (error.code == ErrorCode::NotFound)
         {
             registerDevice();
         }
     };
 
     CCLOG("Login...");
-    m_client->Login(
-        NAuthenticateMessage::Device(getDeviceId()),
-        std::bind(&HelloWorld::onLoginSucceeded, this),
+    m_client->authenticateDevice(
+        getDeviceId(),
+        opt::nullopt,
+        false,
+        std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         loginFailedCallback);
 
     return true;
@@ -159,91 +168,90 @@ void HelloWorld::registerDevice()
 {
     auto registerFailedCallback = [this](const NError error)
     {
-        CCLOGERROR("Register failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
     };
 
     CCLOG("Register...");
-    m_client->Register(
-        NAuthenticateMessage::Device(getDeviceId()),
-        std::bind(&HelloWorld::onLoginSucceeded, this),
+    m_client->authenticateDevice(
+        getDeviceId(),
+        opt::nullopt,
+        true,
+        std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         registerFailedCallback);
 }
 
-void HelloWorld::onLoginSucceeded()
+void HelloWorld::onLoginSucceeded(NSessionPtr session)
 {
-    CCLOG("Login succeeded. session id: %s", m_client->GetSession()->GetId().c_str());
+    m_session = session;
+
+    CCLOG("Login succeeded. user id: %s", m_session->getUserId().c_str());
 
     connect();
 }
 
 void HelloWorld::connect()
 {
+    m_rtListener.reset(new NRtDefaultClientListener());
+
+    m_rtListener->setConnectCallback([this]()
+    {
+        CCLOG("Connected!");
+        joinChat("chat-room");
+    });
+
+    m_rtListener->setChannelMessageCallback([this](const NChannelMessage& msg)
+    {
+        // msg.GetData() is JSON string
+        CCLOG("OnChannelMessage %s", msg.content.c_str());
+        m_label->setString(msg.username + ": " + msg.content);
+    });
+
+    NRtTransportPtr transport(new NWebSocket());
+    m_rtClient = m_client->createRtClient(7350, transport);
+    m_rtClient->setListener(m_rtListener.get());
+
 	CCLOG("Connect...");
-	m_client->Connect([this]()
-	{
-		CCLOG("Connected");
 
-		joinTopic("chat-room");
-	});
+    m_rtClient->connect(m_session, true/*, NRtClientProtocol::Json*/);
 }
 
-void HelloWorld::joinTopic(const std::string& topicName)
+void HelloWorld::joinChat(const std::string& topicName)
 {
-	m_client->OnTopicMessage.push_back([this](const NTopicMessage& msg)
-	{
-		// msg.GetData() is JSON string
-		CCLOG("OnTopicMessage %s", msg.GetData().c_str());
-        m_label->setString(msg.GetUserId() + ": " + msg.GetData());
-	});
+    CCLOG("Joining room %s", topicName.c_str());
 
-	NTopicJoinMessage msg = NTopicJoinMessage::Builder()
-		.TopicRoom(topicName)
-		.Build();
+    m_rtClient->joinChat(
+        topicName,
+        NChannelType::ROOM,
+        {},
+        {},
+        [this](NChannelPtr channel)
+        {
+            m_chatId = channel->id;
 
-	CCLOG("Joining room %s", topicName.c_str());
+            CCLOG("Joined topic id %s", channel->id.c_str());
 
-	m_client->Send(msg, [this](void* data)
-	{
-		NResultSet<NTopic>* result = (NResultSet<NTopic>*)data;
-
-		auto& records = result->GetResults();
-
-		if (records.size() > 0)
-		{
-			m_topic = records[0];
-
-			CCLOG("Joined topic id %s", m_topic.GetTopicId().GetId().c_str());
-
-			sendTopicMessage("Hey dude!");
-		}
-
-		delete result;
-
-	}, [](NError error)
-	{
-		CCLOGERROR("JoinTopic failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
-	});
+            sendChatMessage("Hey dude!");
+        }, [](const NRtError& error)
+        {
+            CCLOGERROR("JoinTopic failed - error code %d, %s", error.code, error.message.c_str());
+        }
+    );
 }
 
-void HelloWorld::sendTopicMessage(const std::string& message)
+void HelloWorld::sendChatMessage(const std::string& message)
 {
-	// data must be JSON
-	std::string data = "{\"msg\":\"" + message + "\"}";
-	NTopicMessageSendMessage msg = NTopicMessageSendMessage::Default(m_topic.GetTopicId(), data);
+    // data must be JSON
+    std::string data = "{\"msg\":\"" + message + "\"}";
 
-	CCLOG("sending topic message %s", message.c_str());
+    CCLOG("sending topic message %s", message.c_str());
 
-	m_client->Send(msg, [this](void* data)
-	{
-		NTopicMessageAck* ack = (NTopicMessageAck*)data;
-
-		CCLOG("Sent OK. message id %s", ack->GetMessageId().c_str());
-
-		delete ack;
-	}, [](NError error)
-	{
-		CCLOGERROR("Send topic message failed - error code %d, %s", error.GetErrorCode(), error.GetErrorMessage().c_str());
-	});
+    m_rtClient->writeChatMessage(m_chatId, data, [this](const NChannelMessageAck& ack)
+    {
+        CCLOG("Sent OK. message id %s", ack.message_id.c_str());
+    },
+    [](const NRtError& error)
+    {
+        CCLOGERROR("Send topic message failed - error code %d, %s", error.code, error.message.c_str());
+    });
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
@@ -251,7 +259,7 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->end();
 
-    #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
 
@@ -259,6 +267,4 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
     //EventCustom customEndEvent("game_scene_close_event");
     //_eventDispatcher->dispatchEvent(&customEndEvent);
-
-
 }
