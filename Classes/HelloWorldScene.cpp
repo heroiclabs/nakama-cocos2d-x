@@ -136,7 +136,8 @@ bool HelloWorld::init()
 
     DefaultClientParameters parameters;
 
-    parameters.host = "192.168.1.6";
+    parameters.host = "127.0.0.1";
+    parameters.port = 7349;
 
     m_client = createDefaultClient(parameters);
 
