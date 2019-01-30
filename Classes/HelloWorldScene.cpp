@@ -201,7 +201,7 @@ void HelloWorld::connect()
 
     m_rtListener->setChannelMessageCallback([this](const NChannelMessage& msg)
     {
-        // msg.GetData() is JSON string
+        // msg.content is JSON string
         CCLOG("OnChannelMessage %s", msg.content.c_str());
         m_label->setString(msg.username + ": " + msg.content);
     });
