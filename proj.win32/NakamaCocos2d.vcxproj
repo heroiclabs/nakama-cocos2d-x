@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -90,7 +90,7 @@
     <Link>
       <AdditionalDependencies>libcurl.lib;libprotobufd.lib;websockets.lib;nakama-cppd.lib;grpc++d.lib;gprd.lib;grpcd.lib;caresd.lib;address_sortingd.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(BOOST_ROOT)\lib32-msvc-14.1;$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);..\Classes\ThirdParty\lib\vs2015win32debug;..\cocos2d\external\curl\prebuilt\win32;$(NAKAMA_CPP_SDK)\lib\win32</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)\lib32-msvc-14.1;$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);..\Classes\ThirdParty\lib\vs2015win32debug;..\cocos2d\external\curl\prebuilt\win32;$(NAKAMA_CPP_SDK)\libs\win32\vc141</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
