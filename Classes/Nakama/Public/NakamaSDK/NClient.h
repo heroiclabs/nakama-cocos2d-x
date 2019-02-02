@@ -86,6 +86,8 @@ namespace Nakama {
 		void Send(INCollatedMessage& message,
 			std::function<void(void*)> callback = nullptr,
 			std::function<void(NError)> errback = nullptr);
+        void Send(INUncollatedMessage& message,
+                  std::function<void(NError)> errback = nullptr);
 
 		static NClient& Default(std::string serverKey);
 
