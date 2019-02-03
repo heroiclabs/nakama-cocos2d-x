@@ -238,9 +238,6 @@ namespace Nakama {
     {
         std::string str = message.GetPayload()->SerializeAsString();
         
-        Envelope e = Envelope();
-        e.ParseFromString(str);
-        
         transport->Send(str, [=](bool sent) mutable {
             if (!sent)
             {
