@@ -233,6 +233,18 @@ namespace Nakama {
 			}
 		});
 	}
+    
+    void NClient::Send(INUncollatedMessage& message, std::function<void(NError)> errback)
+    {
+        std::string str = message.GetPayload()->SerializeAsString();
+        
+        transport->Send(str, [=](bool sent) mutable {
+            if (!sent)
+            {
+                if (errback) errback(NError("Message send error"));
+            }
+        });
+    }
 
 	std::string NClient::GetWebsocketPath(NSession* session)
 	{
