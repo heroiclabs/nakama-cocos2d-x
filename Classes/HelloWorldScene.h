@@ -38,7 +38,7 @@ public:
 
     ~HelloWorld();
 
-    virtual bool init();
+    virtual bool init() override;
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);

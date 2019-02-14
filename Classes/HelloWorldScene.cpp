@@ -132,6 +132,7 @@ bool HelloWorld::init()
             m_rtClient->tick();
     };
 
+    // tick is required to pump requests queue in cocos thread
     getScheduler()->schedule(tickCallback, this, 0.05f /*sec*/, CC_REPEAT_FOREVER, 0, false, "nakama-tick");
 
     DefaultClientParameters parameters;
@@ -150,6 +151,7 @@ bool HelloWorld::init()
     };
 
     CCLOG("Login...");
+
     m_client->authenticateDevice(
         getDeviceId(),
         opt::nullopt,
@@ -162,7 +164,10 @@ bool HelloWorld::init()
 
 std::string HelloWorld::getDeviceId()
 {
-    return "pcdevice123456";
+    // don't use this id in production.
+    // this is for test only
+    // https://heroiclabs.com/docs/authentication/#device
+    return "device123456";
 }
 
 void HelloWorld::registerDevice()
