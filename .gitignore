@@ -38,3 +38,4 @@ Release.Win32
 .vs
 .idea
 *.iml
+.DS_Store

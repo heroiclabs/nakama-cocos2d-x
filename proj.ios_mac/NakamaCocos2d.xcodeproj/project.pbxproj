@@ -29,116 +29,6 @@
 		4B9057CD21BC6252001E3681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9057CA21BC6252001E3681 /* LaunchScreen.storyboard */; };
 		4B9057CE21BC6252001E3681 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9057CB21BC6252001E3681 /* Images.xcassets */; };
 		4BA8CED921AC918E00B78597 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA8CED821AC918E00B78597 /* libprotobuf.a */; };
-		4BA8CF7221AC91D600B78597 /* NWebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3921AC91D500B78597 /* NWebSocket.cpp */; };
-		4BA8CF7321AC91D600B78597 /* NWebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3921AC91D500B78597 /* NWebSocket.cpp */; };
-		4BA8CF7421AC91D600B78597 /* PlatfromIntegration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3B21AC91D500B78597 /* PlatfromIntegration.cpp */; };
-		4BA8CF7521AC91D600B78597 /* PlatfromIntegration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3B21AC91D500B78597 /* PlatfromIntegration.cpp */; };
-		4BA8CF7621AC91D600B78597 /* NGroupsFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3D21AC91D500B78597 /* NGroupsFetchMessage.cpp */; };
-		4BA8CF7721AC91D600B78597 /* NGroupsFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3D21AC91D500B78597 /* NGroupsFetchMessage.cpp */; };
-		4BA8CF7821AC91D600B78597 /* NSelfUnlinkMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3E21AC91D500B78597 /* NSelfUnlinkMessage.cpp */; };
-		4BA8CF7921AC91D600B78597 /* NSelfUnlinkMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3E21AC91D500B78597 /* NSelfUnlinkMessage.cpp */; };
-		4BA8CF7A21AC91D600B78597 /* NMatchCreateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3F21AC91D500B78597 /* NMatchCreateMessage.cpp */; };
-		4BA8CF7B21AC91D600B78597 /* NMatchCreateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF3F21AC91D500B78597 /* NMatchCreateMessage.cpp */; };
-		4BA8CF7C21AC91D600B78597 /* NGroupRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4021AC91D500B78597 /* NGroupRemoveMessage.cpp */; };
-		4BA8CF7D21AC91D600B78597 /* NGroupRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4021AC91D500B78597 /* NGroupRemoveMessage.cpp */; };
-		4BA8CF7E21AC91D600B78597 /* NMatchmakeRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4121AC91D500B78597 /* NMatchmakeRemoveMessage.cpp */; };
-		4BA8CF7F21AC91D600B78597 /* NMatchmakeRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4121AC91D500B78597 /* NMatchmakeRemoveMessage.cpp */; };
-		4BA8CF8021AC91D600B78597 /* NStorageUpdateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4221AC91D500B78597 /* NStorageUpdateMessage.cpp */; };
-		4BA8CF8121AC91D600B78597 /* NStorageUpdateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4221AC91D500B78597 /* NStorageUpdateMessage.cpp */; };
-		4BA8CF8221AC91D600B78597 /* NFriendRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4321AC91D500B78597 /* NFriendRemoveMessage.cpp */; };
-		4BA8CF8321AC91D600B78597 /* NFriendRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4321AC91D500B78597 /* NFriendRemoveMessage.cpp */; };
-		4BA8CF8421AC91D600B78597 /* NFriendBlockMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4421AC91D500B78597 /* NFriendBlockMessage.cpp */; };
-		4BA8CF8521AC91D600B78597 /* NFriendBlockMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4421AC91D500B78597 /* NFriendBlockMessage.cpp */; };
-		4BA8CF8621AC91D600B78597 /* NPurchaseValidateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4521AC91D500B78597 /* NPurchaseValidateMessage.cpp */; };
-		4BA8CF8721AC91D600B78597 /* NPurchaseValidateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4521AC91D500B78597 /* NPurchaseValidateMessage.cpp */; };
-		4BA8CF8821AC91D600B78597 /* NNotificationsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4621AC91D500B78597 /* NNotificationsListMessage.cpp */; };
-		4BA8CF8921AC91D600B78597 /* NNotificationsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4621AC91D500B78597 /* NNotificationsListMessage.cpp */; };
-		4BA8CF8A21AC91D600B78597 /* NLeaderboardsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4721AC91D500B78597 /* NLeaderboardsListMessage.cpp */; };
-		4BA8CF8B21AC91D600B78597 /* NLeaderboardsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4721AC91D500B78597 /* NLeaderboardsListMessage.cpp */; };
-		4BA8CF8C21AC91D600B78597 /* NClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4821AC91D500B78597 /* NClient.cpp */; };
-		4BA8CF8D21AC91D600B78597 /* NClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4821AC91D500B78597 /* NClient.cpp */; };
-		4BA8CF8E21AC91D600B78597 /* NGroupPromoteUserMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4921AC91D500B78597 /* NGroupPromoteUserMessage.cpp */; };
-		4BA8CF8F21AC91D600B78597 /* NGroupPromoteUserMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4921AC91D500B78597 /* NGroupPromoteUserMessage.cpp */; };
-		4BA8CF9021AC91D600B78597 /* NNotificationsRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4A21AC91D500B78597 /* NNotificationsRemoveMessage.cpp */; };
-		4BA8CF9121AC91D600B78597 /* NNotificationsRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4A21AC91D500B78597 /* NNotificationsRemoveMessage.cpp */; };
-		4BA8CF9221AC91D600B78597 /* NMatchLeaveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4B21AC91D500B78597 /* NMatchLeaveMessage.cpp */; };
-		4BA8CF9321AC91D600B78597 /* NMatchLeaveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4B21AC91D500B78597 /* NMatchLeaveMessage.cpp */; };
-		4BA8CF9421AC91D600B78597 /* NLeaderboardRecordsFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4C21AC91D500B78597 /* NLeaderboardRecordsFetchMessage.cpp */; };
-		4BA8CF9521AC91D600B78597 /* NLeaderboardRecordsFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4C21AC91D500B78597 /* NLeaderboardRecordsFetchMessage.cpp */; };
-		4BA8CF9621AC91D600B78597 /* NTopicMessageSendMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4D21AC91D500B78597 /* NTopicMessageSendMessage.cpp */; };
-		4BA8CF9721AC91D600B78597 /* NTopicMessageSendMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4D21AC91D500B78597 /* NTopicMessageSendMessage.cpp */; };
-		4BA8CF9821AC91D600B78597 /* NRuntimeRpcMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4E21AC91D500B78597 /* NRuntimeRpcMessage.cpp */; };
-		4BA8CF9921AC91D600B78597 /* NRuntimeRpcMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4E21AC91D500B78597 /* NRuntimeRpcMessage.cpp */; };
-		4BA8CF9A21AC91D600B78597 /* NStorageWriteMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4F21AC91D500B78597 /* NStorageWriteMessage.cpp */; };
-		4BA8CF9B21AC91D600B78597 /* NStorageWriteMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF4F21AC91D500B78597 /* NStorageWriteMessage.cpp */; };
-		4BA8CF9C21AC91D600B78597 /* NSelfUpdateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5021AC91D500B78597 /* NSelfUpdateMessage.cpp */; };
-		4BA8CF9D21AC91D600B78597 /* NSelfUpdateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5021AC91D500B78597 /* NSelfUpdateMessage.cpp */; };
-		4BA8CF9E21AC91D600B78597 /* NMatchDataSendMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5121AC91D500B78597 /* NMatchDataSendMessage.cpp */; };
-		4BA8CF9F21AC91D600B78597 /* NMatchDataSendMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5121AC91D500B78597 /* NMatchDataSendMessage.cpp */; };
-		4BA8CFA021AC91D600B78597 /* NFriendsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5221AC91D500B78597 /* NFriendsListMessage.cpp */; };
-		4BA8CFA121AC91D600B78597 /* NFriendsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5221AC91D500B78597 /* NFriendsListMessage.cpp */; };
-		4BA8CFA221AC91D600B78597 /* NStorageFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5321AC91D500B78597 /* NStorageFetchMessage.cpp */; };
-		4BA8CFA321AC91D600B78597 /* NStorageFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5321AC91D500B78597 /* NStorageFetchMessage.cpp */; };
-		4BA8CFA421AC91D600B78597 /* NLeaderboardRecordsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5421AC91D500B78597 /* NLeaderboardRecordsListMessage.cpp */; };
-		4BA8CFA521AC91D600B78597 /* NLeaderboardRecordsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5421AC91D500B78597 /* NLeaderboardRecordsListMessage.cpp */; };
-		4BA8CFA621AC91D600B78597 /* NGroupUsersListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5521AC91D500B78597 /* NGroupUsersListMessage.cpp */; };
-		4BA8CFA721AC91D600B78597 /* NGroupUsersListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5521AC91D500B78597 /* NGroupUsersListMessage.cpp */; };
-		4BA8CFA821AC91D600B78597 /* NSelfFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5621AC91D500B78597 /* NSelfFetchMessage.cpp */; };
-		4BA8CFA921AC91D600B78597 /* NSelfFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5621AC91D500B78597 /* NSelfFetchMessage.cpp */; };
-		4BA8CFAA21AC91D600B78597 /* NFriendAddMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5721AC91D500B78597 /* NFriendAddMessage.cpp */; };
-		4BA8CFAB21AC91D600B78597 /* NFriendAddMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5721AC91D500B78597 /* NFriendAddMessage.cpp */; };
-		4BA8CFAC21AC91D600B78597 /* NUsersFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5821AC91D500B78597 /* NUsersFetchMessage.cpp */; };
-		4BA8CFAD21AC91D600B78597 /* NUsersFetchMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5821AC91D500B78597 /* NUsersFetchMessage.cpp */; };
-		4BA8CFAE21AC91D600B78597 /* NSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5921AC91D500B78597 /* NSession.cpp */; };
-		4BA8CFAF21AC91D600B78597 /* NSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5921AC91D500B78597 /* NSession.cpp */; };
-		4BA8CFB021AC91D600B78597 /* NGroupsSelfListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5A21AC91D500B78597 /* NGroupsSelfListMessage.cpp */; };
-		4BA8CFB121AC91D600B78597 /* NGroupsSelfListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5A21AC91D500B78597 /* NGroupsSelfListMessage.cpp */; };
-		4BA8CFB221AC91D600B78597 /* NLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5B21AC91D500B78597 /* NLogger.cpp */; };
-		4BA8CFB321AC91D600B78597 /* NLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5B21AC91D500B78597 /* NLogger.cpp */; };
-		4BA8CFB421AC91D600B78597 /* NGroupJoinMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5C21AC91D500B78597 /* NGroupJoinMessage.cpp */; };
-		4BA8CFB521AC91D600B78597 /* NGroupJoinMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5C21AC91D500B78597 /* NGroupJoinMessage.cpp */; };
-		4BA8CFB621AC91D600B78597 /* NCursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5D21AC91D500B78597 /* NCursor.cpp */; };
-		4BA8CFB721AC91D600B78597 /* NCursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5D21AC91D500B78597 /* NCursor.cpp */; };
-		4BA8CFB821AC91D600B78597 /* NStorageListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5E21AC91D500B78597 /* NStorageListMessage.cpp */; };
-		4BA8CFB921AC91D600B78597 /* NStorageListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5E21AC91D500B78597 /* NStorageListMessage.cpp */; };
-		4BA8CFBA21AC91D600B78597 /* api.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5F21AC91D500B78597 /* api.pb.cc */; };
-		4BA8CFBB21AC91D600B78597 /* api.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF5F21AC91D500B78597 /* api.pb.cc */; };
-		4BA8CFBC21AC91D600B78597 /* NSelf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6021AC91D500B78597 /* NSelf.cpp */; };
-		4BA8CFBD21AC91D600B78597 /* NSelf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6021AC91D500B78597 /* NSelf.cpp */; };
-		4BA8CFBE21AC91D600B78597 /* NMatchmakeAddMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6121AC91D500B78597 /* NMatchmakeAddMessage.cpp */; };
-		4BA8CFBF21AC91D600B78597 /* NMatchmakeAddMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6121AC91D500B78597 /* NMatchmakeAddMessage.cpp */; };
-		4BA8CFC021AC91D600B78597 /* NFriend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6221AC91D500B78597 /* NFriend.cpp */; };
-		4BA8CFC121AC91D600B78597 /* NFriend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6221AC91D500B78597 /* NFriend.cpp */; };
-		4BA8CFC221AC91D600B78597 /* NGroupAddUserMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6321AC91D500B78597 /* NGroupAddUserMessage.cpp */; };
-		4BA8CFC321AC91D600B78597 /* NGroupAddUserMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6321AC91D500B78597 /* NGroupAddUserMessage.cpp */; };
-		4BA8CFC421AC91D600B78597 /* NMatchJoinMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6421AC91D500B78597 /* NMatchJoinMessage.cpp */; };
-		4BA8CFC521AC91D600B78597 /* NMatchJoinMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6421AC91D500B78597 /* NMatchJoinMessage.cpp */; };
-		4BA8CFC621AC91D600B78597 /* NTopicLeaveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6521AC91D500B78597 /* NTopicLeaveMessage.cpp */; };
-		4BA8CFC721AC91D600B78597 /* NTopicLeaveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6521AC91D500B78597 /* NTopicLeaveMessage.cpp */; };
-		4BA8CFC821AC91D600B78597 /* NTopicMessagesListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6621AC91D500B78597 /* NTopicMessagesListMessage.cpp */; };
-		4BA8CFC921AC91D600B78597 /* NTopicMessagesListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6621AC91D500B78597 /* NTopicMessagesListMessage.cpp */; };
-		4BA8CFCA21AC91D600B78597 /* NGroupCreateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6721AC91D500B78597 /* NGroupCreateMessage.cpp */; };
-		4BA8CFCB21AC91D600B78597 /* NGroupCreateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6721AC91D500B78597 /* NGroupCreateMessage.cpp */; };
-		4BA8CFCC21AC91D600B78597 /* NTopicJoinMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6821AC91D500B78597 /* NTopicJoinMessage.cpp */; };
-		4BA8CFCD21AC91D600B78597 /* NTopicJoinMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6821AC91D500B78597 /* NTopicJoinMessage.cpp */; };
-		4BA8CFCE21AC91D600B78597 /* NGroupUpdateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6921AC91D500B78597 /* NGroupUpdateMessage.cpp */; };
-		4BA8CFCF21AC91D600B78597 /* NGroupUpdateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6921AC91D500B78597 /* NGroupUpdateMessage.cpp */; };
-		4BA8CFD021AC91D600B78597 /* NGroupsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6A21AC91D500B78597 /* NGroupsListMessage.cpp */; };
-		4BA8CFD121AC91D600B78597 /* NGroupsListMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6A21AC91D500B78597 /* NGroupsListMessage.cpp */; };
-		4BA8CFD221AC91D600B78597 /* NAuthenticateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6B21AC91D500B78597 /* NAuthenticateMessage.cpp */; };
-		4BA8CFD321AC91D600B78597 /* NAuthenticateMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6B21AC91D500B78597 /* NAuthenticateMessage.cpp */; };
-		4BA8CFD421AC91D600B78597 /* NSelfLinkMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6C21AC91D500B78597 /* NSelfLinkMessage.cpp */; };
-		4BA8CFD521AC91D600B78597 /* NSelfLinkMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6C21AC91D500B78597 /* NSelfLinkMessage.cpp */; };
-		4BA8CFD621AC91D600B78597 /* NGroupLeaveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6D21AC91D500B78597 /* NGroupLeaveMessage.cpp */; };
-		4BA8CFD721AC91D600B78597 /* NGroupLeaveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6D21AC91D500B78597 /* NGroupLeaveMessage.cpp */; };
-		4BA8CFD821AC91D600B78597 /* NLeaderboardRecordWriteMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6E21AC91D500B78597 /* NLeaderboardRecordWriteMessage.cpp */; };
-		4BA8CFD921AC91D600B78597 /* NLeaderboardRecordWriteMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6E21AC91D500B78597 /* NLeaderboardRecordWriteMessage.cpp */; };
-		4BA8CFDA21AC91D600B78597 /* NGroupKickUserMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6F21AC91D500B78597 /* NGroupKickUserMessage.cpp */; };
-		4BA8CFDB21AC91D600B78597 /* NGroupKickUserMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF6F21AC91D500B78597 /* NGroupKickUserMessage.cpp */; };
-		4BA8CFDC21AC91D600B78597 /* NStorageRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF7021AC91D500B78597 /* NStorageRemoveMessage.cpp */; };
-		4BA8CFDD21AC91D600B78597 /* NStorageRemoveMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF7021AC91D500B78597 /* NStorageRemoveMessage.cpp */; };
-		4BA8CFDE21AC91D600B78597 /* NCocosTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF7121AC91D500B78597 /* NCocosTransport.cpp */; };
-		4BA8CFDF21AC91D600B78597 /* NCocosTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8CF7121AC91D500B78597 /* NCocosTransport.cpp */; };
 		4BA8CFE021AC9BE600B78597 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA8CED821AC918E00B78597 /* libprotobuf.a */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
@@ -157,6 +47,16 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		5D163BCF22068F43001C7C5D /* NWebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D163BCE22068F43001C7C5D /* NWebSocket.cpp */; };
+		5D163BD022068F43001C7C5D /* NWebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D163BCE22068F43001C7C5D /* NWebSocket.cpp */; };
+		5D1676D722069D9C0020E1CE /* libnakama-cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676D622069D9C0020E1CE /* libnakama-cpp.a */; };
+		5D1676E022069DF00020E1CE /* libgpr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676D822069DF00020E1CE /* libgpr.a */; };
+		5D1676E122069DF00020E1CE /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676D922069DF00020E1CE /* libprotobuf.a */; };
+		5D1676E222069DF00020E1CE /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676DA22069DF00020E1CE /* libcares.a */; };
+		5D1676E322069DF00020E1CE /* libgrpc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676DB22069DF00020E1CE /* libgrpc.a */; };
+		5D1676E522069DF00020E1CE /* libgrpc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676DD22069DF00020E1CE /* libgrpc++.a */; };
+		5D1676E722069DF00020E1CE /* libaddress_sorting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676DF22069DF00020E1CE /* libaddress_sorting.a */; };
+		5D6101F1221625C800D9055B /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6101F0221625C800D9055B /* libssl.a */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -227,153 +127,6 @@
 		4B9057CB21BC6252001E3681 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ios/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		4B9057D221BC642A001E3681 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ios/Info.plist; sourceTree = SOURCE_ROOT; };
 		4BA8CED821AC918E00B78597 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../Classes/ThirdParty/lib/osxx64/libprotobuf.a; sourceTree = "<group>"; };
-		4BA8CEDC21AC91D500B78597 /* NCocosLogSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCocosLogSink.h; sourceTree = "<group>"; };
-		4BA8CEDE21AC91D500B78597 /* NTopicLeaveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopicLeaveMessage.h; sourceTree = "<group>"; };
-		4BA8CEDF21AC91D500B78597 /* NGroupsSelfListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupsSelfListMessage.h; sourceTree = "<group>"; };
-		4BA8CEE021AC91D500B78597 /* NLeaderboardRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLeaderboardRecord.h; sourceTree = "<group>"; };
-		4BA8CEE121AC91D500B78597 /* NGroupSelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupSelf.h; sourceTree = "<group>"; };
-		4BA8CEE221AC91D500B78597 /* NSelfFetchMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSelfFetchMessage.h; sourceTree = "<group>"; };
-		4BA8CEE321AC91D500B78597 /* NPurchaseValidateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPurchaseValidateMessage.h; sourceTree = "<group>"; };
-		4BA8CEE421AC91D500B78597 /* INCollatedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INCollatedMessage.h; sourceTree = "<group>"; };
-		4BA8CEE521AC91D500B78597 /* NResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NResultSet.h; sourceTree = "<group>"; };
-		4BA8CEE621AC91D500B78597 /* NMatchmakeRemoveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchmakeRemoveMessage.h; sourceTree = "<group>"; };
-		4BA8CEE721AC91D500B78597 /* NGroupAddUserMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupAddUserMessage.h; sourceTree = "<group>"; };
-		4BA8CEE821AC91D500B78597 /* NLeaderboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLeaderboard.h; sourceTree = "<group>"; };
-		4BA8CEE921AC91D500B78597 /* NFriendsListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFriendsListMessage.h; sourceTree = "<group>"; };
-		4BA8CEEA21AC91D500B78597 /* NMatchmakeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchmakeFilter.h; sourceTree = "<group>"; };
-		4BA8CEEB21AC91D500B78597 /* NLeaderboardRecordsFetchMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLeaderboardRecordsFetchMessage.h; sourceTree = "<group>"; };
-		4BA8CEEC21AC91D500B78597 /* NGroupsFetchMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupsFetchMessage.h; sourceTree = "<group>"; };
-		4BA8CEED21AC91D500B78597 /* NCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCursor.h; sourceTree = "<group>"; };
-		4BA8CEEE21AC91D500B78597 /* NAuthenticateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAuthenticateMessage.h; sourceTree = "<group>"; };
-		4BA8CEEF21AC91D500B78597 /* NTopicMessageAck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopicMessageAck.h; sourceTree = "<group>"; };
-		4BA8CEF021AC91D500B78597 /* NFriendAddMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFriendAddMessage.h; sourceTree = "<group>"; };
-		4BA8CEF121AC91D500B78597 /* NUsersFetchMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NUsersFetchMessage.h; sourceTree = "<group>"; };
-		4BA8CEF221AC91D500B78597 /* NClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NClient.h; sourceTree = "<group>"; };
-		4BA8CEF321AC91D500B78597 /* NConsoleLogSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NConsoleLogSink.h; sourceTree = "<group>"; };
-		4BA8CEF421AC91D500B78597 /* NStorageKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NStorageKey.h; sourceTree = "<group>"; };
-		4BA8CEF521AC91D500B78597 /* NMatchLeaveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchLeaveMessage.h; sourceTree = "<group>"; };
-		4BA8CEF621AC91D500B78597 /* NMatchJoinMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchJoinMessage.h; sourceTree = "<group>"; };
-		4BA8CEF721AC91D500B78597 /* NRuntimeRpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRuntimeRpc.h; sourceTree = "<group>"; };
-		4BA8CEF821AC91D500B78597 /* NStorageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NStorageData.h; sourceTree = "<group>"; };
-		4BA8CEF921AC91D500B78597 /* NMatchDataSendMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchDataSendMessage.h; sourceTree = "<group>"; };
-		4BA8CEFA21AC91D500B78597 /* NGroupUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupUser.h; sourceTree = "<group>"; };
-		4BA8CEFB21AC91D500B78597 /* INUncollatedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INUncollatedMessage.h; sourceTree = "<group>"; };
-		4BA8CEFC21AC91D500B78597 /* NGroupPromoteUserMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupPromoteUserMessage.h; sourceTree = "<group>"; };
-		4BA8CEFD21AC91D500B78597 /* NGroupUsersListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupUsersListMessage.h; sourceTree = "<group>"; };
-		4BA8CEFE21AC91D500B78597 /* NRuntimeRpcMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRuntimeRpcMessage.h; sourceTree = "<group>"; };
-		4BA8CEFF21AC91D500B78597 /* NSelfLinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSelfLinkMessage.h; sourceTree = "<group>"; };
-		4BA8CF0021AC91D500B78597 /* NLeaderboardRecordWriteMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLeaderboardRecordWriteMessage.h; sourceTree = "<group>"; };
-		4BA8CF0121AC91D500B78597 /* NStorageListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NStorageListMessage.h; sourceTree = "<group>"; };
-		4BA8CF0221AC91D500B78597 /* NMatchPresence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchPresence.h; sourceTree = "<group>"; };
-		4BA8CF0321AC91D500B78597 /* NNotificationsListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNotificationsListMessage.h; sourceTree = "<group>"; };
-		4BA8CF0421AC91D500B78597 /* INTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTransport.h; sourceTree = "<group>"; };
-		4BA8CF0521AC91D500B78597 /* NNotificationsRemoveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNotificationsRemoveMessage.h; sourceTree = "<group>"; };
-		4BA8CF0621AC91D500B78597 /* NError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NError.h; sourceTree = "<group>"; };
-		4BA8CF0721AC91D500B78597 /* NMatchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchData.h; sourceTree = "<group>"; };
-		4BA8CF0821AC91D500B78597 /* api.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = api.pb.h; sourceTree = "<group>"; };
-		4BA8CF0921AC91D500B78597 /* NTopicMessagesListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopicMessagesListMessage.h; sourceTree = "<group>"; };
-		4BA8CF0A21AC91D500B78597 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
-		4BA8CF0B21AC91D500B78597 /* NCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCallbacks.h; sourceTree = "<group>"; };
-		4BA8CF0C21AC91D500B78597 /* NSelfUnlinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSelfUnlinkMessage.h; sourceTree = "<group>"; };
-		4BA8CF0D21AC91D500B78597 /* NFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFriend.h; sourceTree = "<group>"; };
-		4BA8CF0E21AC91D500B78597 /* NTopicPresence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopicPresence.h; sourceTree = "<group>"; };
-		4BA8CF0F21AC91D500B78597 /* NTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopic.h; sourceTree = "<group>"; };
-		4BA8CF1021AC91D500B78597 /* NLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLogger.h; sourceTree = "<group>"; };
-		4BA8CF1121AC91D500B78597 /* INLogSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INLogSink.h; sourceTree = "<group>"; };
-		4BA8CF1221AC91D500B78597 /* NGroupCreateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupCreateMessage.h; sourceTree = "<group>"; };
-		4BA8CF1321AC91D500B78597 /* NGroupJoinMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupJoinMessage.h; sourceTree = "<group>"; };
-		4BA8CF1421AC91D500B78597 /* NGroupLeaveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupLeaveMessage.h; sourceTree = "<group>"; };
-		4BA8CF1521AC91D500B78597 /* NStorageRemoveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NStorageRemoveMessage.h; sourceTree = "<group>"; };
-		4BA8CF1621AC91D500B78597 /* NSelfUpdateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSelfUpdateMessage.h; sourceTree = "<group>"; };
-		4BA8CF1721AC91D500B78597 /* NTopicMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopicMessage.h; sourceTree = "<group>"; };
-		4BA8CF1821AC91D500B78597 /* NLeaderboardsListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLeaderboardsListMessage.h; sourceTree = "<group>"; };
-		4BA8CF1921AC91D500B78597 /* NStorageUpdateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NStorageUpdateMessage.h; sourceTree = "<group>"; };
-		4BA8CF1A21AC91D500B78597 /* NGroupsListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupsListMessage.h; sourceTree = "<group>"; };
-		4BA8CF1B21AC91D500B78597 /* NUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NUser.h; sourceTree = "<group>"; };
-		4BA8CF1C21AC91D500B78597 /* NFriendBlockMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFriendBlockMessage.h; sourceTree = "<group>"; };
-		4BA8CF1D21AC91D500B78597 /* NFriendRemoveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFriendRemoveMessage.h; sourceTree = "<group>"; };
-		4BA8CF1E21AC91D500B78597 /* NTopicId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopicId.h; sourceTree = "<group>"; };
-		4BA8CF1F21AC91D500B78597 /* NLeaderboardRecordsListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLeaderboardRecordsListMessage.h; sourceTree = "<group>"; };
-		4BA8CF2021AC91D500B78597 /* NMatchmakeAddMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchmakeAddMessage.h; sourceTree = "<group>"; };
-		4BA8CF2121AC91D500B78597 /* NMatchmakeMatched.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchmakeMatched.h; sourceTree = "<group>"; };
-		4BA8CF2221AC91D500B78597 /* NSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSession.h; sourceTree = "<group>"; };
-		4BA8CF2321AC91D500B78597 /* NLogMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLogMessage.h; sourceTree = "<group>"; };
-		4BA8CF2421AC91D500B78597 /* NGroupRemoveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupRemoveMessage.h; sourceTree = "<group>"; };
-		4BA8CF2521AC91D500B78597 /* NMatchmakeUserProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchmakeUserProperty.h; sourceTree = "<group>"; };
-		4BA8CF2621AC91D500B78597 /* NMatchToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchToken.h; sourceTree = "<group>"; };
-		4BA8CF2721AC91D500B78597 /* NPurchaseRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPurchaseRecord.h; sourceTree = "<group>"; };
-		4BA8CF2821AC91D500B78597 /* NStorageWriteMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NStorageWriteMessage.h; sourceTree = "<group>"; };
-		4BA8CF2921AC91D500B78597 /* NGroupUpdateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupUpdateMessage.h; sourceTree = "<group>"; };
-		4BA8CF2A21AC91D500B78597 /* NGroupKickUserMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroupKickUserMessage.h; sourceTree = "<group>"; };
-		4BA8CF2B21AC91D500B78597 /* NNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNotification.h; sourceTree = "<group>"; };
-		4BA8CF2C21AC91D500B78597 /* NMatchCreateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchCreateMessage.h; sourceTree = "<group>"; };
-		4BA8CF2D21AC91D500B78597 /* NUserPresence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NUserPresence.h; sourceTree = "<group>"; };
-		4BA8CF2E21AC91D500B78597 /* NSelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSelf.h; sourceTree = "<group>"; };
-		4BA8CF2F21AC91D500B78597 /* NTopicJoinMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopicJoinMessage.h; sourceTree = "<group>"; };
-		4BA8CF3021AC91D500B78597 /* NStorageFetchMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NStorageFetchMessage.h; sourceTree = "<group>"; };
-		4BA8CF3121AC91D500B78597 /* NMatchmakeTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatchmakeTicket.h; sourceTree = "<group>"; };
-		4BA8CF3221AC91D500B78597 /* NLogLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLogLevel.h; sourceTree = "<group>"; };
-		4BA8CF3321AC91D500B78597 /* NTopicMessageSendMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTopicMessageSendMessage.h; sourceTree = "<group>"; };
-		4BA8CF3421AC91D500B78597 /* NGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGroup.h; sourceTree = "<group>"; };
-		4BA8CF3521AC91D500B78597 /* NMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMatch.h; sourceTree = "<group>"; };
-		4BA8CF3721AC91D500B78597 /* PlatfromIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatfromIntegration.h; sourceTree = "<group>"; };
-		4BA8CF3821AC91D500B78597 /* NWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWebSocket.h; sourceTree = "<group>"; };
-		4BA8CF3921AC91D500B78597 /* NWebSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NWebSocket.cpp; sourceTree = "<group>"; };
-		4BA8CF3A21AC91D500B78597 /* NCocosTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCocosTransport.h; sourceTree = "<group>"; };
-		4BA8CF3B21AC91D500B78597 /* PlatfromIntegration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlatfromIntegration.cpp; sourceTree = "<group>"; };
-		4BA8CF3D21AC91D500B78597 /* NGroupsFetchMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupsFetchMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF3E21AC91D500B78597 /* NSelfUnlinkMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NSelfUnlinkMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF3F21AC91D500B78597 /* NMatchCreateMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NMatchCreateMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4021AC91D500B78597 /* NGroupRemoveMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupRemoveMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4121AC91D500B78597 /* NMatchmakeRemoveMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NMatchmakeRemoveMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4221AC91D500B78597 /* NStorageUpdateMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NStorageUpdateMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4321AC91D500B78597 /* NFriendRemoveMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NFriendRemoveMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4421AC91D500B78597 /* NFriendBlockMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NFriendBlockMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4521AC91D500B78597 /* NPurchaseValidateMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NPurchaseValidateMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4621AC91D500B78597 /* NNotificationsListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NNotificationsListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4721AC91D500B78597 /* NLeaderboardsListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NLeaderboardsListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4821AC91D500B78597 /* NClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NClient.cpp; sourceTree = "<group>"; };
-		4BA8CF4921AC91D500B78597 /* NGroupPromoteUserMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupPromoteUserMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4A21AC91D500B78597 /* NNotificationsRemoveMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NNotificationsRemoveMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4B21AC91D500B78597 /* NMatchLeaveMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NMatchLeaveMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4C21AC91D500B78597 /* NLeaderboardRecordsFetchMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NLeaderboardRecordsFetchMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4D21AC91D500B78597 /* NTopicMessageSendMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NTopicMessageSendMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4E21AC91D500B78597 /* NRuntimeRpcMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NRuntimeRpcMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF4F21AC91D500B78597 /* NStorageWriteMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NStorageWriteMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5021AC91D500B78597 /* NSelfUpdateMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NSelfUpdateMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5121AC91D500B78597 /* NMatchDataSendMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NMatchDataSendMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5221AC91D500B78597 /* NFriendsListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NFriendsListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5321AC91D500B78597 /* NStorageFetchMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NStorageFetchMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5421AC91D500B78597 /* NLeaderboardRecordsListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NLeaderboardRecordsListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5521AC91D500B78597 /* NGroupUsersListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupUsersListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5621AC91D500B78597 /* NSelfFetchMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NSelfFetchMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5721AC91D500B78597 /* NFriendAddMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NFriendAddMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5821AC91D500B78597 /* NUsersFetchMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NUsersFetchMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5921AC91D500B78597 /* NSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NSession.cpp; sourceTree = "<group>"; };
-		4BA8CF5A21AC91D500B78597 /* NGroupsSelfListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupsSelfListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5B21AC91D500B78597 /* NLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NLogger.cpp; sourceTree = "<group>"; };
-		4BA8CF5C21AC91D500B78597 /* NGroupJoinMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupJoinMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5D21AC91D500B78597 /* NCursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NCursor.cpp; sourceTree = "<group>"; };
-		4BA8CF5E21AC91D500B78597 /* NStorageListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NStorageListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF5F21AC91D500B78597 /* api.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = api.pb.cc; sourceTree = "<group>"; };
-		4BA8CF6021AC91D500B78597 /* NSelf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NSelf.cpp; sourceTree = "<group>"; };
-		4BA8CF6121AC91D500B78597 /* NMatchmakeAddMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NMatchmakeAddMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6221AC91D500B78597 /* NFriend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NFriend.cpp; sourceTree = "<group>"; };
-		4BA8CF6321AC91D500B78597 /* NGroupAddUserMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupAddUserMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6421AC91D500B78597 /* NMatchJoinMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NMatchJoinMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6521AC91D500B78597 /* NTopicLeaveMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NTopicLeaveMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6621AC91D500B78597 /* NTopicMessagesListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NTopicMessagesListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6721AC91D500B78597 /* NGroupCreateMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupCreateMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6821AC91D500B78597 /* NTopicJoinMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NTopicJoinMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6921AC91D500B78597 /* NGroupUpdateMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupUpdateMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6A21AC91D500B78597 /* NGroupsListMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupsListMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6B21AC91D500B78597 /* NAuthenticateMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NAuthenticateMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6C21AC91D500B78597 /* NSelfLinkMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NSelfLinkMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6D21AC91D500B78597 /* NGroupLeaveMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupLeaveMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6E21AC91D500B78597 /* NLeaderboardRecordWriteMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NLeaderboardRecordWriteMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF6F21AC91D500B78597 /* NGroupKickUserMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NGroupKickUserMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF7021AC91D500B78597 /* NStorageRemoveMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NStorageRemoveMessage.cpp; sourceTree = "<group>"; };
-		4BA8CF7121AC91D500B78597 /* NCocosTransport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NCocosTransport.cpp; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -391,6 +144,18 @@
 		5087E78A17EB975400C73F5D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		5D163BCC22068F43001C7C5D /* NWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWebSocket.h; sourceTree = "<group>"; };
+		5D163BCD22068F43001C7C5D /* NCocosLogSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCocosLogSink.h; sourceTree = "<group>"; };
+		5D163BCE22068F43001C7C5D /* NWebSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NWebSocket.cpp; sourceTree = "<group>"; };
+		5D1676D622069D9C0020E1CE /* libnakama-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnakama-cpp.a"; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libnakama-cpp.a"; sourceTree = "<group>"; };
+		5D1676D822069DF00020E1CE /* libgpr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgpr.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libgpr.a"; sourceTree = "<group>"; };
+		5D1676D922069DF00020E1CE /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libprotobuf.a"; sourceTree = "<group>"; };
+		5D1676DA22069DF00020E1CE /* libcares.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcares.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libcares.a"; sourceTree = "<group>"; };
+		5D1676DB22069DF00020E1CE /* libgrpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgrpc.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libgrpc.a"; sourceTree = "<group>"; };
+		5D1676DC22069DF00020E1CE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libcrypto.a"; sourceTree = "<group>"; };
+		5D1676DD22069DF00020E1CE /* libgrpc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++.a"; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libgrpc++.a"; sourceTree = "<group>"; };
+		5D1676DF22069DF00020E1CE /* libaddress_sorting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaddress_sorting.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libaddress_sorting.a"; sourceTree = "<group>"; };
+		5D6101F0221625C800D9055B /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../cocos2d/external/openssl/prebuilt/mac/libssl.a; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -430,6 +195,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D6101F1221625C800D9055B /* libssl.a in Frameworks */,
+				5D1676E022069DF00020E1CE /* libgpr.a in Frameworks */,
+				5D1676E122069DF00020E1CE /* libprotobuf.a in Frameworks */,
+				5D1676E222069DF00020E1CE /* libcares.a in Frameworks */,
+				5D1676E322069DF00020E1CE /* libgrpc.a in Frameworks */,
+				5D1676E522069DF00020E1CE /* libgrpc++.a in Frameworks */,
+				5D1676E722069DF00020E1CE /* libaddress_sorting.a in Frameworks */,
+				5D1676D722069D9C0020E1CE /* libnakama-cpp.a in Frameworks */,
 				4BA8CFE021AC9BE600B78597 /* libprotobuf.a in Frameworks */,
 				ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */,
 				1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */,
@@ -503,6 +276,16 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D6101F0221625C800D9055B /* libssl.a */,
+				5D1676DF22069DF00020E1CE /* libaddress_sorting.a */,
+				5D1676DA22069DF00020E1CE /* libcares.a */,
+				5D1676DC22069DF00020E1CE /* libcrypto.a */,
+				5D1676D822069DF00020E1CE /* libgpr.a */,
+				5D1676DB22069DF00020E1CE /* libgrpc.a */,
+				5D1676DD22069DF00020E1CE /* libgrpc++.a */,
+				5D1676D922069DF00020E1CE /* libprotobuf.a */,
+				5D1676DE22069DF00020E1CE /* libssl.a */,
+				5D1676D622069D9C0020E1CE /* libnakama-cpp.a */,
 				4BA8CED821AC918E00B78597 /* libprotobuf.a */,
 				294D0D631D0D56D500F7F5D4 /* CoreText.framework */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
@@ -543,7 +326,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4BA8CEDA21AC91D500B78597 /* Nakama */,
+				5D163BCB22068F43001C7C5D /* NakamaCocos2d */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
@@ -551,192 +334,6 @@
 			);
 			name = Classes;
 			path = ../Classes;
-			sourceTree = "<group>";
-		};
-		4BA8CEDA21AC91D500B78597 /* Nakama */ = {
-			isa = PBXGroup;
-			children = (
-				4BA8CEDB21AC91D500B78597 /* Public */,
-				4BA8CF3621AC91D500B78597 /* Private */,
-			);
-			path = Nakama;
-			sourceTree = "<group>";
-		};
-		4BA8CEDB21AC91D500B78597 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				4BA8CEDC21AC91D500B78597 /* NCocosLogSink.h */,
-				4BA8CEDD21AC91D500B78597 /* NakamaSDK */,
-			);
-			path = Public;
-			sourceTree = "<group>";
-		};
-		4BA8CEDD21AC91D500B78597 /* NakamaSDK */ = {
-			isa = PBXGroup;
-			children = (
-				4BA8CEDE21AC91D500B78597 /* NTopicLeaveMessage.h */,
-				4BA8CEDF21AC91D500B78597 /* NGroupsSelfListMessage.h */,
-				4BA8CEE021AC91D500B78597 /* NLeaderboardRecord.h */,
-				4BA8CEE121AC91D500B78597 /* NGroupSelf.h */,
-				4BA8CEE221AC91D500B78597 /* NSelfFetchMessage.h */,
-				4BA8CEE321AC91D500B78597 /* NPurchaseValidateMessage.h */,
-				4BA8CEE421AC91D500B78597 /* INCollatedMessage.h */,
-				4BA8CEE521AC91D500B78597 /* NResultSet.h */,
-				4BA8CEE621AC91D500B78597 /* NMatchmakeRemoveMessage.h */,
-				4BA8CEE721AC91D500B78597 /* NGroupAddUserMessage.h */,
-				4BA8CEE821AC91D500B78597 /* NLeaderboard.h */,
-				4BA8CEE921AC91D500B78597 /* NFriendsListMessage.h */,
-				4BA8CEEA21AC91D500B78597 /* NMatchmakeFilter.h */,
-				4BA8CEEB21AC91D500B78597 /* NLeaderboardRecordsFetchMessage.h */,
-				4BA8CEEC21AC91D500B78597 /* NGroupsFetchMessage.h */,
-				4BA8CEED21AC91D500B78597 /* NCursor.h */,
-				4BA8CEEE21AC91D500B78597 /* NAuthenticateMessage.h */,
-				4BA8CEEF21AC91D500B78597 /* NTopicMessageAck.h */,
-				4BA8CEF021AC91D500B78597 /* NFriendAddMessage.h */,
-				4BA8CEF121AC91D500B78597 /* NUsersFetchMessage.h */,
-				4BA8CEF221AC91D500B78597 /* NClient.h */,
-				4BA8CEF321AC91D500B78597 /* NConsoleLogSink.h */,
-				4BA8CEF421AC91D500B78597 /* NStorageKey.h */,
-				4BA8CEF521AC91D500B78597 /* NMatchLeaveMessage.h */,
-				4BA8CEF621AC91D500B78597 /* NMatchJoinMessage.h */,
-				4BA8CEF721AC91D500B78597 /* NRuntimeRpc.h */,
-				4BA8CEF821AC91D500B78597 /* NStorageData.h */,
-				4BA8CEF921AC91D500B78597 /* NMatchDataSendMessage.h */,
-				4BA8CEFA21AC91D500B78597 /* NGroupUser.h */,
-				4BA8CEFB21AC91D500B78597 /* INUncollatedMessage.h */,
-				4BA8CEFC21AC91D500B78597 /* NGroupPromoteUserMessage.h */,
-				4BA8CEFD21AC91D500B78597 /* NGroupUsersListMessage.h */,
-				4BA8CEFE21AC91D500B78597 /* NRuntimeRpcMessage.h */,
-				4BA8CEFF21AC91D500B78597 /* NSelfLinkMessage.h */,
-				4BA8CF0021AC91D500B78597 /* NLeaderboardRecordWriteMessage.h */,
-				4BA8CF0121AC91D500B78597 /* NStorageListMessage.h */,
-				4BA8CF0221AC91D500B78597 /* NMatchPresence.h */,
-				4BA8CF0321AC91D500B78597 /* NNotificationsListMessage.h */,
-				4BA8CF0421AC91D500B78597 /* INTransport.h */,
-				4BA8CF0521AC91D500B78597 /* NNotificationsRemoveMessage.h */,
-				4BA8CF0621AC91D500B78597 /* NError.h */,
-				4BA8CF0721AC91D500B78597 /* NMatchData.h */,
-				4BA8CF0821AC91D500B78597 /* api.pb.h */,
-				4BA8CF0921AC91D500B78597 /* NTopicMessagesListMessage.h */,
-				4BA8CF0A21AC91D500B78597 /* Defines.h */,
-				4BA8CF0B21AC91D500B78597 /* NCallbacks.h */,
-				4BA8CF0C21AC91D500B78597 /* NSelfUnlinkMessage.h */,
-				4BA8CF0D21AC91D500B78597 /* NFriend.h */,
-				4BA8CF0E21AC91D500B78597 /* NTopicPresence.h */,
-				4BA8CF0F21AC91D500B78597 /* NTopic.h */,
-				4BA8CF1021AC91D500B78597 /* NLogger.h */,
-				4BA8CF1121AC91D500B78597 /* INLogSink.h */,
-				4BA8CF1221AC91D500B78597 /* NGroupCreateMessage.h */,
-				4BA8CF1321AC91D500B78597 /* NGroupJoinMessage.h */,
-				4BA8CF1421AC91D500B78597 /* NGroupLeaveMessage.h */,
-				4BA8CF1521AC91D500B78597 /* NStorageRemoveMessage.h */,
-				4BA8CF1621AC91D500B78597 /* NSelfUpdateMessage.h */,
-				4BA8CF1721AC91D500B78597 /* NTopicMessage.h */,
-				4BA8CF1821AC91D500B78597 /* NLeaderboardsListMessage.h */,
-				4BA8CF1921AC91D500B78597 /* NStorageUpdateMessage.h */,
-				4BA8CF1A21AC91D500B78597 /* NGroupsListMessage.h */,
-				4BA8CF1B21AC91D500B78597 /* NUser.h */,
-				4BA8CF1C21AC91D500B78597 /* NFriendBlockMessage.h */,
-				4BA8CF1D21AC91D500B78597 /* NFriendRemoveMessage.h */,
-				4BA8CF1E21AC91D500B78597 /* NTopicId.h */,
-				4BA8CF1F21AC91D500B78597 /* NLeaderboardRecordsListMessage.h */,
-				4BA8CF2021AC91D500B78597 /* NMatchmakeAddMessage.h */,
-				4BA8CF2121AC91D500B78597 /* NMatchmakeMatched.h */,
-				4BA8CF2221AC91D500B78597 /* NSession.h */,
-				4BA8CF2321AC91D500B78597 /* NLogMessage.h */,
-				4BA8CF2421AC91D500B78597 /* NGroupRemoveMessage.h */,
-				4BA8CF2521AC91D500B78597 /* NMatchmakeUserProperty.h */,
-				4BA8CF2621AC91D500B78597 /* NMatchToken.h */,
-				4BA8CF2721AC91D500B78597 /* NPurchaseRecord.h */,
-				4BA8CF2821AC91D500B78597 /* NStorageWriteMessage.h */,
-				4BA8CF2921AC91D500B78597 /* NGroupUpdateMessage.h */,
-				4BA8CF2A21AC91D500B78597 /* NGroupKickUserMessage.h */,
-				4BA8CF2B21AC91D500B78597 /* NNotification.h */,
-				4BA8CF2C21AC91D500B78597 /* NMatchCreateMessage.h */,
-				4BA8CF2D21AC91D500B78597 /* NUserPresence.h */,
-				4BA8CF2E21AC91D500B78597 /* NSelf.h */,
-				4BA8CF2F21AC91D500B78597 /* NTopicJoinMessage.h */,
-				4BA8CF3021AC91D500B78597 /* NStorageFetchMessage.h */,
-				4BA8CF3121AC91D500B78597 /* NMatchmakeTicket.h */,
-				4BA8CF3221AC91D500B78597 /* NLogLevel.h */,
-				4BA8CF3321AC91D500B78597 /* NTopicMessageSendMessage.h */,
-				4BA8CF3421AC91D500B78597 /* NGroup.h */,
-				4BA8CF3521AC91D500B78597 /* NMatch.h */,
-			);
-			path = NakamaSDK;
-			sourceTree = "<group>";
-		};
-		4BA8CF3621AC91D500B78597 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				4BA8CF3721AC91D500B78597 /* PlatfromIntegration.h */,
-				4BA8CF3821AC91D500B78597 /* NWebSocket.h */,
-				4BA8CF3921AC91D500B78597 /* NWebSocket.cpp */,
-				4BA8CF3A21AC91D500B78597 /* NCocosTransport.h */,
-				4BA8CF3B21AC91D500B78597 /* PlatfromIntegration.cpp */,
-				4BA8CF3C21AC91D500B78597 /* NakamaSDK */,
-				4BA8CF7121AC91D500B78597 /* NCocosTransport.cpp */,
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
-		4BA8CF3C21AC91D500B78597 /* NakamaSDK */ = {
-			isa = PBXGroup;
-			children = (
-				4BA8CF3D21AC91D500B78597 /* NGroupsFetchMessage.cpp */,
-				4BA8CF3E21AC91D500B78597 /* NSelfUnlinkMessage.cpp */,
-				4BA8CF3F21AC91D500B78597 /* NMatchCreateMessage.cpp */,
-				4BA8CF4021AC91D500B78597 /* NGroupRemoveMessage.cpp */,
-				4BA8CF4121AC91D500B78597 /* NMatchmakeRemoveMessage.cpp */,
-				4BA8CF4221AC91D500B78597 /* NStorageUpdateMessage.cpp */,
-				4BA8CF4321AC91D500B78597 /* NFriendRemoveMessage.cpp */,
-				4BA8CF4421AC91D500B78597 /* NFriendBlockMessage.cpp */,
-				4BA8CF4521AC91D500B78597 /* NPurchaseValidateMessage.cpp */,
-				4BA8CF4621AC91D500B78597 /* NNotificationsListMessage.cpp */,
-				4BA8CF4721AC91D500B78597 /* NLeaderboardsListMessage.cpp */,
-				4BA8CF4821AC91D500B78597 /* NClient.cpp */,
-				4BA8CF4921AC91D500B78597 /* NGroupPromoteUserMessage.cpp */,
-				4BA8CF4A21AC91D500B78597 /* NNotificationsRemoveMessage.cpp */,
-				4BA8CF4B21AC91D500B78597 /* NMatchLeaveMessage.cpp */,
-				4BA8CF4C21AC91D500B78597 /* NLeaderboardRecordsFetchMessage.cpp */,
-				4BA8CF4D21AC91D500B78597 /* NTopicMessageSendMessage.cpp */,
-				4BA8CF4E21AC91D500B78597 /* NRuntimeRpcMessage.cpp */,
-				4BA8CF4F21AC91D500B78597 /* NStorageWriteMessage.cpp */,
-				4BA8CF5021AC91D500B78597 /* NSelfUpdateMessage.cpp */,
-				4BA8CF5121AC91D500B78597 /* NMatchDataSendMessage.cpp */,
-				4BA8CF5221AC91D500B78597 /* NFriendsListMessage.cpp */,
-				4BA8CF5321AC91D500B78597 /* NStorageFetchMessage.cpp */,
-				4BA8CF5421AC91D500B78597 /* NLeaderboardRecordsListMessage.cpp */,
-				4BA8CF5521AC91D500B78597 /* NGroupUsersListMessage.cpp */,
-				4BA8CF5621AC91D500B78597 /* NSelfFetchMessage.cpp */,
-				4BA8CF5721AC91D500B78597 /* NFriendAddMessage.cpp */,
-				4BA8CF5821AC91D500B78597 /* NUsersFetchMessage.cpp */,
-				4BA8CF5921AC91D500B78597 /* NSession.cpp */,
-				4BA8CF5A21AC91D500B78597 /* NGroupsSelfListMessage.cpp */,
-				4BA8CF5B21AC91D500B78597 /* NLogger.cpp */,
-				4BA8CF5C21AC91D500B78597 /* NGroupJoinMessage.cpp */,
-				4BA8CF5D21AC91D500B78597 /* NCursor.cpp */,
-				4BA8CF5E21AC91D500B78597 /* NStorageListMessage.cpp */,
-				4BA8CF5F21AC91D500B78597 /* api.pb.cc */,
-				4BA8CF6021AC91D500B78597 /* NSelf.cpp */,
-				4BA8CF6121AC91D500B78597 /* NMatchmakeAddMessage.cpp */,
-				4BA8CF6221AC91D500B78597 /* NFriend.cpp */,
-				4BA8CF6321AC91D500B78597 /* NGroupAddUserMessage.cpp */,
-				4BA8CF6421AC91D500B78597 /* NMatchJoinMessage.cpp */,
-				4BA8CF6521AC91D500B78597 /* NTopicLeaveMessage.cpp */,
-				4BA8CF6621AC91D500B78597 /* NTopicMessagesListMessage.cpp */,
-				4BA8CF6721AC91D500B78597 /* NGroupCreateMessage.cpp */,
-				4BA8CF6821AC91D500B78597 /* NTopicJoinMessage.cpp */,
-				4BA8CF6921AC91D500B78597 /* NGroupUpdateMessage.cpp */,
-				4BA8CF6A21AC91D500B78597 /* NGroupsListMessage.cpp */,
-				4BA8CF6B21AC91D500B78597 /* NAuthenticateMessage.cpp */,
-				4BA8CF6C21AC91D500B78597 /* NSelfLinkMessage.cpp */,
-				4BA8CF6D21AC91D500B78597 /* NGroupLeaveMessage.cpp */,
-				4BA8CF6E21AC91D500B78597 /* NLeaderboardRecordWriteMessage.cpp */,
-				4BA8CF6F21AC91D500B78597 /* NGroupKickUserMessage.cpp */,
-				4BA8CF7021AC91D500B78597 /* NStorageRemoveMessage.cpp */,
-			);
-			path = NakamaSDK;
 			sourceTree = "<group>";
 		};
 		503AE0F517EB97AB00D1A890 /* Icons */ = {
@@ -757,6 +354,16 @@
 				503AE10417EB98FF00D1A890 /* Prefix.pch */,
 			);
 			name = mac;
+			sourceTree = "<group>";
+		};
+		5D163BCB22068F43001C7C5D /* NakamaCocos2d */ = {
+			isa = PBXGroup;
+			children = (
+				5D163BCC22068F43001C7C5D /* NWebSocket.h */,
+				5D163BCD22068F43001C7C5D /* NCocosLogSink.h */,
+				5D163BCE22068F43001C7C5D /* NWebSocket.cpp */,
+			);
+			path = NakamaCocos2d;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -892,66 +499,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA8CF7E21AC91D600B78597 /* NMatchmakeRemoveMessage.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				4BA8CFA021AC91D600B78597 /* NFriendsListMessage.cpp in Sources */,
-				4BA8CF7821AC91D600B78597 /* NSelfUnlinkMessage.cpp in Sources */,
-				4BA8CFA421AC91D600B78597 /* NLeaderboardRecordsListMessage.cpp in Sources */,
-				4BA8CF8C21AC91D600B78597 /* NClient.cpp in Sources */,
-				4BA8CFC621AC91D600B78597 /* NTopicLeaveMessage.cpp in Sources */,
-				4BA8CFCE21AC91D600B78597 /* NGroupUpdateMessage.cpp in Sources */,
-				4BA8CF9A21AC91D600B78597 /* NStorageWriteMessage.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
-				4BA8CFB621AC91D600B78597 /* NCursor.cpp in Sources */,
-				4BA8CF8421AC91D600B78597 /* NFriendBlockMessage.cpp in Sources */,
-				4BA8CF9C21AC91D600B78597 /* NSelfUpdateMessage.cpp in Sources */,
-				4BA8CFC821AC91D600B78597 /* NTopicMessagesListMessage.cpp in Sources */,
-				4BA8CF9021AC91D600B78597 /* NNotificationsRemoveMessage.cpp in Sources */,
-				4BA8CFAC21AC91D600B78597 /* NUsersFetchMessage.cpp in Sources */,
-				4BA8CF8621AC91D600B78597 /* NPurchaseValidateMessage.cpp in Sources */,
-				4BA8CF7421AC91D600B78597 /* PlatfromIntegration.cpp in Sources */,
-				4BA8CFD421AC91D600B78597 /* NSelfLinkMessage.cpp in Sources */,
-				4BA8CFBC21AC91D600B78597 /* NSelf.cpp in Sources */,
-				4BA8CFD621AC91D600B78597 /* NGroupLeaveMessage.cpp in Sources */,
-				4BA8CFBE21AC91D600B78597 /* NMatchmakeAddMessage.cpp in Sources */,
-				4BA8CF9821AC91D600B78597 /* NRuntimeRpcMessage.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
-				4BA8CF7C21AC91D600B78597 /* NGroupRemoveMessage.cpp in Sources */,
-				4BA8CFA221AC91D600B78597 /* NStorageFetchMessage.cpp in Sources */,
-				4BA8CFBA21AC91D600B78597 /* api.pb.cc in Sources */,
-				4BA8CF9E21AC91D600B78597 /* NMatchDataSendMessage.cpp in Sources */,
-				4BA8CFC421AC91D600B78597 /* NMatchJoinMessage.cpp in Sources */,
-				4BA8CFD821AC91D600B78597 /* NLeaderboardRecordWriteMessage.cpp in Sources */,
-				4BA8CF8821AC91D600B78597 /* NNotificationsListMessage.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
-				4BA8CF7A21AC91D600B78597 /* NMatchCreateMessage.cpp in Sources */,
-				4BA8CFB221AC91D600B78597 /* NLogger.cpp in Sources */,
-				4BA8CFC221AC91D600B78597 /* NGroupAddUserMessage.cpp in Sources */,
-				4BA8CFB821AC91D600B78597 /* NStorageListMessage.cpp in Sources */,
-				4BA8CF9621AC91D600B78597 /* NTopicMessageSendMessage.cpp in Sources */,
-				4BA8CF7621AC91D600B78597 /* NGroupsFetchMessage.cpp in Sources */,
-				4BA8CFD021AC91D600B78597 /* NGroupsListMessage.cpp in Sources */,
-				4BA8CF7221AC91D600B78597 /* NWebSocket.cpp in Sources */,
-				4BA8CFAA21AC91D600B78597 /* NFriendAddMessage.cpp in Sources */,
-				4BA8CFCC21AC91D600B78597 /* NTopicJoinMessage.cpp in Sources */,
-				4BA8CF8A21AC91D600B78597 /* NLeaderboardsListMessage.cpp in Sources */,
-				4BA8CFA621AC91D600B78597 /* NGroupUsersListMessage.cpp in Sources */,
-				4BA8CFA821AC91D600B78597 /* NSelfFetchMessage.cpp in Sources */,
-				4BA8CFDC21AC91D600B78597 /* NStorageRemoveMessage.cpp in Sources */,
-				4BA8CF8021AC91D600B78597 /* NStorageUpdateMessage.cpp in Sources */,
-				4BA8CF8221AC91D600B78597 /* NFriendRemoveMessage.cpp in Sources */,
-				4BA8CF8E21AC91D600B78597 /* NGroupPromoteUserMessage.cpp in Sources */,
-				4BA8CF9221AC91D600B78597 /* NMatchLeaveMessage.cpp in Sources */,
+				5D163BCF22068F43001C7C5D /* NWebSocket.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				4BA8CFCA21AC91D600B78597 /* NGroupCreateMessage.cpp in Sources */,
-				4BA8CFC021AC91D600B78597 /* NFriend.cpp in Sources */,
-				4BA8CF9421AC91D600B78597 /* NLeaderboardRecordsFetchMessage.cpp in Sources */,
-				4BA8CFDA21AC91D600B78597 /* NGroupKickUserMessage.cpp in Sources */,
-				4BA8CFB421AC91D600B78597 /* NGroupJoinMessage.cpp in Sources */,
-				4BA8CFD221AC91D600B78597 /* NAuthenticateMessage.cpp in Sources */,
-				4BA8CFAE21AC91D600B78597 /* NSession.cpp in Sources */,
-				4BA8CFDE21AC91D600B78597 /* NCocosTransport.cpp in Sources */,
-				4BA8CFB021AC91D600B78597 /* NGroupsSelfListMessage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,64 +512,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA8CF7F21AC91D600B78597 /* NMatchmakeRemoveMessage.cpp in Sources */,
-				4BA8CF9921AC91D600B78597 /* NRuntimeRpcMessage.cpp in Sources */,
-				4BA8CFD721AC91D600B78597 /* NGroupLeaveMessage.cpp in Sources */,
-				4BA8CF8921AC91D600B78597 /* NNotificationsListMessage.cpp in Sources */,
-				4BA8CFDF21AC91D600B78597 /* NCocosTransport.cpp in Sources */,
-				4BA8CFD121AC91D600B78597 /* NGroupsListMessage.cpp in Sources */,
-				4BA8CF8F21AC91D600B78597 /* NGroupPromoteUserMessage.cpp in Sources */,
-				4BA8CFC921AC91D600B78597 /* NTopicMessagesListMessage.cpp in Sources */,
-				4BA8CF9B21AC91D600B78597 /* NStorageWriteMessage.cpp in Sources */,
-				4BA8CFC321AC91D600B78597 /* NGroupAddUserMessage.cpp in Sources */,
-				4BA8CFC121AC91D600B78597 /* NFriend.cpp in Sources */,
-				4BA8CFA721AC91D600B78597 /* NGroupUsersListMessage.cpp in Sources */,
-				4BA8CFA921AC91D600B78597 /* NSelfFetchMessage.cpp in Sources */,
-				4BA8CFD321AC91D600B78597 /* NAuthenticateMessage.cpp in Sources */,
-				4BA8CF7321AC91D600B78597 /* NWebSocket.cpp in Sources */,
-				4BA8CFD521AC91D600B78597 /* NSelfLinkMessage.cpp in Sources */,
-				4BA8CFBF21AC91D600B78597 /* NMatchmakeAddMessage.cpp in Sources */,
-				4BA8CFB721AC91D600B78597 /* NCursor.cpp in Sources */,
-				4BA8CF9321AC91D600B78597 /* NMatchLeaveMessage.cpp in Sources */,
-				4BA8CFA121AC91D600B78597 /* NFriendsListMessage.cpp in Sources */,
+				5D163BD022068F43001C7C5D /* NWebSocket.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				4BA8CF9721AC91D600B78597 /* NTopicMessageSendMessage.cpp in Sources */,
-				4BA8CFCD21AC91D600B78597 /* NTopicJoinMessage.cpp in Sources */,
-				4BA8CF8B21AC91D600B78597 /* NLeaderboardsListMessage.cpp in Sources */,
-				4BA8CF9D21AC91D600B78597 /* NSelfUpdateMessage.cpp in Sources */,
-				4BA8CFBB21AC91D600B78597 /* api.pb.cc in Sources */,
-				4BA8CFC521AC91D600B78597 /* NMatchJoinMessage.cpp in Sources */,
-				4BA8CF8721AC91D600B78597 /* NPurchaseValidateMessage.cpp in Sources */,
-				4BA8CFAF21AC91D600B78597 /* NSession.cpp in Sources */,
-				4BA8CFC721AC91D600B78597 /* NTopicLeaveMessage.cpp in Sources */,
-				4BA8CF8D21AC91D600B78597 /* NClient.cpp in Sources */,
-				4BA8CFAD21AC91D600B78597 /* NUsersFetchMessage.cpp in Sources */,
-				4BA8CFB921AC91D600B78597 /* NStorageListMessage.cpp in Sources */,
-				4BA8CFDD21AC91D600B78597 /* NStorageRemoveMessage.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
-				4BA8CF9121AC91D600B78597 /* NNotificationsRemoveMessage.cpp in Sources */,
-				4BA8CFB121AC91D600B78597 /* NGroupsSelfListMessage.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
-				4BA8CF9F21AC91D600B78597 /* NMatchDataSendMessage.cpp in Sources */,
-				4BA8CF7B21AC91D600B78597 /* NMatchCreateMessage.cpp in Sources */,
-				4BA8CFA321AC91D600B78597 /* NStorageFetchMessage.cpp in Sources */,
-				4BA8CFA521AC91D600B78597 /* NLeaderboardRecordsListMessage.cpp in Sources */,
-				4BA8CFB521AC91D600B78597 /* NGroupJoinMessage.cpp in Sources */,
-				4BA8CF8321AC91D600B78597 /* NFriendRemoveMessage.cpp in Sources */,
-				4BA8CF7521AC91D600B78597 /* PlatfromIntegration.cpp in Sources */,
-				4BA8CF9521AC91D600B78597 /* NLeaderboardRecordsFetchMessage.cpp in Sources */,
-				4BA8CFAB21AC91D600B78597 /* NFriendAddMessage.cpp in Sources */,
-				4BA8CF8521AC91D600B78597 /* NFriendBlockMessage.cpp in Sources */,
-				4BA8CF8121AC91D600B78597 /* NStorageUpdateMessage.cpp in Sources */,
-				4BA8CFCF21AC91D600B78597 /* NGroupUpdateMessage.cpp in Sources */,
-				4BA8CFD921AC91D600B78597 /* NLeaderboardRecordWriteMessage.cpp in Sources */,
-				4BA8CFBD21AC91D600B78597 /* NSelf.cpp in Sources */,
-				4BA8CF7921AC91D600B78597 /* NSelfUnlinkMessage.cpp in Sources */,
-				4BA8CFDB21AC91D600B78597 /* NGroupKickUserMessage.cpp in Sources */,
-				4BA8CFCB21AC91D600B78597 /* NGroupCreateMessage.cpp in Sources */,
-				4BA8CF7721AC91D600B78597 /* NGroupsFetchMessage.cpp in Sources */,
-				4BA8CFB321AC91D600B78597 /* NLogger.cpp in Sources */,
-				4BA8CF7D21AC91D600B78597 /* NGroupRemoveMessage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1069,7 +568,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					../Classes/ThirdParty/lib/ios,
+					"../nakama-cpp-sdk/libs/ios",
 				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -1078,7 +577,7 @@
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) ../nakama-cpp-sdk/include";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
@@ -1115,7 +614,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					../Classes/ThirdParty/lib/ios,
+					"../nakama-cpp-sdk/libs/ios",
 				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -1124,7 +623,7 @@
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) ../nakama-cpp-sdk/include";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
@@ -1162,13 +661,15 @@
 				INFOPLIST_FILE = mac/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					../Classes/ThirdParty/lib/osxx64,
+					"../nakama-cpp-sdk/libs/mac",
+					../cocos2d/external/openssl/prebuilt/mac,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END)";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END) ../nakama-cpp-sdk/include";
 			};
 			name = Debug;
 		};
@@ -1204,13 +705,15 @@
 				INFOPLIST_FILE = mac/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					../Classes/ThirdParty/lib/osxx64,
+					"../nakama-cpp-sdk/libs/mac",
+					../cocos2d/external/openssl/prebuilt/mac,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END)";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END) ../nakama-cpp-sdk/include";
 			};
 			name = Release;
 		};
