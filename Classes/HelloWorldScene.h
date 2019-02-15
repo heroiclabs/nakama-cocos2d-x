@@ -26,7 +26,6 @@
 
 #include "cocos2d.h"
 #include "nakama-cpp/Nakama.h"
-#include "nakama-cpp/realtime/NRtDefaultClientListener.h"
 
 using namespace Nakama;
 USING_NS_CC;

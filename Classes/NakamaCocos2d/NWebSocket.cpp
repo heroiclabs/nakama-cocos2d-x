@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "NWebSocket.h"
+#include "NakamaCocos2d/NWebSocket.h"
 #include "nakama-cpp/log/NLogger.h"
 
 USING_NS_CC;

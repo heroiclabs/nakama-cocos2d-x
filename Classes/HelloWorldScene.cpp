@@ -24,8 +24,8 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "NCocosLogSink.h"
-#include "NWebSocket.h"
+#include "NakamaCocos2d/NCocosLogSink.h"
+#include "NakamaCocos2d/NWebSocket.h"
 
 USING_NS_CC;
 
@@ -172,7 +172,7 @@ std::string HelloWorld::getDeviceId()
 
 void HelloWorld::registerDevice()
 {
-    auto registerFailedCallback = [this](const NError error)
+    auto registerFailedCallback = [](const NError error)
     {
     };
 
@@ -250,7 +250,7 @@ void HelloWorld::sendChatMessage(const std::string& message)
 
     CCLOG("sending topic message %s", message.c_str());
 
-    m_rtClient->writeChatMessage(m_chatId, data, [this](const NChannelMessageAck& ack)
+    m_rtClient->writeChatMessage(m_chatId, data, [](const NChannelMessageAck& ack)
     {
         CCLOG("Sent OK. message id %s", ack.message_id.c_str());
     },

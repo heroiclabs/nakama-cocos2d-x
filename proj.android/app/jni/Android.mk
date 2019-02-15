@@ -22,11 +22,8 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../Classes/NakamaCocos2d
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END
 
-LOCAL_CFLAGS += -DNAKAMA_API= -DCOCOS2D
-
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_STATIC_LIBRARIES += nakama-cpp
-#LOCAL_WHOLE_STATIC_LIBRARIES := nakama-cpp
 
 # _COCOS_LIB_ANDROID_BEGIN
 # _COCOS_LIB_ANDROID_END
@@ -37,7 +34,7 @@ $(call import-add-path, $(LOCAL_PATH)/../../../cocos2d)
 $(call import-module, cocos)
 
 # import Nakama C++ SDK
-$(call import-add-path, $(NAKAMA_CPP_SDK))
+$(call import-add-path, $(LOCAL_PATH)/../../../nakama-cpp-sdk)
 $(call import-module, nakama-cpp-android)
 
 # _COCOS_LIB_IMPORT_ANDROID_BEGIN
