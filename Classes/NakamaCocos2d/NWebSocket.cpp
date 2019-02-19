@@ -52,7 +52,7 @@ namespace Nakama {
 
         if (_type == NRtTransportType::Binary)
         {
-            _websocket.send((const uint8_t*)data.data(), data.size());
+            _websocket.send((const uint8_t*)data.data(), (unsigned int)data.size());
         }
         else
         {
