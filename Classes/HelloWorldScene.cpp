@@ -58,6 +58,8 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    Director::getInstance()->setClearColor(Color4F::GRAY);
+
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
@@ -107,7 +109,7 @@ bool HelloWorld::init()
         this->addChild(m_label, 1);
     }
 
-    // add "HelloWorld" splash screen"
+    // add "HelloWorld" splash screen
     auto sprite = Sprite::create("HelloWorld.png");
     if (sprite == nullptr)
     {
@@ -115,11 +117,29 @@ bool HelloWorld::init()
     }
     else
     {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+        // position the sprite
+        sprite->setPosition(Vec2(visibleSize.width + origin.x - 50, visibleSize.height / 2 + origin.y));
+        sprite->setAnchorPoint(Vec2(1, 0.5));
 
         // add the sprite as a child to this layer
         this->addChild(sprite, 0);
+    }
+
+    // add "Nakama" splash screen
+    m_nakamaLogo = Sprite::create("nakama_logo.png");
+    if (m_nakamaLogo == nullptr)
+    {
+        problemLoading("'nakama_logo.png'");
+    }
+    else
+    {
+        // position the sprite
+        m_nakamaLogo->setPosition(Vec2(origin.x + 50, visibleSize.height / 2 + origin.y));
+        m_nakamaLogo->setAnchorPoint(Vec2(0, 0.5));
+        m_nakamaLogo->setColor(Color3B::BLACK);
+
+        // add the sprite as a child to this layer
+        this->addChild(m_nakamaLogo, 0);
     }
 
     NLogger::init(std::make_shared<NCocosLogSink>(), NLogLevel::Debug);
@@ -142,8 +162,10 @@ bool HelloWorld::init()
 
     m_client = createDefaultClient(parameters);
 
-    auto loginFailedCallback = [this](const NError error)
+    auto loginFailedCallback = [this](const NError& error)
     {
+        onError();
+
         if (error.code == ErrorCode::NotFound)
         {
             registerDevice();
@@ -172,8 +194,9 @@ std::string HelloWorld::getDeviceId()
 
 void HelloWorld::registerDevice()
 {
-    auto registerFailedCallback = [](const NError error)
+    auto registerFailedCallback = [this](const NError& error)
     {
+        onError();
     };
 
     CCLOG("Register...");
@@ -191,6 +214,8 @@ void HelloWorld::onLoginSucceeded(NSessionPtr session)
 
     CCLOG("Login succeeded. user id: %s", m_session->getUserId().c_str());
 
+    m_nakamaLogo->setColor(Color3B::YELLOW);
+
     connect();
 }
 
@@ -202,6 +227,12 @@ void HelloWorld::connect()
     {
         CCLOG("Connected!");
         joinChat("chat-room");
+        m_nakamaLogo->setColor(Color3B::GREEN);
+    });
+
+    m_rtListener->setErrorCallback([this](const NRtError& error)
+    {
+        onError();
     });
 
     m_rtListener->setChannelMessageCallback([this](const NChannelMessage& msg)
@@ -236,9 +267,12 @@ void HelloWorld::joinChat(const std::string& topicName)
             CCLOG("Joined topic id %s", channel->id.c_str());
 
             sendChatMessage("Hey dude!");
-        }, [](const NRtError& error)
+
+            m_nakamaLogo->setColor(Color3B::WHITE);
+        }, [this](const NRtError& error)
         {
             CCLOGERROR("JoinTopic failed - error code %d, %s", error.code, error.message.c_str());
+            onError();
         }
     );
 }
@@ -254,10 +288,16 @@ void HelloWorld::sendChatMessage(const std::string& message)
     {
         CCLOG("Sent OK. message id %s", ack.message_id.c_str());
     },
-    [](const NRtError& error)
+    [this](const NRtError& error)
     {
         CCLOGERROR("Send topic message failed - error code %d, %s", error.code, error.message.c_str());
+        onError();
     });
+}
+
+void HelloWorld::onError()
+{
+    m_nakamaLogo->setColor(Color3B::RED);
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

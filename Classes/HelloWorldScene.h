@@ -52,9 +52,11 @@ protected:
     void connect();
     void joinChat(const std::string& topicName);
     void sendChatMessage(const std::string& message);
+    void onError();
 
 private:
     Label* m_label = nullptr;
+    Sprite* m_nakamaLogo = nullptr;
     NClientPtr m_client = nullptr;
     NRtClientPtr m_rtClient = nullptr;
     std::shared_ptr<NRtDefaultClientListener> m_rtListener = nullptr;
