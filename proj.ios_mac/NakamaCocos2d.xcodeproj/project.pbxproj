@@ -64,6 +64,8 @@
 		5D6B696B221A10FC005DB764 /* libgrpc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B6963221A10FC005DB764 /* libgrpc++.a */; };
 		5D6B696C221A10FC005DB764 /* libaddress_sorting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B6964221A10FC005DB764 /* libaddress_sorting.a */; };
 		5D6B696E221A1C2C005DB764 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B696D221A1C2C005DB764 /* libresolv.9.tbd */; };
+		5DC4A4C7221DEDD100F4E66E /* nakama_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */; };
+		5DC4A4C8221DEDD100F4E66E /* nakama_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -173,6 +175,7 @@
 		5D6B6963221A10FC005DB764 /* libgrpc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++.a"; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libgrpc++.a"; sourceTree = "<group>"; };
 		5D6B6964221A10FC005DB764 /* libaddress_sorting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaddress_sorting.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libaddress_sorting.a"; sourceTree = "<group>"; };
 		5D6B696D221A1C2C005DB764 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/lib/libresolv.9.tbd; sourceTree = DEVELOPER_DIR; };
+		5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nakama_logo.png; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -346,6 +349,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
@@ -506,6 +510,7 @@
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				4B9057CC21BC6252001E3681 /* LaunchScreenBackground.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				5DC4A4C7221DEDD100F4E66E /* nakama_logo.png in Resources */,
 				4B9057CD21BC6252001E3681 /* LaunchScreen.storyboard in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
@@ -520,6 +525,7 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
+				5DC4A4C8221DEDD100F4E66E /* nakama_logo.png in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
 			);
