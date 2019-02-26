@@ -147,6 +147,5 @@ if(LINUX OR WINDOWS)
 endif()
 
 # use Nakama SDK
-add_definitions(-DNAKAMA_API= -DNLOGS_ENABLED)
 add_subdirectory(nakama-cpp-sdk ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
 target_link_libraries(${APP_NAME} ext_nakama-cpp)
