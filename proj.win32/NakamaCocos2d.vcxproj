@@ -88,7 +88,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;websockets.lib;nakama-cppd.lib;grpc++d.lib;libprotobufd.lib;gprd.lib;grpcd.lib;caresd.lib;cryptod.lib;ssld.lib;address_sortingd.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;websockets.lib;nakama-cppd.lib;grpc++d.lib;libprotobufd.lib;gprd.lib;grpcd.lib;caresd.lib;address_sortingd.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>..\nakama-cpp-sdk\libs\win32\vc141;$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);..\cocos2d\external\curl\prebuilt\win32;$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
