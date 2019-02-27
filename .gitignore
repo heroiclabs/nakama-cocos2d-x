@@ -37,3 +37,5 @@ Release.Win32
 *.suo
 .vs
 .idea
+*.iml
+.DS_Store

@@ -56,10 +56,13 @@ include_directories(
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
+     Classes/NakamaCocos2d/NWebSocket.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
+     Classes/NakamaCocos2d/NWebSocket.h
+     Classes/NakamaCocos2d/NCocosLogSink.h
      )
 
 if(ANDROID)
@@ -142,3 +145,7 @@ endif()
 if(LINUX OR WINDOWS)
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
+
+# use Nakama SDK
+add_subdirectory(nakama-cpp-sdk ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
+target_link_libraries(${APP_NAME} ext_nakama-cpp)

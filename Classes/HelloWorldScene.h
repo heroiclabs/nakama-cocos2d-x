@@ -22,11 +22,10 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#pragma once
 
 #include "cocos2d.h"
-#include "NClient.h"
+#include "nakama-cpp/Nakama.h"
 
 using namespace Nakama;
 USING_NS_CC;
@@ -38,7 +37,7 @@ public:
 
     ~HelloWorld();
 
-    virtual bool init();
+    virtual bool init() override;
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
@@ -49,15 +48,18 @@ public:
 protected:
     std::string getDeviceId();
     void registerDevice();
-    void onLoginSucceeded();
+    void onLoginSucceeded(NSessionPtr session);
     void connect();
-    void joinTopic(const std::string& topicName);
-    void sendTopicMessage(const std::string& message);
+    void joinChat(const std::string& topicName);
+    void sendChatMessage(const std::string& message);
+    void onError();
 
 private:
     Label* m_label = nullptr;
-    NClient* m_client = nullptr;
-    NTopic m_topic;
+    Sprite* m_nakamaLogo = nullptr;
+    NClientPtr m_client = nullptr;
+    NRtClientPtr m_rtClient = nullptr;
+    std::shared_ptr<NRtDefaultClientListener> m_rtListener = nullptr;
+    NSessionPtr m_session;
+    std::string m_chatId;
 };
-
-#endif // __HELLOWORLD_SCENE_H__

@@ -1,72 +1,48 @@
-Nakama Cocos2d-x
+Nakama Cocos2d-x Client Example
 =============
 
-> Cocos2d-x 3.17 client for Nakama server 1.4.
+> Nakama Cocos2d-x client example for Nakama server 2.x.
 
 Nakama is an open-source distributed server for social and realtime games. For more information have a look at the [server documentation](https://heroiclabs.com/docs/).
 
-If you encounter any issues with the server you can generate diagnostics for us with `nakama doctor`. Send these to support@heroiclabs.com or [open an issue](https://github.com/heroiclabs/nakama/issues). If you experience any issues with the client, it can be useful to enable trace (`NLogger::getInstance().SetLevel(NLogLevel::Trace);`) to produce logs and [open an issue](https://github.com/heroiclabs/nakama-cocos2d-x/issues).
+If you encounter any issues with the server you can generate diagnostics for us with `nakama doctor`. Send these to support@heroiclabs.com or [open an issue](https://github.com/heroiclabs/nakama/issues).
 
 ### Getting Started
 
 #### Prerequisites
 
-To get started using Nakama in Cocos2d-x, you will need the following:
+To build example, you will need the following:
 
 1. [Cocos2d-x Engine](http://www.cocos2d-x.org/download) 3.17 or greater.
-2. A compiler for the platform you are developing on, such as [Visual Studio](https://www.visualstudio.com/vs/community/) on Windows or [XCode](https://developer.apple.com/xcode/download/) on OSX.
-3. [nakama-cocos2d-x](https://github.com/heroiclabs/nakama-cocos2d-x/releases)
+2. [Nakama Cocos2d-x C++ SDK](https://github.com/heroiclabs/nakama-cpp/releases)
+3. A compiler for the platform you are developing on, such as [Visual Studio](https://www.visualstudio.com/vs/community/) on Windows or [XCode](https://developer.apple.com/xcode/download/) on OSX.
 
 #### Supported platforms
 
-Windows, Android, iOS, Mac
+Windows, Android, iOS, Mac, Linux
 
 #### Setup
 
-To use nakama-cocos2d-x in your cocos2d-x project, you'll need to copy the nakama-cocos2d-x files you downloaded into the appropriate place. To do this:
+You'll need to copy the Nakama C++ SDK and cocos2d files you downloaded into the appropriate place. To do this:
 
-1. Open your cocos2d-x project folder in Explorer or Finder.
-2. Copy `cocos2d-x` engine folder to `cocos2d` folder
-3. Copy the `Nakama` and `ThirdParty` folders from the nakama-cocos2d-x release you downloaded, into `Classes` folder.
+1. Copy `cocos2d-x` engine folder to `nakama-cocos2d-x/cocos2d`
+2. Copy the `nakama-cpp-sdk` folder from the Nakama C++ release you downloaded, to `nakama-cocos2d-x/nakama-cpp-sdk`.
 
 Folder structure should be as following:
 ```
-<Your Project Root>
-   cocos2d
-   Classes
-       Nakama
-       ThirdParty
+nakama-cocos2d-x/
+   cocos2d/
+   nakama-cpp-sdk/
 ```
 
-4. Now add all .cpp, .cc files from Nakama folder to your project:
-    * Windows - proj.win32\\{Project Name}.sln
-    * Android - proj.android\app\jni\Android.mk
-    * iOS/Mac - proj.ios_mac\\{Project Name}.xcodeproj
+### Nakama Cocos2d-x Client guide
 
-5. Add link libraries to your project:
-    * libprotobuf - from Classes\ThirdParty\lib\\{platform}
-    * websockets  - cocos2d\external\websockets\prebuilt\\{platform}
+You can find Nakama Cocos2d-x Client guide [here](https://heroiclabs.com/docs/cocos2d-x-client-guide/).
 
-6. Add defines for project:
-    * NAKAMA_API=
-    * COCOS2D
+### License
 
-7. Add include directories for project:
-    * Classes\Nakama\Public\NakamaSDK
-    * Classes\Nakama\Public
-    * Classes\Nakama\Private
-    * Classes\ThirdParty\include
+This project is licensed under the [Apache-2 License](https://github.com/heroiclabs/nakama-dotnet/blob/master/LICENSE).
 
-At this point, you are done. Try to build.
+### Special Thanks
 
-#### Server connect
-
-To create a client and connect to the Nakama server 1.4 with the default settings:
-
-```c++
-#include "NClient.h"
-
-using namespace Nakama;
-
-NClient client = NClient::Default("defaultkey");
-```
+Thanks to @dimon4eg for this excellent support on developing Nakama C++, Cocos2d-x and Unreal client libraries.

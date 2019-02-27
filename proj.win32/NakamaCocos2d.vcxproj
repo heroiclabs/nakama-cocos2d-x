@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -25,7 +25,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v141</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -35,7 +35,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v141</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -75,8 +75,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);..\Classes\Nakama\Public\NakamaSDK;..\Classes\Nakama\Public;..\Classes\Nakama\Private;..\Classes\ThirdParty\include;$(EngineRoot)external\websockets\include\win32</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NAKAMA_API=;COCOS2D;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);..\Classes\NakamaCocos2d;..\nakama-cpp-sdk\include;$(EngineRoot)external\websockets\include\win32</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -88,9 +88,9 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;libprotobufd.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;websockets.lib;nakama-cppd.lib;grpc++d.lib;libprotobufd.lib;gprd.lib;grpcd.lib;caresd.lib;address_sortingd.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);..\Classes\ThirdParty\lib\vs2015win32debug;..\cocos2d\external\curl\prebuilt\win32</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\nakama-cpp-sdk\libs\win32\vc141;$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);..\cocos2d\external\curl\prebuilt\win32;$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -100,7 +100,8 @@
       </Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command></Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
@@ -116,8 +117,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);..\Classes\Nakama\Public\NakamaSDK;..\Classes\Nakama\Public;..\Classes\Nakama\Private;..\Classes\ThirdParty\include;$(EngineRoot)external\websockets\include\win32</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NAKAMA_API=;COCOS2D;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);..\Classes\NakamaCocos2d;..\nakama-cpp-sdk\include;$(EngineRoot)external\websockets\include\win32</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>
@@ -128,9 +129,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;libprotobuf.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;libprotobuf.lib;websockets.lib;nakama-cpp.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);..\Classes\ThirdParty\lib\vs2015win32;..\cocos2d\external\curl\prebuilt\win32</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\nakama-cpp-sdk\libs\win32\vc141;$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);..\cocos2d\external\curl\prebuilt\win32;$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -149,158 +150,14 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\api.pb.cc" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NAuthenticateMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NClient.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NCursor.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NFriend.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NFriendAddMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NFriendBlockMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NFriendRemoveMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NFriendsListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupAddUserMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupCreateMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupJoinMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupKickUserMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupLeaveMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupPromoteUserMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupRemoveMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupsFetchMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupsListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupsSelfListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupUpdateMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NGroupUsersListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NLeaderboardRecordsFetchMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NLeaderboardRecordsListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NLeaderboardRecordWriteMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NLeaderboardsListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NLogger.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NMatchCreateMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NMatchDataSendMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NMatchJoinMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NMatchLeaveMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NMatchmakeAddMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NMatchmakeRemoveMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NNotificationsListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NNotificationsRemoveMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NPurchaseValidateMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NRuntimeRpcMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NSelf.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NSelfFetchMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NSelfLinkMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NSelfUnlinkMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NSelfUpdateMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NSession.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NStorageFetchMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NStorageListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NStorageRemoveMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NStorageUpdateMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NStorageWriteMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NTopicJoinMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NTopicLeaveMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NTopicMessageSendMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NTopicMessagesListMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NakamaSDK\NUsersFetchMessage.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NCocosTransport.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\NWebSocket.cpp" />
-    <ClCompile Include="..\Classes\Nakama\Private\PlatfromIntegration.cpp" />
+    <ClCompile Include="..\Classes\NakamaCocos2d\NWebSocket.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
-    <ClInclude Include="..\Classes\Nakama\Private\NCocosTransport.h" />
-    <ClInclude Include="..\Classes\Nakama\Private\NWebSocket.h" />
-    <ClInclude Include="..\Classes\Nakama\Private\PlatfromIntegration.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\api.pb.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\Defines.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\INCollatedMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\INLogSink.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\INTransport.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\INUncollatedMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NAuthenticateMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NCallbacks.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NClient.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NConsoleLogSink.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NCursor.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NError.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NFriend.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NFriendAddMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NFriendBlockMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NFriendRemoveMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NFriendsListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroup.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupAddUserMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupCreateMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupJoinMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupKickUserMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupLeaveMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupPromoteUserMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupRemoveMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupSelf.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupsFetchMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupsListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupsSelfListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupUpdateMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupUser.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NGroupUsersListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLeaderboard.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLeaderboardRecord.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLeaderboardRecordsFetchMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLeaderboardRecordsListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLeaderboardRecordWriteMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLeaderboardsListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLogger.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLogLevel.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NLogMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatch.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchCreateMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchData.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchDataSendMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchJoinMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchLeaveMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchmakeAddMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchmakeFilter.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchmakeMatched.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchmakeRemoveMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchmakeTicket.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchmakeUserProperty.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchPresence.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NMatchToken.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NNotification.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NNotificationsListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NNotificationsRemoveMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NPurchaseRecord.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NPurchaseValidateMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NResultSet.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NRuntimeRpc.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NRuntimeRpcMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NSelf.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NSelfFetchMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NSelfLinkMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NSelfUnlinkMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NSelfUpdateMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NSession.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NStorageData.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NStorageFetchMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NStorageKey.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NStorageListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NStorageRemoveMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NStorageUpdateMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NStorageWriteMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopic.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopicId.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopicJoinMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopicLeaveMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopicMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopicMessageAck.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopicMessageSendMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopicMessagesListMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NTopicPresence.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NUser.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NUserPresence.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NakamaSDK\NUsersFetchMessage.h" />
-    <ClInclude Include="..\Classes\Nakama\Public\NCocosLogSink.h" />
+    <ClInclude Include="..\Classes\NakamaCocos2d\NCocosLogSink.h" />
+    <ClInclude Include="..\Classes\NakamaCocos2d\NWebSocket.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
