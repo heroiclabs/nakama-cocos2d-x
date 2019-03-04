@@ -10,6 +10,8 @@ Copy all (except `nakama-cpp-android` and `CMakeLists.txt`) to `nakama-cocos2d-x
 
 Remove `zlib` libs as cocos2d has own zlib.
 
+Copy `README.md` to `release/nakama-cpp-sdk/README.md`.
+
 Release folder structure:
 ```
 nakama-cocos2d-x-sdk/
