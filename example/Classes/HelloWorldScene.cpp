@@ -286,7 +286,7 @@ void HelloWorld::sendChatMessage(const std::string& message)
 
     m_rtClient->writeChatMessage(m_chatId, data, [](const NChannelMessageAck& ack)
     {
-        CCLOG("Sent OK. message id %s", ack.message_id.c_str());
+        CCLOG("Sent OK. message id %s", ack.messageId.c_str());
     },
     [this](const NRtError& error)
     {
