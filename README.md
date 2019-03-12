@@ -241,9 +241,9 @@ The cocos2d-x C++ SDK is based on [General C++ SDK](https://github.com/heroiclab
 
 You can find Nakama Cocos2d-x Client guide [here](https://heroiclabs.com/docs/cocos2d-x-client-guide/).
 
-## Full C++ Client example
+## Full Cocos2d-x C++ Client example
 
-You can find the C++ Client example [here](https://github.com/heroiclabs/nakama-cpp/tree/master/examples/nakama-cmake-client-example)
+You can find the Cocos2d-x C++ Client example [here](https://github.com/heroiclabs/nakama-cocos2d-x/tree/master/example)
 
 ## License
 
