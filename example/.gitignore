@@ -29,6 +29,7 @@
 *.app
 
 cocos2d
+nakama-cocos2d-x-sdk
 bin
 Debug.Win32
 Release.Win32

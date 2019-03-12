@@ -156,24 +156,24 @@
 		5D163BCC22068F43001C7C5D /* NWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWebSocket.h; sourceTree = "<group>"; };
 		5D163BCD22068F43001C7C5D /* NCocosLogSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCocosLogSink.h; sourceTree = "<group>"; };
 		5D163BCE22068F43001C7C5D /* NWebSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NWebSocket.cpp; sourceTree = "<group>"; };
-		5D1676D622069D9C0020E1CE /* libnakama-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnakama-cpp.a"; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libnakama-cpp.a"; sourceTree = "<group>"; };
-		5D1676D822069DF00020E1CE /* libgpr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgpr.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libgpr.a"; sourceTree = "<group>"; };
-		5D1676D922069DF00020E1CE /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libprotobuf.a"; sourceTree = "<group>"; };
-		5D1676DA22069DF00020E1CE /* libcares.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcares.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libcares.a"; sourceTree = "<group>"; };
-		5D1676DB22069DF00020E1CE /* libgrpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgrpc.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libgrpc.a"; sourceTree = "<group>"; };
-		5D1676DC22069DF00020E1CE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libcrypto.a"; sourceTree = "<group>"; };
-		5D1676DD22069DF00020E1CE /* libgrpc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++.a"; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libgrpc++.a"; sourceTree = "<group>"; };
-		5D1676DF22069DF00020E1CE /* libaddress_sorting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaddress_sorting.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/mac/libaddress_sorting.a"; sourceTree = "<group>"; };
+		5D1676D622069D9C0020E1CE /* libnakama-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnakama-cpp.a"; path = "../nakama-cocos2d-x-sdk/libs/mac/libnakama-cpp.a"; sourceTree = "<group>"; };
+		5D1676D822069DF00020E1CE /* libgpr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgpr.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libgpr.a"; sourceTree = "<group>"; };
+		5D1676D922069DF00020E1CE /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libprotobuf.a"; sourceTree = "<group>"; };
+		5D1676DA22069DF00020E1CE /* libcares.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcares.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libcares.a"; sourceTree = "<group>"; };
+		5D1676DB22069DF00020E1CE /* libgrpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgrpc.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libgrpc.a"; sourceTree = "<group>"; };
+		5D1676DC22069DF00020E1CE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libcrypto.a"; sourceTree = "<group>"; };
+		5D1676DD22069DF00020E1CE /* libgrpc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++.a"; path = "../nakama-cocos2d-x-sdk/libs/mac/libgrpc++.a"; sourceTree = "<group>"; };
+		5D1676DF22069DF00020E1CE /* libaddress_sorting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaddress_sorting.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libaddress_sorting.a"; sourceTree = "<group>"; };
 		5D6101F0221625C800D9055B /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../cocos2d/external/openssl/prebuilt/mac/libssl.a; sourceTree = "<group>"; };
-		5D6B695B221A01BA005DB764 /* libnakama-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnakama-cpp.a"; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libnakama-cpp.a"; sourceTree = "<group>"; };
-		5D6B695D221A10FC005DB764 /* libcares.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcares.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libcares.a"; sourceTree = "<group>"; };
-		5D6B695E221A10FC005DB764 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libssl.a"; sourceTree = "<group>"; };
-		5D6B695F221A10FC005DB764 /* libgpr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgpr.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libgpr.a"; sourceTree = "<group>"; };
-		5D6B6960221A10FC005DB764 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libprotobuf.a"; sourceTree = "<group>"; };
-		5D6B6961221A10FC005DB764 /* libgrpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgrpc.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libgrpc.a"; sourceTree = "<group>"; };
-		5D6B6962221A10FC005DB764 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libcrypto.a"; sourceTree = "<group>"; };
-		5D6B6963221A10FC005DB764 /* libgrpc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++.a"; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libgrpc++.a"; sourceTree = "<group>"; };
-		5D6B6964221A10FC005DB764 /* libaddress_sorting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaddress_sorting.a; path = "../../nakama-cpp/release/nakama-cpp-sdk/libs/ios/libaddress_sorting.a"; sourceTree = "<group>"; };
+		5D6B695B221A01BA005DB764 /* libnakama-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnakama-cpp.a"; path = "../nakama-cocos2d-x-sdk/libs/ios/libnakama-cpp.a"; sourceTree = "<group>"; };
+		5D6B695D221A10FC005DB764 /* libcares.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcares.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libcares.a"; sourceTree = "<group>"; };
+		5D6B695E221A10FC005DB764 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libssl.a"; sourceTree = "<group>"; };
+		5D6B695F221A10FC005DB764 /* libgpr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgpr.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libgpr.a"; sourceTree = "<group>"; };
+		5D6B6960221A10FC005DB764 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libprotobuf.a"; sourceTree = "<group>"; };
+		5D6B6961221A10FC005DB764 /* libgrpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgrpc.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libgrpc.a"; sourceTree = "<group>"; };
+		5D6B6962221A10FC005DB764 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libcrypto.a"; sourceTree = "<group>"; };
+		5D6B6963221A10FC005DB764 /* libgrpc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++.a"; path = "../nakama-cocos2d-x-sdk/libs/ios/libgrpc++.a"; sourceTree = "<group>"; };
+		5D6B6964221A10FC005DB764 /* libaddress_sorting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaddress_sorting.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libaddress_sorting.a"; sourceTree = "<group>"; };
 		5D6B696D221A1C2C005DB764 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/lib/libresolv.9.tbd; sourceTree = DEVELOPER_DIR; };
 		5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nakama_logo.png; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -606,7 +606,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"../nakama-cpp-sdk/libs/ios",
+					"../nakama-cocos2d-x-sdk/libs/ios",
 					../cocos2d/external/openssl/prebuilt/ios,
 				);
 				OTHER_LDFLAGS = (
@@ -616,7 +616,7 @@
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) ../nakama-cpp-sdk/include";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) ../nakama-cocos2d-x-sdk/include";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
@@ -652,7 +652,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"../nakama-cpp-sdk/libs/ios",
+					"../nakama-cocos2d-x-sdk/libs/ios",
 					../cocos2d/external/openssl/prebuilt/ios,
 				);
 				OTHER_LDFLAGS = (
@@ -662,7 +662,7 @@
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) ../nakama-cpp-sdk/include";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) ../nakama-cocos2d-x-sdk/include";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
@@ -695,7 +695,7 @@
 				INFOPLIST_FILE = mac/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"../nakama-cpp-sdk/libs/mac",
+					"../nakama-cocos2d-x-sdk/libs/mac",
 					../cocos2d/external/openssl/prebuilt/mac,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -703,7 +703,7 @@
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END) ../nakama-cpp-sdk/include";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END) ../nakama-cocos2d-x-sdk/include";
 			};
 			name = Debug;
 		};
@@ -734,7 +734,7 @@
 				INFOPLIST_FILE = mac/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"../nakama-cpp-sdk/libs/mac",
+					"../nakama-cocos2d-x-sdk/libs/mac",
 					../cocos2d/external/openssl/prebuilt/mac,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -742,7 +742,7 @@
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END) ../nakama-cpp-sdk/include";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END) ../nakama-cocos2d-x-sdk/include";
 			};
 			name = Release;
 		};

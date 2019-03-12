@@ -147,5 +147,5 @@ if(LINUX OR WINDOWS)
 endif()
 
 # use Nakama SDK
-add_subdirectory(nakama-cpp-sdk ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
+add_subdirectory(nakama-cocos2d-x-sdk ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
 target_link_libraries(${APP_NAME} ext_nakama-cpp)

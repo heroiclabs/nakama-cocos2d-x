@@ -26,13 +26,13 @@ Windows, Android, iOS, Mac, Linux
 You'll need to copy the Nakama C++ SDK and cocos2d files you downloaded into the appropriate place. To do this:
 
 1. Copy `cocos2d-x` engine folder to `example/cocos2d`
-2. Copy the `nakama-cpp-sdk` folder from the Nakama C++ release you downloaded, to `example/nakama-cpp-sdk`.
+2. Copy the `nakama-cocos2d-x-sdk` folder from the Nakama Cocos2d C++ release you downloaded, to `example/nakama-cocos2d-x-sdk`.
 
 Folder structure should be as following:
 ```
 example/
    cocos2d/
-   nakama-cpp-sdk/
+   nakama-cocos2d-x-sdk/
 ```
 
 ### Nakama Cocos2d-x Client guide
