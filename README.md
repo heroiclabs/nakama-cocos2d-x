@@ -19,7 +19,7 @@ You'll need to setup the server and database before you can connect with the cli
 
 2. Nakama Cocos2d-x C++ SDK is released with prebuilt libraries for following platforms and architectures:
 
-- Windows - Visual Studio 2015, 2017 (x86)
+- Windows - Visual Studio 2015, 2017 (x86, x64, Debug, Release)
 - Android - Android 4.1 (armeabi-v7a, arm64-v8a, x86, x86_64)
 - Linux - Ubuntu 14.04.5 (x86, x64)
 - Mac
@@ -81,8 +81,10 @@ In `Project Settings` add following:
 
 1. Add `NAKAMA_COCOS2D_SDK/include` in `C/C++ > General > Additional Include Directories`
 2. Add libs folder in `Linker > General > Additional Library Directories`:
-    - `NAKAMA_COCOS2D_SDK/libs/win32/vc140` - for VS 2015
-    - `NAKAMA_COCOS2D_SDK/libs/win32/vc141` - for VS 2017
+    - `NAKAMA_COCOS2D_SDK/libs/win32/v140` - for VS 2015 x86
+    - `NAKAMA_COCOS2D_SDK/libs/win32/v141` - for VS 2017 x86
+    - `NAKAMA_COCOS2D_SDK/libs/win64/v140` - for VS 2015 x64
+    - `NAKAMA_COCOS2D_SDK/libs/win64/v141` - for VS 2017 x64
 3. Add all `.lib` files located in libs folder in `Linker > Input > Additional Dependencies`
 
 ## Threading model
