@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A88B2641FC3D9C9005C14AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A88B2631FC3D9C9005C14AE /* Images.xcassets */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
+		1AF87B781F6F77F7007BE51C /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87B481F6F77D6007BE51C /* AppController.mm */; };
+		1AF87B881F6F781D007BE51C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF87B591F6F77D6007BE51C /* LaunchScreen.storyboard */; };
+		1AF87B891F6F781D007BE51C /* LaunchScreenBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AF87B5A1F6F77D6007BE51C /* LaunchScreenBackground.png */; };
+		1AF87B8A1F6F7822007BE51C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87B5B1F6F77D6007BE51C /* main.m */; };
+		1AF87B8B1F6F782A007BE51C /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87B5E1F6F77D6007BE51C /* RootViewController.mm */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -25,13 +31,7 @@
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
 		46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
-		4B9057CC21BC6252001E3681 /* LaunchScreenBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B9057C921BC6252001E3681 /* LaunchScreenBackground.png */; };
-		4B9057CD21BC6252001E3681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9057CA21BC6252001E3681 /* LaunchScreen.storyboard */; };
-		4B9057CE21BC6252001E3681 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9057CB21BC6252001E3681 /* Images.xcassets */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
-		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
-		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
-		503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FF17EB989F00D1A890 /* RootViewController.mm */; };
 		503AE10517EB98FF00D1A890 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11A17EB9C5A00D1A890 /* IOKit.framework */; };
 		5087E76317EB910900C73F5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -47,23 +47,6 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		5D163BCF22068F43001C7C5D /* NWebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D163BCE22068F43001C7C5D /* NWebSocket.cpp */; };
 		5D163BD022068F43001C7C5D /* NWebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D163BCE22068F43001C7C5D /* NWebSocket.cpp */; };
-		5D1676D722069D9C0020E1CE /* libnakama-cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676D622069D9C0020E1CE /* libnakama-cpp.a */; };
-		5D1676E022069DF00020E1CE /* libgpr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676D822069DF00020E1CE /* libgpr.a */; };
-		5D1676E122069DF00020E1CE /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676D922069DF00020E1CE /* libprotobuf.a */; };
-		5D1676E222069DF00020E1CE /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676DA22069DF00020E1CE /* libcares.a */; };
-		5D1676E322069DF00020E1CE /* libgrpc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676DB22069DF00020E1CE /* libgrpc.a */; };
-		5D1676E522069DF00020E1CE /* libgrpc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676DD22069DF00020E1CE /* libgrpc++.a */; };
-		5D1676E722069DF00020E1CE /* libaddress_sorting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1676DF22069DF00020E1CE /* libaddress_sorting.a */; };
-		5D6101F1221625C800D9055B /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6101F0221625C800D9055B /* libssl.a */; };
-		5D6B695C221A01BA005DB764 /* libnakama-cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B695B221A01BA005DB764 /* libnakama-cpp.a */; };
-		5D6B6965221A10FC005DB764 /* libcares.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B695D221A10FC005DB764 /* libcares.a */; };
-		5D6B6967221A10FC005DB764 /* libgpr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B695F221A10FC005DB764 /* libgpr.a */; };
-		5D6B6968221A10FC005DB764 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B6960221A10FC005DB764 /* libprotobuf.a */; };
-		5D6B6969221A10FC005DB764 /* libgrpc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B6961221A10FC005DB764 /* libgrpc.a */; };
-		5D6B696A221A10FC005DB764 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B6962221A10FC005DB764 /* libcrypto.a */; };
-		5D6B696B221A10FC005DB764 /* libgrpc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B6963221A10FC005DB764 /* libgrpc++.a */; };
-		5D6B696C221A10FC005DB764 /* libaddress_sorting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B6964221A10FC005DB764 /* libaddress_sorting.a */; };
-		5D6B696E221A1C2C005DB764 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6B696D221A1C2C005DB764 /* libresolv.9.tbd */; };
 		5DC4A4C7221DEDD100F4E66E /* nakama_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */; };
 		5DC4A4C8221DEDD100F4E66E /* nakama_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
@@ -79,6 +62,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1A7533E21F6F75F6007E8E6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 507B40FD1C31BDD30067B53E;
+			remoteInfo = "libcocos2d tvOS";
+		};
 		1AC6FAF8180E9839004C840B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
@@ -107,17 +97,21 @@
 			remoteGlobalIDString = A07A4C241783777C0073F6A7;
 			remoteInfo = "cocos2dx iOS";
 		};
-		4BA8CED421AC8F2200B78597 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 507B40FD1C31BDD30067B53E;
-			remoteInfo = "libcocos2d tvOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A88B2631FC3D9C9005C14AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
+		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
+		1AF87B471F6F77D6007BE51C /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		1AF87B481F6F77D6007BE51C /* AppController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
+		1AF87B581F6F77D6007BE51C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AF87B591F6F77D6007BE51C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1AF87B5A1F6F77D6007BE51C /* LaunchScreenBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreenBackground.png; sourceTree = "<group>"; };
+		1AF87B5B1F6F77D6007BE51C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1AF87B5C1F6F77D6007BE51C /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		1AF87B5D1F6F77D6007BE51C /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		1AF87B5E1F6F77D6007BE51C /* RootViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* NakamaCocos2d-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NakamaCocos2d-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -131,19 +125,8 @@
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
 		46880B8719C43A87006E1F66 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
-		4B9057C921BC6252001E3681 /* LaunchScreenBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LaunchScreenBackground.png; path = ios/LaunchScreenBackground.png; sourceTree = SOURCE_ROOT; };
-		4B9057CA21BC6252001E3681 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ios/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		4B9057CB21BC6252001E3681 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ios/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		4B9057D221BC642A001E3681 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ios/Info.plist; sourceTree = SOURCE_ROOT; };
-		4BA8CED821AC918E00B78597 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../Classes/ThirdParty/lib/osxx64/libprotobuf.a; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
-		503AE0FB17EB989F00D1A890 /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppController.mm; path = ios/AppController.mm; sourceTree = SOURCE_ROOT; };
-		503AE0FC17EB989F00D1A890 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ios/main.m; sourceTree = SOURCE_ROOT; };
-		503AE0FD17EB989F00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = ios/Prefix.pch; sourceTree = SOURCE_ROOT; };
-		503AE0FE17EB989F00D1A890 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ios/RootViewController.h; sourceTree = SOURCE_ROOT; };
-		503AE0FF17EB989F00D1A890 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = SOURCE_ROOT; };
 		503AE10317EB98FF00D1A890 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = mac/main.cpp; sourceTree = "<group>"; };
 		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = mac/Prefix.pch; sourceTree = "<group>"; };
 		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
@@ -156,25 +139,6 @@
 		5D163BCC22068F43001C7C5D /* NWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWebSocket.h; sourceTree = "<group>"; };
 		5D163BCD22068F43001C7C5D /* NCocosLogSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCocosLogSink.h; sourceTree = "<group>"; };
 		5D163BCE22068F43001C7C5D /* NWebSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NWebSocket.cpp; sourceTree = "<group>"; };
-		5D1676D622069D9C0020E1CE /* libnakama-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnakama-cpp.a"; path = "../nakama-cocos2d-x-sdk/libs/mac/libnakama-cpp.a"; sourceTree = "<group>"; };
-		5D1676D822069DF00020E1CE /* libgpr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgpr.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libgpr.a"; sourceTree = "<group>"; };
-		5D1676D922069DF00020E1CE /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libprotobuf.a"; sourceTree = "<group>"; };
-		5D1676DA22069DF00020E1CE /* libcares.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcares.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libcares.a"; sourceTree = "<group>"; };
-		5D1676DB22069DF00020E1CE /* libgrpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgrpc.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libgrpc.a"; sourceTree = "<group>"; };
-		5D1676DC22069DF00020E1CE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libcrypto.a"; sourceTree = "<group>"; };
-		5D1676DD22069DF00020E1CE /* libgrpc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++.a"; path = "../nakama-cocos2d-x-sdk/libs/mac/libgrpc++.a"; sourceTree = "<group>"; };
-		5D1676DF22069DF00020E1CE /* libaddress_sorting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaddress_sorting.a; path = "../nakama-cocos2d-x-sdk/libs/mac/libaddress_sorting.a"; sourceTree = "<group>"; };
-		5D6101F0221625C800D9055B /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../cocos2d/external/openssl/prebuilt/mac/libssl.a; sourceTree = "<group>"; };
-		5D6B695B221A01BA005DB764 /* libnakama-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnakama-cpp.a"; path = "../nakama-cocos2d-x-sdk/libs/ios/libnakama-cpp.a"; sourceTree = "<group>"; };
-		5D6B695D221A10FC005DB764 /* libcares.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcares.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libcares.a"; sourceTree = "<group>"; };
-		5D6B695E221A10FC005DB764 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libssl.a"; sourceTree = "<group>"; };
-		5D6B695F221A10FC005DB764 /* libgpr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgpr.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libgpr.a"; sourceTree = "<group>"; };
-		5D6B6960221A10FC005DB764 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libprotobuf.a"; sourceTree = "<group>"; };
-		5D6B6961221A10FC005DB764 /* libgrpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgrpc.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libgrpc.a"; sourceTree = "<group>"; };
-		5D6B6962221A10FC005DB764 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libcrypto.a"; sourceTree = "<group>"; };
-		5D6B6963221A10FC005DB764 /* libgrpc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++.a"; path = "../nakama-cocos2d-x-sdk/libs/ios/libgrpc++.a"; sourceTree = "<group>"; };
-		5D6B6964221A10FC005DB764 /* libaddress_sorting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaddress_sorting.a; path = "../nakama-cocos2d-x-sdk/libs/ios/libaddress_sorting.a"; sourceTree = "<group>"; };
-		5D6B696D221A1C2C005DB764 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/lib/libresolv.9.tbd; sourceTree = DEVELOPER_DIR; };
 		5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nakama_logo.png; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -193,15 +157,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D6B696E221A1C2C005DB764 /* libresolv.9.tbd in Frameworks */,
-				5D6B695C221A01BA005DB764 /* libnakama-cpp.a in Frameworks */,
-				5D6B696B221A10FC005DB764 /* libgrpc++.a in Frameworks */,
-				5D6B6969221A10FC005DB764 /* libgrpc.a in Frameworks */,
-				5D6B6968221A10FC005DB764 /* libprotobuf.a in Frameworks */,
-				5D6B6965221A10FC005DB764 /* libcares.a in Frameworks */,
-				5D6B696C221A10FC005DB764 /* libaddress_sorting.a in Frameworks */,
-				5D6B6967221A10FC005DB764 /* libgpr.a in Frameworks */,
-				5D6B696A221A10FC005DB764 /* libcrypto.a in Frameworks */,
 				294D0D641D0D56D500F7F5D4 /* CoreText.framework in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
@@ -223,14 +178,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D1676D722069D9C0020E1CE /* libnakama-cpp.a in Frameworks */,
-				5D1676E022069DF00020E1CE /* libgpr.a in Frameworks */,
-				5D1676E122069DF00020E1CE /* libprotobuf.a in Frameworks */,
-				5D1676E222069DF00020E1CE /* libcares.a in Frameworks */,
-				5D1676E322069DF00020E1CE /* libgrpc.a in Frameworks */,
-				5D1676E522069DF00020E1CE /* libgrpc++.a in Frameworks */,
-				5D1676E722069DF00020E1CE /* libaddress_sorting.a in Frameworks */,
-				5D6101F1221625C800D9055B /* libssl.a in Frameworks */,
 				ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */,
 				1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */,
 				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
@@ -249,24 +196,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				4B9057D221BC642A001E3681 /* Info.plist */,
-				4B9057CB21BC6252001E3681 /* Images.xcassets */,
-				4B9057CA21BC6252001E3681 /* LaunchScreen.storyboard */,
-				4B9057C921BC6252001E3681 /* LaunchScreenBackground.png */,
-				503AE0FA17EB989F00D1A890 /* AppController.h */,
-				503AE0FB17EB989F00D1A890 /* AppController.mm */,
-				503AE0FC17EB989F00D1A890 /* main.m */,
-				503AE0FD17EB989F00D1A890 /* Prefix.pch */,
-				503AE0FE17EB989F00D1A890 /* RootViewController.h */,
-				503AE0FF17EB989F00D1A890 /* RootViewController.mm */,
-			);
-			name = ios;
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,9 +210,26 @@
 			children = (
 				1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */,
 				1AC6FB07180E9839004C840B /* libcocos2d iOS.a */,
-				4BA8CED521AC8F2200B78597 /* libcocos2d tvOS.a */,
+				1A7533E31F6F75F6007E8E6F /* libcocos2d tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1AF87B461F6F77D6007BE51C /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				1A88B2631FC3D9C9005C14AE /* Images.xcassets */,
+				1AF87B471F6F77D6007BE51C /* AppController.h */,
+				1AF87B481F6F77D6007BE51C /* AppController.mm */,
+				1AF87B581F6F77D6007BE51C /* Info.plist */,
+				1AF87B591F6F77D6007BE51C /* LaunchScreen.storyboard */,
+				1AF87B5A1F6F77D6007BE51C /* LaunchScreenBackground.png */,
+				1AF87B5B1F6F77D6007BE51C /* main.m */,
+				1AF87B5C1F6F77D6007BE51C /* Prefix.pch */,
+				1AF87B5D1F6F77D6007BE51C /* RootViewController.h */,
+				1AF87B5E1F6F77D6007BE51C /* RootViewController.mm */,
+			);
+			path = ios;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -293,7 +239,7 @@
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				080E96DDFE201D6D7F000001 /* ios */,
+				1AF87B461F6F77D6007BE51C /* ios */,
 				503AE10617EB990700D1A890 /* mac */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -303,26 +249,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5D6B696D221A1C2C005DB764 /* libresolv.9.tbd */,
-				5D6B6964221A10FC005DB764 /* libaddress_sorting.a */,
-				5D6B695D221A10FC005DB764 /* libcares.a */,
-				5D6B6962221A10FC005DB764 /* libcrypto.a */,
-				5D6B695F221A10FC005DB764 /* libgpr.a */,
-				5D6B6961221A10FC005DB764 /* libgrpc.a */,
-				5D6B6963221A10FC005DB764 /* libgrpc++.a */,
-				5D6B6960221A10FC005DB764 /* libprotobuf.a */,
-				5D6B695E221A10FC005DB764 /* libssl.a */,
-				5D6B695B221A01BA005DB764 /* libnakama-cpp.a */,
-				5D6101F0221625C800D9055B /* libssl.a */,
-				5D1676DF22069DF00020E1CE /* libaddress_sorting.a */,
-				5D1676DA22069DF00020E1CE /* libcares.a */,
-				5D1676DC22069DF00020E1CE /* libcrypto.a */,
-				5D1676D822069DF00020E1CE /* libgpr.a */,
-				5D1676DB22069DF00020E1CE /* libgrpc.a */,
-				5D1676DD22069DF00020E1CE /* libgrpc++.a */,
-				5D1676D922069DF00020E1CE /* libprotobuf.a */,
-				5D1676D622069D9C0020E1CE /* libnakama-cpp.a */,
-				4BA8CED821AC918E00B78597 /* libprotobuf.a */,
 				294D0D631D0D56D500F7F5D4 /* CoreText.framework */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
 				ED545A7B1B68A1F400C3958E /* libiconv.dylib */,
@@ -333,6 +259,7 @@
 				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
 				5087E78A17EB975400C73F5D /* OpenGL.framework */,
 				5087E78817EB974C00C73F5D /* AppKit.framework */,
+				1ACB3243164770DE00914215 /* libcurl.a */,
 				BF170DB412928DE900B8313A /* libz.dylib */,
 				D44C620F132DFF4E0009C878 /* AudioToolbox.framework */,
 				D44C620D132DFF430009C878 /* AVFoundation.framework */,
@@ -477,6 +404,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		1A7533E31F6F75F6007E8E6F /* libcocos2d tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcocos2d tvOS.a";
+			remoteRef = 1A7533E21F6F75F6007E8E6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -491,13 +425,6 @@
 			remoteRef = 1AC6FB06180E9839004C840B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4BA8CED521AC8F2200B78597 /* libcocos2d tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libcocos2d tvOS.a";
-			remoteRef = 4BA8CED421AC8F2200B78597 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -506,14 +433,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
-				4B9057CE21BC6252001E3681 /* Images.xcassets in Resources */,
+				1A88B2641FC3D9C9005C14AE /* Images.xcassets in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
-				4B9057CC21BC6252001E3681 /* LaunchScreenBackground.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				5DC4A4C7221DEDD100F4E66E /* nakama_logo.png in Resources */,
-				4B9057CD21BC6252001E3681 /* LaunchScreen.storyboard in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
+				1AF87B891F6F781D007BE51C /* LaunchScreenBackground.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
+				1AF87B881F6F781D007BE51C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,12 +465,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF87B781F6F77F7007BE51C /* AppController.mm in Sources */,
+				1AF87B8B1F6F782A007BE51C /* RootViewController.mm in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				1AF87B8A1F6F7822007BE51C /* main.m in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
-				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
-				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5D163BCF22068F43001C7C5D /* NWebSocket.cpp in Sources */,
-				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
@@ -589,15 +517,10 @@
 					USE_FILE32API,
 					"COCOS2D_DEBUG=1",
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
-					COCOS2D,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					../Classes/Nakama/Private,
-					../Classes/Nakama/Public,
-					../Classes/Nakama/Public/NakamaSDK,
-					../Classes/ThirdParty/include,
 					../cocos2d/external/openssl/include/ios,
 					../cocos2d/external/websockets/include/ios,
 					../Classes,
@@ -606,7 +529,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"../nakama-cocos2d-x-sdk/libs/ios",
+					"../nakama-cocos2d-x-sdk/libs/shared-ios",
 					../cocos2d/external/openssl/prebuilt/ios,
 				);
 				OTHER_LDFLAGS = (
@@ -625,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
@@ -635,15 +559,10 @@
 					USE_FILE32API,
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
 					NDEBUG,
-					COCOS2D,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					../Classes/Nakama/Private,
-					../Classes/Nakama/Public,
-					../Classes/Nakama/Public/NakamaSDK,
-					../Classes/ThirdParty/include,
 					../cocos2d/external/openssl/include/ios,
 					../cocos2d/external/websockets/include/ios,
 					../Classes,
@@ -652,7 +571,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"../nakama-cocos2d-x-sdk/libs/ios",
+					"../nakama-cocos2d-x-sdk/shared-libs/ios",
 					../cocos2d/external/openssl/prebuilt/ios,
 				);
 				OTHER_LDFLAGS = (
@@ -682,7 +601,6 @@
 					USE_FILE32API,
 					"COCOS2D_DEBUG=1",
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
-					COCOS2D,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
@@ -721,7 +639,6 @@
 					USE_FILE32API,
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
 					NDEBUG,
-					COCOS2D,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
