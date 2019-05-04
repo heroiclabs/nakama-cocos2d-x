@@ -11,25 +11,25 @@ If you experience any issues with the client, it can be useful to enable debug l
 
 Full documentation is online - https://heroiclabs.com/docs
 
+## Supported platforms
+
+Nakama Cocos2d-x C++ SDK is released with prebuilt libraries for following platforms and architectures:
+
+- Windows - Visual Studio 2015, 2017, 2019 (x86, x64, Debug, Release)
+- Android - Android 4.1 (armeabi-v7a, arm64-v8a, x86, x86_64)
+- Linux - Ubuntu 14.04.5 (x86, x64)
+- Mac - 10.10+
+- iOS - 5.0+ (arm64, armv7, armv7s, x86_64), Bitcode is off
+
 ## Getting Started
 
 You'll need to setup the server and database before you can connect with the client. The simplest way is to use Docker but have a look at the [server documentation](https://github.com/heroiclabs/nakama#getting-started) for other options.
 
 1. Install and run the servers. Follow these [instructions](https://heroiclabs.com/docs/install-docker-quickstart).
 
-2. Nakama Cocos2d-x C++ SDK is released with prebuilt libraries for following platforms and architectures:
+2. Download the SDK from the [releases page](https://github.com/heroiclabs/nakama-cocos2d-x/releases).
 
-- Windows - Visual Studio 2015, 2017 (x86, x64, Debug, Release)
-- Android - Android 4.1 (armeabi-v7a, arm64-v8a, x86, x86_64)
-- Linux - Ubuntu 14.04.5 (x86, x64)
-- Mac
-- iOS - 5.0+ (arm64, armv7, armv7s, x86_64), Bitcode is off
-
-In theory any platform that meets the requirement for `grpc` and `boost` is also supported. The client is compiled with C++11.
-
-3. Download the SDK from the [releases page](https://github.com/heroiclabs/nakama-cocos2d-x/releases).
-
-4. Integrate the SDK into your project:
+3. Integrate the SDK into your project:
 
 When you've downloaded the SDK archive and extracted it to `NAKAMA_COCOS2D_SDK` folder, you should include it in your project.
 
@@ -41,9 +41,9 @@ We don't recommend to copy the SDK to your project because it's quite big in siz
 
 1. Add `NAKAMA_COCOS2D_SDK/include` in `Build Settings > Header Search Paths`
 2. Add libs folder in `Build Settings > Library Search Paths`:
-    - `NAKAMA_COCOS2D_SDK/libs/ios` - for iOS
-    - `NAKAMA_COCOS2D_SDK/libs/mac` - for Mac
-3. Add all `.a` files located in libs folder and `libresolv.9.tbd` in `General > Linked Frameworks and Libraries`
+    - `NAKAMA_COCOS2D_SDK/shared-libs/ios` - for iOS
+    - `NAKAMA_COCOS2D_SDK/shared-libs/mac` - for Mac
+3. Add `libnakama-cpp.dylib` file located in libs folder to `General > Linked Frameworks and Libraries`
 
 ### Setup for Android projects
 
@@ -55,8 +55,10 @@ If you use `ndk-build` then add following to your `Android.mk` file:
 # add this to your module
 LOCAL_STATIC_LIBRARIES += nakama-cpp
 
-# add this at bottom of Android.mk file
+# add this after $(call import-add-path, $(LOCAL_PATH)/../../../cocos2d)
 $(call import-add-path, NAKAMA_COCOS2D_SDK)
+
+# add this after $(call import-module, cocos)
 $(call import-module, nakama-cpp-android)
 ```
 
@@ -73,19 +75,22 @@ Add following to your `CMakeLists.txt` file:
 ```cmake
 add_subdirectory(NAKAMA_COCOS2D_SDK ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
 target_link_libraries(${APP_NAME} ext_nakama-cpp)
+CopyNakamaSharedLib(${APP_NAME})
 ```
 
 ### Setup for Visual Studio projects
 
 In `Project Settings` add following:
 
-1. Add `NAKAMA_COCOS2D_SDK/include` in `C/C++ > General > Additional Include Directories`
-2. Add libs folder in `Linker > General > Additional Library Directories`:
-    - `NAKAMA_COCOS2D_SDK/libs/win32/v140` - for VS 2015 x86
-    - `NAKAMA_COCOS2D_SDK/libs/win32/v141` - for VS 2017 x86
-    - `NAKAMA_COCOS2D_SDK/libs/win64/v140` - for VS 2015 x64
-    - `NAKAMA_COCOS2D_SDK/libs/win64/v141` - for VS 2017 x64
-3. Add all `.lib` files located in libs folder in `Linker > Input > Additional Dependencies`
+1. Add `NAKAMA_COCOS2D_SDK/include` to `C/C++ > General > Additional Include Directories`
+2. Add folder to `Linker > General > Additional Library Directories`:
+    - `NAKAMA_COCOS2D_SDK/shared-libs/win32/v140` - for VS 2015 x86
+    - `NAKAMA_COCOS2D_SDK/shared-libs/win64/v140` - for VS 2015 x64
+    - `NAKAMA_COCOS2D_SDK/shared-libs/win32/v141` - for VS 2017 x86
+    - `NAKAMA_COCOS2D_SDK/shared-libs/win64/v141` - for VS 2017 x64
+    - `NAKAMA_COCOS2D_SDK/shared-libs/win32/v142` - for VS 2019 x86
+    - `NAKAMA_COCOS2D_SDK/shared-libs/win64/v142` - for VS 2019 x64
+3. Add `.lib` file located in above folder to `Linker > Input > Additional Dependencies`
 
 ## Threading model
 
