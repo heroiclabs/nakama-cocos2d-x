@@ -149,3 +149,4 @@ endif()
 # use Nakama SDK
 add_subdirectory(nakama-cocos2d-x-sdk ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
 target_link_libraries(${APP_NAME} ext_nakama-cpp)
+CopyNakamaSharedLib(${APP_NAME})
