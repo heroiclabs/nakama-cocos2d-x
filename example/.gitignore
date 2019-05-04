@@ -41,3 +41,5 @@ Release.Win32
 .idea
 *.iml
 .DS_Store
+
+build_win32
