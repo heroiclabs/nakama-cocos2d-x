@@ -26,10 +26,11 @@ LOCAL_STATIC_LIBRARIES += nakama-cpp
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-add-path, $(LOCAL_PATH)/../../../cocos2d)
+$(call import-add-path, $(LOCAL_PATH)/../../../nakama-cocos2d-x-sdk)
+
 $(call import-module, cocos)
 
 # import Nakama Cocos2d C++ SDK
-$(call import-add-path, $(LOCAL_PATH)/../../../nakama-cocos2d-x-sdk)
 $(call import-module, nakama-cpp-android)
 
 # _COCOS_LIB_IMPORT_ANDROID_BEGIN
