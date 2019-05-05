@@ -42,12 +42,12 @@ namespace Nakama {
         }
     }
 
-    void NWebSocket::send(const NBytes & data)
+    bool NWebSocket::send(const NBytes & data)
     {
         if (_websocket.getReadyState() != network::WebSocket::State::OPEN)
         {
             NLOG_ERROR("Socket is not opened");
-            return;
+            return false;
         }
 
         if (_type == NRtTransportType::Binary)
@@ -58,6 +58,8 @@ namespace Nakama {
         {
             _websocket.send(data);
         }
+
+        return true;
     }
 
     void NWebSocket::disconnect()

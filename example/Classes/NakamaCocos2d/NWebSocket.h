@@ -34,7 +34,7 @@ namespace Nakama {
         void tick() override {}
         void connect(const std::string& url, NRtTransportType type) override;
         void disconnect() override;
-        void send(const NBytes& data) override;
+        bool send(const NBytes& data) override;
 
     private:
         // cocos2d::network::WebSocket::Delegate implementation
