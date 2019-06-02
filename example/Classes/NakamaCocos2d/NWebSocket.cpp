@@ -30,6 +30,14 @@ namespace Nakama {
         disconnect();
     }
 
+    void NWebSocket::setActivityTimeout(uint32_t timeoutMs)
+    {
+        if (timeoutMs > 0)
+        {
+            NLOG_ERROR("Not supported");
+        }
+    }
+
     void NWebSocket::connect(const std::string& url, NRtTransportType type)
     {
         _type = type;
@@ -38,7 +46,7 @@ namespace Nakama {
         {
             NLOG_ERROR("Unable to initialize websocket!");
 
-            NRtTransportInterface::onError("Unable to initialize websocket");
+            fireOnError("Unable to initialize websocket");
         }
     }
 
@@ -69,19 +77,21 @@ namespace Nakama {
 
     void NWebSocket::onOpen(network::WebSocket* ws)
     {
-        onConnected();
+        fireOnConnected();
     }
 
     void NWebSocket::onMessage(network::WebSocket* ws, const network::WebSocket::Data& data)
     {
         _receiveBuffer.assign(data.bytes, data.bytes + data.len);
 
-        NRtTransportInterface::onMessage(_receiveBuffer);
+        fireOnMessage(_receiveBuffer);
     }
 
     void NWebSocket::onClose(network::WebSocket* ws)
     {
-        onDisconnected();
+        NRtClientDisconnectInfo info;
+
+        fireOnDisconnected(info);
     }
 
     void NWebSocket::onError(network::WebSocket* ws, const network::WebSocket::ErrorCode& error)
@@ -98,7 +108,7 @@ namespace Nakama {
             break;
         }
 
-        NRtTransportInterface::onError("websocket error: " + description);
+        fireOnError("websocket error: " + description);
     }
 
 }
