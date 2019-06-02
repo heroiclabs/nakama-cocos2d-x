@@ -24,7 +24,10 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\NakamaCocos2d\NWebSocket.cpp">
+    <ClCompile Include="..\Classes\NakamaCocos2d\NCocosHTTP.cpp">
+      <Filter>src\NakamaCocos2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NakamaCocos2d\NCocosWebSocket.cpp">
       <Filter>src\NakamaCocos2d</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +44,10 @@
     <ClInclude Include="..\Classes\NakamaCocos2d\NCocosLogSink.h">
       <Filter>src\NakamaCocos2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\NakamaCocos2d\NWebSocket.h">
+    <ClInclude Include="..\Classes\NakamaCocos2d\NCocosHTTP.h">
+      <Filter>src\NakamaCocos2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NakamaCocos2d\NCocosWebSocket.h">
       <Filter>src\NakamaCocos2d</Filter>
     </ClInclude>
   </ItemGroup>

@@ -25,12 +25,14 @@
 
 namespace Nakama {
 
-    class NWebSocket : public cocos2d::network::WebSocket::Delegate, public NRtTransportInterface
+    class NCocosWebSocket : public cocos2d::network::WebSocket::Delegate, public NRtTransportInterface
     {
     public:
-        NWebSocket();
-        ~NWebSocket();
+        NCocosWebSocket();
+        ~NCocosWebSocket();
 
+        void setActivityTimeout(uint32_t timeoutMs);
+        uint32_t getActivityTimeout() const { return 0; }
         void tick() override {}
         void connect(const std::string& url, NRtTransportType type) override;
         void disconnect() override;

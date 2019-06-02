@@ -14,23 +14,34 @@
  * limitations under the License.
  */
 
-#include "NakamaCocos2d/NWebSocket.h"
+#include "NakamaCocos2d/NCocosWebSocket.h"
 #include "nakama-cpp/log/NLogger.h"
+
+#undef NMODULE_NAME
+#define NMODULE_NAME "NCocosWebSocket"
 
 USING_NS_CC;
 
 namespace Nakama {
 
-    NWebSocket::NWebSocket()
+    NCocosWebSocket::NCocosWebSocket()
     {
     }
 
-    NWebSocket::~NWebSocket()
+    NCocosWebSocket::~NCocosWebSocket()
     {
         disconnect();
     }
 
-    void NWebSocket::connect(const std::string& url, NRtTransportType type)
+    void NCocosWebSocket::setActivityTimeout(uint32_t timeoutMs)
+    {
+        if (timeoutMs > 0)
+        {
+            NLOG_ERROR("Not supported");
+        }
+    }
+
+    void NCocosWebSocket::connect(const std::string& url, NRtTransportType type)
     {
         _type = type;
 
@@ -38,11 +49,11 @@ namespace Nakama {
         {
             NLOG_ERROR("Unable to initialize websocket!");
 
-            NRtTransportInterface::onError("Unable to initialize websocket");
+            fireOnError("Unable to initialize websocket");
         }
     }
 
-    bool NWebSocket::send(const NBytes & data)
+    bool NCocosWebSocket::send(const NBytes & data)
     {
         if (_websocket.getReadyState() != network::WebSocket::State::OPEN)
         {
@@ -62,29 +73,31 @@ namespace Nakama {
         return true;
     }
 
-    void NWebSocket::disconnect()
+    void NCocosWebSocket::disconnect()
     {
         _websocket.closeAsync();
     }
 
-    void NWebSocket::onOpen(network::WebSocket* ws)
+    void NCocosWebSocket::onOpen(network::WebSocket* ws)
     {
-        onConnected();
+        fireOnConnected();
     }
 
-    void NWebSocket::onMessage(network::WebSocket* ws, const network::WebSocket::Data& data)
+    void NCocosWebSocket::onMessage(network::WebSocket* ws, const network::WebSocket::Data& data)
     {
         _receiveBuffer.assign(data.bytes, data.bytes + data.len);
 
-        NRtTransportInterface::onMessage(_receiveBuffer);
+        fireOnMessage(_receiveBuffer);
     }
 
-    void NWebSocket::onClose(network::WebSocket* ws)
+    void NCocosWebSocket::onClose(network::WebSocket* ws)
     {
-        onDisconnected();
+        NRtClientDisconnectInfo info;
+
+        fireOnDisconnected(info);
     }
 
-    void NWebSocket::onError(network::WebSocket* ws, const network::WebSocket::ErrorCode& error)
+    void NCocosWebSocket::onError(network::WebSocket* ws, const network::WebSocket::ErrorCode& error)
     {
         std::string description;
 
@@ -98,7 +111,7 @@ namespace Nakama {
             break;
         }
 
-        NRtTransportInterface::onError("websocket error: " + description);
+        fireOnError("websocket error: " + description);
     }
 
 }

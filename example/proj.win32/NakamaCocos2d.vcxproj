@@ -150,14 +150,16 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
-    <ClCompile Include="..\Classes\NakamaCocos2d\NWebSocket.cpp" />
+    <ClCompile Include="..\Classes\NakamaCocos2d\NCocosHTTP.cpp" />
+    <ClCompile Include="..\Classes\NakamaCocos2d\NCocosWebSocket.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\NakamaCocos2d\NCocosHTTP.h" />
     <ClInclude Include="..\Classes\NakamaCocos2d\NCocosLogSink.h" />
-    <ClInclude Include="..\Classes\NakamaCocos2d\NWebSocket.h" />
+    <ClInclude Include="..\Classes\NakamaCocos2d\NCocosWebSocket.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

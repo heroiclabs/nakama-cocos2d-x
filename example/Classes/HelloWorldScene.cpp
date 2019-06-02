@@ -25,7 +25,8 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "NakamaCocos2d/NCocosLogSink.h"
-#include "NakamaCocos2d/NWebSocket.h"
+#include "NakamaCocos2d/NCocosHTTP.h"
+#include "NakamaCocos2d/NCocosWebSocket.h"
 
 USING_NS_CC;
 
@@ -158,9 +159,9 @@ bool HelloWorld::init()
     DefaultClientParameters parameters;
 
     parameters.host = "127.0.0.1";
-    parameters.port = 7349;
+    parameters.port = DEFAULT_PORT;
 
-    m_client = createDefaultClient(parameters);
+    m_client = createRestClient(parameters, NHttpTransportPtr(new NCocosHTTP()));
 
     auto loginFailedCallback = [this](const NError& error)
     {
@@ -242,8 +243,8 @@ void HelloWorld::connect()
         m_label->setString(msg.username + ": " + msg.content);
     });
 
-    NRtTransportPtr transport(new NWebSocket());
-    m_rtClient = m_client->createRtClient(7350, transport);
+    NRtTransportPtr transport(new NCocosWebSocket());
+    m_rtClient = m_client->createRtClient(DEFAULT_PORT, transport);
     m_rtClient->setListener(m_rtListener.get());
 
 	CCLOG("Connect...");
