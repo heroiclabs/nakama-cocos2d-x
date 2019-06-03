@@ -30,6 +30,9 @@
     <ClCompile Include="..\Classes\NakamaCocos2d\NCocosWebSocket.cpp">
       <Filter>src\NakamaCocos2d</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\NakamaCocos2d\NCocosHelper.cpp">
+      <Filter>src\NakamaCocos2d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -48,6 +51,9 @@
       <Filter>src\NakamaCocos2d</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\NakamaCocos2d\NCocosWebSocket.h">
+      <Filter>src\NakamaCocos2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NakamaCocos2d\NCocosHelper.h">
       <Filter>src\NakamaCocos2d</Filter>
     </ClInclude>
   </ItemGroup>

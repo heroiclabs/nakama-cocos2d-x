@@ -158,7 +158,7 @@ bool HelloWorld::init()
 
     parameters.host = "127.0.0.1";
     parameters.port = DEFAULT_PORT;
-    parameters.ssl = true;
+    parameters.ssl = false;
 
     m_client = NCocosHelper::createDefaultClient(parameters);
 
