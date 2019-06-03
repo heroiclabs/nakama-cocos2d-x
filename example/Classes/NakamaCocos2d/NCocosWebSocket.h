@@ -31,8 +31,8 @@ namespace Nakama {
         NCocosWebSocket();
         ~NCocosWebSocket();
 
-        void setActivityTimeout(uint32_t timeoutMs);
-        uint32_t getActivityTimeout() const { return 0; }
+        void setActivityTimeout(uint32_t timeoutMs) override;
+        uint32_t getActivityTimeout() const override { return 0; }
         void tick() override {}
         void connect(const std::string& url, NRtTransportType type) override;
         void disconnect() override;

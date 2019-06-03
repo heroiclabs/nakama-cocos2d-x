@@ -24,9 +24,7 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "NakamaCocos2d/NCocosLogSink.h"
-#include "NakamaCocos2d/NCocosHTTP.h"
-#include "NakamaCocos2d/NCocosWebSocket.h"
+#include "NakamaCocos2d/NCocosHelper.h"
 
 USING_NS_CC;
 
@@ -143,7 +141,7 @@ bool HelloWorld::init()
         this->addChild(m_nakamaLogo, 0);
     }
 
-    NLogger::init(std::make_shared<NCocosLogSink>(), NLogLevel::Debug);
+    NCocosHelper::init(NLogLevel::Debug);
 
     auto tickCallback = [this](float dt)
     {
@@ -156,12 +154,13 @@ bool HelloWorld::init()
     // tick is required to pump requests queue in cocos thread
     getScheduler()->schedule(tickCallback, this, 0.05f /*sec*/, CC_REPEAT_FOREVER, 0, false, "nakama-tick");
 
-    DefaultClientParameters parameters;
+    NClientParameters parameters;
 
     parameters.host = "127.0.0.1";
     parameters.port = DEFAULT_PORT;
+    parameters.ssl = true;
 
-    m_client = createRestClient(parameters, NHttpTransportPtr(new NCocosHTTP()));
+    m_client = NCocosHelper::createDefaultClient(parameters);
 
     auto loginFailedCallback = [this](const NError& error)
     {
@@ -243,8 +242,7 @@ void HelloWorld::connect()
         m_label->setString(msg.username + ": " + msg.content);
     });
 
-    NRtTransportPtr transport(new NCocosWebSocket());
-    m_rtClient = m_client->createRtClient(DEFAULT_PORT, transport);
+    m_rtClient = NCocosHelper::createRtClient(m_client, DEFAULT_PORT);
     m_rtClient->setListener(m_rtListener.get());
 
 	CCLOG("Connect...");

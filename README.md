@@ -100,30 +100,31 @@ Nakama C++ is designed to use in one thread only.
 
 The client object has many methods to execute various features in the server or open realtime socket connections with the server.
 
-Include nakama header.
+Include nakama helper header.
 
 ```cpp
-#include "nakama-cpp/Nakama.h"
-#include "NakamaCocos2d/NCocosHTTP.h"
+#include "NakamaCocos2d/NCocosHelper.h"
 ```
 
-Use nakama namespace.
+Initialize logger with debug logging level.
 
 ```cpp
 using namespace Nakama;
+
+NCocosHelper::init(NLogLevel::Debug);
 ```
 
 Use the connection credentials to build a client object.
 
 ```cpp
-DefaultClientParameters parameters;
+NClientParameters parameters;
 parameters.serverKey = "defaultkey";
 parameters.host = "127.0.0.1";
 parameters.port = DEFAULT_PORT;
-NClientPtr client = createRestClient(parameters, NHttpTransportPtr(new NCocosHTTP()));
+NClientPtr client = NCocosHelper::createDefaultClient(parameters);
 ```
 
-The `createRestClient` will create HTTP/1.1 client to use REST API.
+The `createDefaultClient` will create HTTP/1.1 client to use REST API.
 
 ## Tick
 
@@ -208,12 +209,9 @@ client->getAccount(session, successCallback, errorCallback);
 The client can create one or more realtime clients with the server. Each realtime client can have it's own events listener registered for responses received from the server.
 
 ```cpp
-#include "NakamaCocos2d/NCocosWebSocket.h"
-
-int port = DEFAULT_PORT;
 bool createStatus = true; // if the socket should show the user as online to others.
 // define realtime client in your class as NRtClientPtr rtClient;
-rtClient = client->createRtClient(port, NRtTransportPtr(new NCocosWebSocket()));
+rtClient = NCocosHelper::createRtClient(client, DEFAULT_PORT);
 // define listener in your class as NRtDefaultClientListener listener;
 listener.setConnectCallback([]()
 {
@@ -232,9 +230,7 @@ Client logging is off by default.
 To enable logs output to console with debug logging level:
 
 ```cpp
-#include "NakamaCocos2d/NCocosLogSink.h"
-
-NLogger::init(std::make_shared<NCocosLogSink>(), NLogLevel::Debug);
+NCocosHelper::init(NLogLevel::Debug);
 ```
 
 ## Contribute

@@ -50,13 +50,17 @@ endif()
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
-     Classes/NakamaCocos2d/NWebSocket.cpp
+     Classes/NakamaCocos2d/NCocosWebSocket.cpp
+     Classes/NakamaCocos2d/NCocosHTTP.cpp
+     Classes/NakamaCocos2d/NCocosHelper.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
-     Classes/NakamaCocos2d/NWebSocket.h
+     Classes/NakamaCocos2d/NCocosWebSocket.h
+     Classes/NakamaCocos2d/NCocosHTTP.h
      Classes/NakamaCocos2d/NCocosLogSink.h
+     Classes/NakamaCocos2d/NCocosHelper.h
      )
 
 if(ANDROID)

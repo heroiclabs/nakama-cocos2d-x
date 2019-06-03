@@ -9,7 +9,9 @@ LOCAL_MODULE_FILENAME := libMyGame
 LOCAL_SRC_FILES := $(LOCAL_PATH)/hellocpp/main.cpp \
                    $(LOCAL_PATH)/../../../Classes/AppDelegate.cpp \
                    $(LOCAL_PATH)/../../../Classes/HelloWorldScene.cpp \
-                   $(LOCAL_PATH)/../../../Classes/NakamaCocos2d/NWebSocket.cpp
+                   $(LOCAL_PATH)/../../../Classes/NakamaCocos2d/NCocosHelper.cpp \
+                   $(LOCAL_PATH)/../../../Classes/NakamaCocos2d/NCocosHTTP.cpp \
+                   $(LOCAL_PATH)/../../../Classes/NakamaCocos2d/NCocosWebSocket.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../Classes/NakamaCocos2d

@@ -49,6 +49,8 @@
 		5D1F5BD422A40DE500550D24 /* NCocosWebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F5BD022A40DE500550D24 /* NCocosWebSocket.cpp */; };
 		5D1F5BD522A40DE500550D24 /* NCocosHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F5BD122A40DE500550D24 /* NCocosHTTP.cpp */; };
 		5D1F5BD622A40DE500550D24 /* NCocosHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F5BD122A40DE500550D24 /* NCocosHTTP.cpp */; };
+		5D75F62522A5DC9F0012B9F9 /* NCocosHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D75F62222A5DC9F0012B9F9 /* NCocosHelper.cpp */; };
+		5D75F62622A5DC9F0012B9F9 /* NCocosHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D75F62222A5DC9F0012B9F9 /* NCocosHelper.cpp */; };
 		5DC4A4C7221DEDD100F4E66E /* nakama_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */; };
 		5DC4A4C8221DEDD100F4E66E /* nakama_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */; };
 		5DC860F2227DC92500E2C313 /* libnakama-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC860F0227DC92500E2C313 /* libnakama-cpp.dylib */; };
@@ -147,6 +149,8 @@
 		5D1F5BD022A40DE500550D24 /* NCocosWebSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NCocosWebSocket.cpp; sourceTree = "<group>"; };
 		5D1F5BD122A40DE500550D24 /* NCocosHTTP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NCocosHTTP.cpp; sourceTree = "<group>"; };
 		5D1F5BD222A40DE500550D24 /* NCocosHTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCocosHTTP.h; sourceTree = "<group>"; };
+		5D75F62222A5DC9F0012B9F9 /* NCocosHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NCocosHelper.cpp; sourceTree = "<group>"; };
+		5D75F62422A5DC9F0012B9F9 /* NCocosHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCocosHelper.h; sourceTree = "<group>"; };
 		5DC4A4C5221DEDD100F4E66E /* nakama_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nakama_logo.png; sourceTree = "<group>"; };
 		5DC860F0227DC92500E2C313 /* libnakama-cpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libnakama-cpp.dylib"; path = "../../nakama-cocos2d-x-sdk/shared-libs/ios/libnakama-cpp.dylib"; sourceTree = "<group>"; };
 		5DC860F3227DCA5900E2C313 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../../libs/cocos2d-x-3.17.1/external/openssl/prebuilt/mac/libssl.a"; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 		5D163BCB22068F43001C7C5D /* NakamaCocos2d */ = {
 			isa = PBXGroup;
 			children = (
+				5D75F62222A5DC9F0012B9F9 /* NCocosHelper.cpp */,
+				5D75F62422A5DC9F0012B9F9 /* NCocosHelper.h */,
 				5D1F5BD122A40DE500550D24 /* NCocosHTTP.cpp */,
 				5D1F5BD222A40DE500550D24 /* NCocosHTTP.h */,
 				5D1F5BD022A40DE500550D24 /* NCocosWebSocket.cpp */,
@@ -493,6 +499,7 @@
 				1AF87B8A1F6F7822007BE51C /* main.m in Sources */,
 				5D1F5BD322A40DE500550D24 /* NCocosWebSocket.cpp in Sources */,
 				5D1F5BD522A40DE500550D24 /* NCocosHTTP.cpp in Sources */,
+				5D75F62522A5DC9F0012B9F9 /* NCocosHelper.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D75F62622A5DC9F0012B9F9 /* NCocosHelper.cpp in Sources */,
 				5D1F5BD422A40DE500550D24 /* NCocosWebSocket.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
