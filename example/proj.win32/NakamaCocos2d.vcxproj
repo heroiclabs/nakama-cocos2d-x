@@ -88,9 +88,9 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;websockets.lib;nakama-cppd.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;websockets.lib;nakama-cppd.lib;libprotobufd.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>..\nakama-cocos2d-x-sdk\shared-libs\win32\v141\$(Configuration);$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);..\cocos2d\external\curl\prebuilt\win32;$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\nakama-cocos2d-x-sdk\libs\win32\$(PlatformToolset)\$(Configuration);$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);..\cocos2d\external\curl\prebuilt\win32;$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -129,9 +129,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources" /D /E /I /F /Y
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;websockets.lib;nakama-cpp.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;websockets.lib;nakama-cpp.lib;libprotobuf.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>..\nakama-cocos2d-x-sdk\shared-libs\win32\v141\$(Configuration);$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);..\cocos2d\external\curl\prebuilt\win32;$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\nakama-cocos2d-x-sdk\libs\win32\$(PlatformToolset)\$(Configuration);$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);..\cocos2d\external\curl\prebuilt\win32;$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
