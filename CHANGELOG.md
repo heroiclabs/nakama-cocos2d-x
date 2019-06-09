@@ -4,6 +4,15 @@ All notable changes to this project are documented below.
 
 The format is based on [keep a changelog](http://keepachangelog.com/) and this project uses [semantic versioning](http://semver.org/).
 
+## [2.1.0] - 2019-06-09
+### Added
+- REST client (HTTP/1.1).
+- Add tournament start active time to the API response.
+
+### Changed
+- gRPC client is off.
+- Use Nakama as static lib.
+
 ## [2.0.3] - 2019-05-05
 ### Added
 - SSL support.

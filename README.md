@@ -41,9 +41,9 @@ We don't recommend to copy the SDK to your project because it's quite big in siz
 
 1. Add `NAKAMA_COCOS2D_SDK/include` in `Build Settings > Header Search Paths`
 2. Add libs folder in `Build Settings > Library Search Paths`:
-    - `NAKAMA_COCOS2D_SDK/shared-libs/ios` - for iOS
-    - `NAKAMA_COCOS2D_SDK/shared-libs/mac` - for Mac
-3. Add `libnakama-cpp.dylib` file located in libs folder to `General > Linked Frameworks and Libraries`
+    - `NAKAMA_COCOS2D_SDK/libs/ios` - for iOS
+    - `NAKAMA_COCOS2D_SDK/libs/mac` - for Mac
+3. Add all `.a` files located in libs folder to `General > Linked Frameworks and Libraries`
 
 ### Setup for Android projects
 
@@ -75,7 +75,6 @@ Add following to your `CMakeLists.txt` file:
 ```cmake
 add_subdirectory(NAKAMA_COCOS2D_SDK ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
 target_link_libraries(${APP_NAME} ext_nakama-cpp)
-CopyNakamaSharedLib(${APP_NAME})
 ```
 
 ### Setup for Visual Studio projects
@@ -84,13 +83,13 @@ In `Project Settings` add following:
 
 1. Add `NAKAMA_COCOS2D_SDK/include` to `C/C++ > General > Additional Include Directories`
 2. Add folder to `Linker > General > Additional Library Directories`:
-    - `NAKAMA_COCOS2D_SDK/shared-libs/win32/v140` - for VS 2015 x86
-    - `NAKAMA_COCOS2D_SDK/shared-libs/win64/v140` - for VS 2015 x64
-    - `NAKAMA_COCOS2D_SDK/shared-libs/win32/v141` - for VS 2017 x86
-    - `NAKAMA_COCOS2D_SDK/shared-libs/win64/v141` - for VS 2017 x64
-    - `NAKAMA_COCOS2D_SDK/shared-libs/win32/v142` - for VS 2019 x86
-    - `NAKAMA_COCOS2D_SDK/shared-libs/win64/v142` - for VS 2019 x64
-3. Add `.lib` file located in above folder to `Linker > Input > Additional Dependencies`
+    - `NAKAMA_COCOS2D_SDK/libs/win32/v140` - for VS 2015 x86
+    - `NAKAMA_COCOS2D_SDK/libs/win64/v140` - for VS 2015 x64
+    - `NAKAMA_COCOS2D_SDK/libs/win32/v141` - for VS 2017 x86
+    - `NAKAMA_COCOS2D_SDK/libs/win64/v141` - for VS 2017 x64
+    - `NAKAMA_COCOS2D_SDK/libs/win32/v142` - for VS 2019 x86
+    - `NAKAMA_COCOS2D_SDK/libs/win64/v142` - for VS 2019 x64
+3. Add all `.lib` files located in above folder to `Linker > Input > Additional Dependencies`
 
 ## Threading model
 
