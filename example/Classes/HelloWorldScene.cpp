@@ -178,6 +178,7 @@ bool HelloWorld::init()
         getDeviceId(),
         opt::nullopt,
         false,
+        {},
         std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         loginFailedCallback);
 
@@ -204,6 +205,7 @@ void HelloWorld::registerDevice()
         getDeviceId(),
         opt::nullopt,
         true,
+        {},
         std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         registerFailedCallback);
 }
