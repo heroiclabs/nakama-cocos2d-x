@@ -16,6 +16,7 @@
 
 #include "NakamaCocos2d/NCocosHTTP.h"
 #include "network/HttpClient.h"
+#include "nakama-cpp/StrUtil.h"
 
 USING_NS_CC;
 
@@ -52,7 +53,26 @@ namespace Nakama {
             cocosReq->setHeaders(headers);
         }
 
-        cocosReq->setUrl(_baseUri + req.path);
+        std::string url(_baseUri + req.path);
+        bool firstArg = true;
+
+        for (auto& it : req.queryArgs)
+        {
+            if (firstArg)
+            {
+                url += '?';
+                firstArg = false;
+            }
+            else
+            {
+                url += '&';
+            }
+            url += it.first;
+            url += '=';
+            url += urlEncode(it.second);
+        }
+
+        cocosReq->setUrl(url);
         cocosReq->setRequestData(req.body.c_str(), req.body.size());
 
         HttpRequest::Type type;
