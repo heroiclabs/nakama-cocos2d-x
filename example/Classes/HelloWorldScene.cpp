@@ -28,6 +28,8 @@
 
 USING_NS_CC;
 
+const std::string userName = "cocos2d-x-test-user";
+
 Scene* HelloWorld::createScene()
 {
     return HelloWorld::create();
@@ -165,20 +167,19 @@ bool HelloWorld::init()
     auto loginFailedCallback = [this](const NError& error)
     {
         onError();
-
-        if (error.code == ErrorCode::NotFound)
-        {
-            registerDevice();
-        }
     };
 
     CCLOG("Login...");
 
+    NStringMap vars;
+
+    vars.emplace("test", "value");
+
     m_client->authenticateDevice(
         getDeviceId(),
-        opt::nullopt,
-        false,
-        {},
+        userName,
+        true,
+        vars,
         std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         loginFailedCallback);
 
@@ -190,24 +191,7 @@ std::string HelloWorld::getDeviceId()
     // don't use this id in production.
     // this is for test only
     // https://heroiclabs.com/docs/authentication/#device
-    return "device123456";
-}
-
-void HelloWorld::registerDevice()
-{
-    auto registerFailedCallback = [this](const NError& error)
-    {
-        onError();
-    };
-
-    CCLOG("Register...");
-    m_client->authenticateDevice(
-        getDeviceId(),
-        opt::nullopt,
-        true,
-        {},
-        std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
-        registerFailedCallback);
+    return "device-123456-cocos2d-x";
 }
 
 void HelloWorld::onLoginSucceeded(NSessionPtr session)
@@ -215,6 +199,9 @@ void HelloWorld::onLoginSucceeded(NSessionPtr session)
     m_session = session;
 
     CCLOG("Login succeeded. user id: %s", m_session->getUserId().c_str());
+
+    CCASSERT(m_session->getUsername() == userName, "Wrong user name");
+    CCASSERT(m_session->getVariable("test") == "value", "Wrong value");
 
     m_nakamaLogo->setColor(Color3B::YELLOW);
 

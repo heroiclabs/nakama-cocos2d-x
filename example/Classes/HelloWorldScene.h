@@ -47,7 +47,6 @@ public:
 
 protected:
     std::string getDeviceId();
-    void registerDevice();
     void onLoginSucceeded(NSessionPtr session);
     void connect();
     void joinChat(const std::string& topicName);
