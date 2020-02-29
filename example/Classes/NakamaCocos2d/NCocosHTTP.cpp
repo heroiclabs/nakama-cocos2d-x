@@ -106,4 +106,9 @@ namespace Nakama {
         cocosReq->release();
     }
 
+    void NCocosHTTP::cancelAllRequests()
+    {
+        HttpClient::getInstance()->destroyInstance();
+    }
+
 }

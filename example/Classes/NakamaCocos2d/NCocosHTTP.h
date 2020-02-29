@@ -36,6 +36,8 @@ namespace Nakama {
 
         void request(const NHttpRequest& req, const NHttpResponseCallback& callback = nullptr) override;
 
+        void cancelAllRequests() override;
+
     private:
         std::string _baseUri;
     };
