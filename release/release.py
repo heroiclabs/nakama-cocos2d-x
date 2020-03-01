@@ -21,7 +21,7 @@ import subprocess
 import shutil
 
 _7zip_path = 'c:\\Program Files\\7-Zip\\7z.exe'
-sdk_path = './nakama-cocos2d-x-sdk'
+sdk_path = '../nakama-cocos2d-x-sdk'
 tmp_path = './_tmp'
 platforms = ['win32', 'win64', 'mac', 'ios', 'android', 'linux']
 libs_path = os.path.join(sdk_path, 'libs')
