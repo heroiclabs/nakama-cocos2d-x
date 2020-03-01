@@ -4,6 +4,14 @@ All notable changes to this project are documented below.
 
 The format is based on [keep a changelog](http://keepachangelog.com/) and this project uses [semantic versioning](http://semver.org/).
 
+## [2.3.0] - [2020-03-01]
+### Fixed
+- RPC call fails when body is empty.
+- RPC payload differences between Rest and RT clients.
+
+### Changed
+- Release for Ubuntu 18.04 x64 only (previously was Ubuntu 14.04.5 x86, x64).
+
 ## [2.2.1] - 2019-09-28
 ### Fixed
 - REST client: query args are not sent
