@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "NakamaCocos2d/NCocosWebSocket.h"
+#include "NCocosWebSocket.h"
 #include "nakama-cpp/log/NLogger.h"
 
 #undef NMODULE_NAME

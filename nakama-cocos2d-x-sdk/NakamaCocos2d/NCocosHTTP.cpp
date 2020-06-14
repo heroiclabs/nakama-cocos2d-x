@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "NakamaCocos2d/NCocosHTTP.h"
+#include "NCocosHTTP.h"
 #include "network/HttpClient.h"
 #include "nakama-cpp/StrUtil.h"
 
