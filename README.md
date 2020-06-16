@@ -1,6 +1,12 @@
 Nakama Cocos2d-x C++ Client SDK
 =============
 
+[![GitHub release](https://img.shields.io/github/release/heroiclabs/nakama-cocos2d-x.svg)](https://github.com/heroiclabs/nakama-cocos2d-x/releases/latest)
+[![Forum](https://img.shields.io/badge/forum-online-success.svg)](https://forum.heroiclabs.com)
+[![Client guide](https://img.shields.io/badge/client_guide-online-brightgreen)](https://heroiclabs.com/docs/cocos2d-x-client-guide)
+[![Reference](https://img.shields.io/badge/reference-online-brightgreen)](https://heroiclabs.github.io/nakama-cpp/html/index.html)
+[![License](https://img.shields.io/github/license/heroiclabs/nakama.svg)](https://github.com/heroiclabs/nakama/blob/master/LICENSE)
+
 > Cocos2d-x C++ client for Nakama server.
 
 [Nakama](https://github.com/heroiclabs/nakama) is an open-source server designed to power modern games and apps. Features include user accounts, chat, social, matchmaker, realtime multiplayer, and much [more](https://heroiclabs.com).
@@ -10,6 +16,9 @@ This client implements the full API and socket options with the server. It's wri
 If you experience any issues with the client, it can be useful to enable debug logs (see [Logging](#logging) section) and [open an issue](https://github.com/heroiclabs/nakama-cpp/issues).
 
 Full documentation is online - https://heroiclabs.com/docs
+
+## Notice
+**DO NOT** download source code from this repo **if you are not intended to create pull request**. This is not for end users.
 
 ## Supported platforms
 
@@ -43,7 +52,8 @@ We don't recommend to copy the SDK to your project because it's quite big in siz
 2. Add libs folder in `Build Settings > Library Search Paths`:
     - `NAKAMA_COCOS2D_SDK/libs/ios` - for iOS
     - `NAKAMA_COCOS2D_SDK/libs/mac` - for Mac
-3. Add all `.a` files located in libs folder to `General > Linked Frameworks and Libraries`
+3. Add all `.a` files located in libs folder to `General > Frameworks, Libraries, and Embedded Content`
+4. Add `Classes/NakamaCocos2d` folder to your XCode project as group (not a reference).
 
 ### Setup for Android projects
 
@@ -70,7 +80,32 @@ Android uses a permissions system which determines which platform services the a
 
 ### Setup for CMake projects
 
-Add following to your `CMakeLists.txt` file:
+Open for edit your `CMakeLists.txt` file and find following existing code:
+```cmake
+# mark app complie info and libs info
+set(all_code_files
+    ${GAME_HEADER}
+    ${GAME_SOURCE}
+    )
+```
+add next code before:
+```cmake
+# Cocos2d Nakama sources
+list(APPEND GAME_SOURCE
+     Classes/NakamaCocos2d/NCocosWebSocket.cpp
+     Classes/NakamaCocos2d/NCocosHTTP.cpp
+     Classes/NakamaCocos2d/NCocosHelper.cpp
+     )
+# Cocos2d Nakama headers
+list(APPEND GAME_HEADER
+     Classes/NakamaCocos2d/NCocosWebSocket.h
+     Classes/NakamaCocos2d/NCocosHTTP.h
+     Classes/NakamaCocos2d/NCocosLogSink.h
+     Classes/NakamaCocos2d/NCocosHelper.h
+     )
+```
+
+At bottom of your `CMakeLists.txt` file add following:
 
 ```cmake
 add_subdirectory(NAKAMA_COCOS2D_SDK ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
@@ -90,6 +125,7 @@ In `Project Settings` add following:
     - `NAKAMA_COCOS2D_SDK/libs/win32/v142` - for VS 2019 x86
     - `NAKAMA_COCOS2D_SDK/libs/win64/v142` - for VS 2019 x64
 3. Add all `.lib` files located in above folder to `Linker > Input > Additional Dependencies`
+4. Add sources from `Classes/NakamaCocos2d` to your Visual Studio project.
 
 ## Threading model
 
