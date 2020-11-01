@@ -68,7 +68,7 @@ def release_platform(platform):
     print('releasing', platform)
     move_platform_to_sdk(platform)
     ignore_list = ['example']
-    if platform != 'android':
+    if platform != 'android' and platform != 'all':
         ignore_list.append('nakama-cpp-android')
     out_arch = 'nakama-cocos2d-x-sdk_{version}_{platform}.7z'.format(version=version, platform=platform)
     remove_file(out_arch)
@@ -78,11 +78,13 @@ version = input('sdk version: ')
 
 print('releasing sdk version:', version)
 
-for platform in platforms:
-    move_all_to_temp()
-    release_platform(platform)
+release_platform('all')
 
-for platform in platforms:
-    move_platform_to_sdk(platform)
+#for platform in platforms:
+#    move_all_to_temp()
+#    release_platform(platform)
+
+#for platform in platforms:
+#    move_platform_to_sdk(platform)
 
 print('done.')
