@@ -26,9 +26,9 @@ Nakama Cocos2d-x C++ SDK is released with prebuilt libraries for following platf
 
 - Windows - Visual Studio 2015, 2017, 2019 (x86, x64, Debug, Release)
 - Android - Android 4.1 (armeabi-v7a, arm64-v8a, x86, x86_64)
-- Linux - Ubuntu 14.04.5 (x86, x64)
+- Linux - Ubuntu 18.04 (x64)
 - Mac - 10.10+
-- iOS - 5.0+ (arm64, armv7, armv7s, x86_64), Bitcode is off
+- iOS - 8.0+ (arm64, armv7, armv7s, x86_64), Bitcode is off
 
 ## Getting Started
 
