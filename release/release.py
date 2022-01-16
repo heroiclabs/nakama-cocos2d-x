@@ -74,7 +74,7 @@ def release_platform(platform):
     remove_file(out_arch)
     archive7zip(sdk_path, out_arch, ignore_list)
 
-version = input('sdk version: ')
+version = raw_input('sdk version: ')
 
 print('releasing sdk version:', version)
 
