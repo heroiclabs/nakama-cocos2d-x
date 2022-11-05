@@ -4,4 +4,6 @@ nakama-cocos2d-x-sdk/LICENSE
 nakama-cocos2d-x-sdk/README.md
 nakama-cocos2d-x-sdk/CHANGELOG.md
 example/proj*
+example/bin
+example/cocos2d
 .DS_Store
