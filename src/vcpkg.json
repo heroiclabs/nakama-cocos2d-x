@@ -1,0 +1,13 @@
+{
+    "name": "nakama-sdk-cocos2d-x",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "name": "nakama-sdk",
+        "features": ["external-ws"],
+        "version>=": "2.6.0#3"
+      }
+    ],
+    "default-features": [],
+    "builtin-baseline": "5fcea86177e7c81fa90e721bba2822649dd4b982"
+}
