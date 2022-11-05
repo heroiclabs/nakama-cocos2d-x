@@ -31,65 +31,14 @@ You'll need to setup the server and database before you can connect with the cli
 
 3. Integrate the SDK into your project:
 
-When you've downloaded the SDK archive and extracted it to `NAKAMA_COCOS2D_SDK` folder, you should include it in your project.
-
-Copy cocos2d-x specific files: `NAKAMA_COCOS2D_SDK/NakamaCocos2d` folder to `Classes` folder of your project.
-
-We don't recommend to copy the SDK to your project because it's quite big in size (~1 Gb).
-
-### Setup for Mac and iOS projects
-
-1. Add `NAKAMA_COCOS2D_SDK/include` in `Build Settings > Header Search Paths`
-2. Add libs folder in `Build Settings > Library Search Paths`:
-    - `NAKAMA_COCOS2D_SDK/libs/ios` - for iOS
-    - `NAKAMA_COCOS2D_SDK/libs/mac` - for Mac
-3. Add all `.a` files located in libs folder to `General > Linked Frameworks and Libraries`
-
-### Setup for Android projects
-
-If you use `CMake` then see [Setup for CMake projects](#setup-for-cmake-projects) section.
-
-If you use `ndk-build` then add following to your `Android.mk` file:
-
-```makefile
-# add this to your module
-LOCAL_STATIC_LIBRARIES += nakama-cpp
-
-# add this after $(call import-add-path, $(LOCAL_PATH)/../../../cocos2d)
-$(call import-add-path, NAKAMA_COCOS2D_SDK)
-
-# add this after $(call import-module, cocos)
-$(call import-module, nakama-cpp-android)
-```
-
-Android uses a permissions system which determines which platform services the application will request to use and ask permission for from the user. The client uses the network to communicate with the server so you must add the "INTERNET" permission.
-
-```xml
-<uses-permission android:name="android.permission.INTERNET"/>
-```
-
 ### Setup for CMake projects
 
 Add following to your `CMakeLists.txt` file:
 
 ```cmake
-add_subdirectory(NAKAMA_COCOS2D_SDK ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
-target_link_libraries(${APP_NAME} ext_nakama-cpp)
+find_package(nakama-cpp-cocos2d-x)
+target_link_libraries(${APP_NAME} nakama-cpp-cocos2d-x)
 ```
-
-### Setup for Visual Studio projects
-
-In `Project Settings` add following:
-
-1. Add `NAKAMA_COCOS2D_SDK/include` to `C/C++ > General > Additional Include Directories`
-2. Add folder to `Linker > General > Additional Library Directories`:
-    - `NAKAMA_COCOS2D_SDK/libs/win32/v140` - for VS 2015 x86
-    - `NAKAMA_COCOS2D_SDK/libs/win64/v140` - for VS 2015 x64
-    - `NAKAMA_COCOS2D_SDK/libs/win32/v141` - for VS 2017 x86
-    - `NAKAMA_COCOS2D_SDK/libs/win64/v141` - for VS 2017 x64
-    - `NAKAMA_COCOS2D_SDK/libs/win32/v142` - for VS 2019 x86
-    - `NAKAMA_COCOS2D_SDK/libs/win64/v142` - for VS 2019 x64
-3. Add all `.lib` files located in above folder to `Linker > Input > Additional Dependencies`
 
 ## Threading model
 

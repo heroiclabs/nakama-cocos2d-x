@@ -1,0 +1,29 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 21,
+      "patch": 0
+    },
+    "configurePresets": [
+      {
+        "name": "default",
+        "displayName": "",
+        "description": "",
+        "binaryDir": "build/${presetName}",
+        "installDir": "out",
+        "cacheVariables": {
+          "CMAKE_CONFIGURATION_TYPES": "Debug;MinSizeRel;RelWithDebInfo",
+          "CMAKE_INSTALL_LIBDIR": "${presetName}"
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "default",
+        "configurePreset": "default",
+        "configuration": "MinSizeRel",
+        "verbose": true
+      }
+    ]
+}
