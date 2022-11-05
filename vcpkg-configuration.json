@@ -5,7 +5,7 @@
             "kind": "git",
             "repository": "https://github.com/heroiclabs/nakama-cpp",
             "baseline": "184a875054178604d2c3a1b777eb49abbb5babf7",
-            "reference": "luke/feature-rework",
+            "reference": "master",
             "packages": ["nakama-sdk"]
         }
     ]
