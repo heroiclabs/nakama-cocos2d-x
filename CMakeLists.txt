@@ -18,18 +18,14 @@ cmake_minimum_required(VERSION 3.23)
 
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 
-
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(nakama-sdk)
 
-file(
-    GLOB SRCS
-    LIST_DIRECTORIES false
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h*"
-)
+file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*")
+file(GLOB HEADERS include/*)
 
 add_library(nakama-cpp-cocos2d-x SRCS)
+target_include_directories(nakama-cpp-cocos2d-x PUBLIC HEADERS)
 target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk)
