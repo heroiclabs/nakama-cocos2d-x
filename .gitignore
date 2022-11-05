@@ -7,3 +7,4 @@ example/proj*
 example/bin
 example/cocos2d
 .DS_Store
+build

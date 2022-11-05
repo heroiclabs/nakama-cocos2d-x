@@ -4,7 +4,7 @@
         {
             "kind": "git",
             "repository": "https://github.com/heroiclabs/nakama-cpp",
-            "baseline": "184a875054178604d2c3a1b777eb49abbb5babf7",
+            "baseline": "d93640b175fe5091970875905e0d8627e212508b",
             "reference": "master",
             "packages": ["nakama-sdk"]
         }
