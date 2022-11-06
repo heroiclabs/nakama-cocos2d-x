@@ -4,7 +4,7 @@
     "dependencies": [
       {
         "name": "nakama-sdk",
-        "features": ["external-ws"],
+        "features": ["external-ws", "curl", "wslay"],
         "version>=": "2.6.0#3"
       }
     ],

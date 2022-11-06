@@ -24,9 +24,11 @@ find_package(nakama-sdk)
 file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*")
 file(GLOB HEADERS include/*)
 
-add_library(nakama-cpp-cocos2d-x SRCS)
+add_library(nakama-cpp-cocos2d-x ${SRCS})
 target_include_directories(nakama-cpp-cocos2d-x PUBLIC HEADERS)
 target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk)
+
+include(FetchContent)
 
 FetchContent_Declare(
   cocos2d-x

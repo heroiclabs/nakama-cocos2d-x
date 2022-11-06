@@ -6,7 +6,7 @@
             "repository": "https://github.com/heroiclabs/nakama-cpp",
             "baseline": "d93640b175fe5091970875905e0d8627e212508b",
             "reference": "master",
-            "packages": ["nakama-sdk"]
+            "packages": ["nakama-sdk", "wslay"]
         }
     ]
 }
