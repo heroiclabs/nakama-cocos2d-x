@@ -23,10 +23,9 @@ find_package(optional-lite)
 find_package(nakama-sdk)
 
 file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*")
-file(GLOB HEADERS include/*)
 
 add_library(nakama-cpp-cocos2d-x ${SRCS})
-target_include_directories(nakama-cpp-cocos2d-x PUBLIC HEADERS)
+target_include_directories(nakama-cpp-cocos2d-x PUBLIC include)
 target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk)
 
 include(FetchContent)
@@ -37,5 +36,6 @@ FetchContent_Declare(
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
 )
 
+FetchContent_MakeAvailable(cocos2d-x)
 
 target_link_libraries(nakama-cpp-cocos2d-x PRIVATE cocos2d-x)

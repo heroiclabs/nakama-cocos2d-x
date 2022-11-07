@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include "nakama-cpp/NCocosHTTP.h"
+#include "NCocosHTTP.h"
 #include "network/HttpClient.h"
-#include "nakama-cpp/StrUtil.h"
+#include "StrUtil.h"
 
 USING_NS_CC;
 
