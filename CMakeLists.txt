@@ -19,6 +19,7 @@ set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
+find_package(optional-lite)
 find_package(nakama-sdk)
 
 file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*")
