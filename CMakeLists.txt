@@ -14,8 +14,8 @@
 
 cmake_minimum_required(VERSION 3.23)
 
+set(VCPKG_BUILD_TYPE "release")
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
-
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 

@@ -15,9 +15,9 @@
  */
 
 #include "NCocosHelper.h"
-#include "NakamaCocos2d/NCocosLogSink.h"
-#include "NakamaCocos2d/NCocosHTTP.h"
-#include "NakamaCocos2d/NCocosWebSocket.h"
+#include "nakama-cpp/NCocosLogSink.h"
+#include "nakama-cpp/NCocosHTTP.h"
+#include "nakama-cpp/NCocosWebSocket.h"
 
 using namespace Nakama;
 

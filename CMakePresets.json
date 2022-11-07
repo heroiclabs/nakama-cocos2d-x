@@ -13,8 +13,9 @@
         "binaryDir": "build/${presetName}",
         "installDir": "out",
         "cacheVariables": {
-          "CMAKE_CONFIGURATION_TYPES": "Debug;MinSizeRel;RelWithDebInfo",
-          "CMAKE_INSTALL_LIBDIR": "${presetName}"
+          "CMAKE_CONFIGURATION_TYPES": "",
+          "CMAKE_INSTALL_LIBDIR": "${presetName}",
+          "VCPKG_OVERLAY_TRIPLETS": "#{sourceDir}/triplets"
         }
       }
     ],

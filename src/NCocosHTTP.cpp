@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "NakamaCocos2d/NCocosHTTP.h"
+#include "nakama-cpp/NCocosHTTP.h"
 #include "network/HttpClient.h"
 #include "nakama-cpp/StrUtil.h"
 
@@ -85,7 +85,7 @@ namespace Nakama {
         case NHttpReqMethod::DEL : type = HttpRequest::Type::DELETE; break;
         default: type = HttpRequest::Type::UNKNOWN; break;
         }
-        
+
         cocosReq->setRequestType(type);
 
         cocosReq->setResponseCallback([callback](HttpClient* client, HttpResponse* response)
