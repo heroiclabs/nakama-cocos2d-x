@@ -26,10 +26,5 @@ class NCocosHelper
 {
 public:
     static void init(Nakama::NLogLevel logLevel = Nakama::NLogLevel::Debug);
-
     static Nakama::NClientPtr createDefaultClient(const Nakama::NClientParameters& parameters);
-
-    static Nakama::NRtClientPtr createRtClient(const Nakama::NClientPtr& client, int32_t port = Nakama::DEFAULT_PORT);
-
-    static Nakama::NRtClientPtr createRtClient(const Nakama::NClientPtr& client, const Nakama::RtClientParameters& parameters);
 };

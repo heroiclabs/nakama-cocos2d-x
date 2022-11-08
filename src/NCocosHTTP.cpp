@@ -16,7 +16,7 @@
 
 #include "NCocosHTTP.h"
 #include "network/HttpClient.h"
-#include "nakama-cpp/StrUtil.h"
+#include "StrUtil.h"
 
 USING_NS_CC;
 
@@ -69,7 +69,7 @@ namespace Nakama {
             }
             url += it.first;
             url += '=';
-            url += urlEncode(it.second);
+            url += encodeURIComponent(it.second);
         }
 
         cocosReq->setUrl(url);

@@ -30,28 +30,3 @@ NClientPtr NCocosHelper::createDefaultClient(const NClientParameters &parameters
 {
     return createRestClient(parameters, NHttpTransportPtr(new NCocosHTTP()));
 }
-
-NRtClientPtr NCocosHelper::createRtClient(const NClientPtr& client, int32_t port)
-{
-    NRtClientPtr rtClient;
-
-    if (client)
-    {
-        rtClient = client->createRtClient(port, NRtTransportPtr(new NCocosWebSocket()));
-    }
-
-    return rtClient;
-}
-
-Nakama::NRtClientPtr NCocosHelper::createRtClient(const Nakama::NClientPtr &client,
-                                                  const Nakama::RtClientParameters &parameters)
-{
-    NRtClientPtr rtClient;
-
-    if (client)
-    {
-        rtClient = client->createRtClient(parameters, NRtTransportPtr(new NCocosWebSocket()));
-    }
-
-    return rtClient;
-}

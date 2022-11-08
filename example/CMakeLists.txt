@@ -54,21 +54,14 @@ if(APPLE OR WINDOWS)
     cocos_mark_multi_resources(common_res_files RES_TO "Resources" FOLDERS ${GAME_RES_FOLDER})
 endif()
 
-# add cross-platforms source files and header files 
+# add cross-platforms source files and header files
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
-     Classes/NakamaCocos2d/NCocosWebSocket.cpp
-     Classes/NakamaCocos2d/NCocosHTTP.cpp
-     Classes/NakamaCocos2d/NCocosHelper.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
-     Classes/NakamaCocos2d/NCocosWebSocket.h
-     Classes/NakamaCocos2d/NCocosHTTP.h
-     Classes/NakamaCocos2d/NCocosLogSink.h
-     Classes/NakamaCocos2d/NCocosHelper.h
      )
 
 if(ANDROID)
