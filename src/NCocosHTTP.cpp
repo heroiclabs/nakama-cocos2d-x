@@ -15,7 +15,7 @@
  */
 
 #include "NCocosHTTP.h"
-#include "network/HttpClient.h"
+#include "cocos/network/HttpClient.h"
 #include "StrUtil.h"
 
 USING_NS_CC;

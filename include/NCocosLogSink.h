@@ -17,7 +17,7 @@
 #pragma once
 
 #include "nakama-cpp/log/NLogSinkInterface.h"
-#include "cocos2d.h"
+#include "cocos/cocos2d.h"
 
 namespace Nakama {
 
