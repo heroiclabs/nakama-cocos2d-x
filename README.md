@@ -189,6 +189,8 @@ The development roadmap is managed as GitHub issues and pull requests are welcom
 
 The cocos2d-x C++ SDK is based on [General C++ SDK](https://github.com/heroiclabs/nakama-cpp)
 
+The prerequisites for building the SDK are vcpkg (installed at $VCPKG_ROOT), python 2.7 and CMake.
+
 ### Nakama Cocos2d-x Client guide
 
 You can find Nakama Cocos2d-x Client guide [here](https://heroiclabs.com/docs/cocos2d-x-client-guide/).
