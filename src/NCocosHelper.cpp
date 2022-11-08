@@ -17,7 +17,6 @@
 #include "NCocosHelper.h"
 #include "NCocosLogSink.h"
 #include "NCocosHTTP.h"
-#include "NCocosWebSocket.h"
 
 using namespace Nakama;
 

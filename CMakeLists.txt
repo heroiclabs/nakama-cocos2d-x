@@ -22,7 +22,7 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(optional-lite)
 find_package(nakama-sdk)
 
-file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*")
+file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
 
 add_library(nakama-cpp-cocos2d-x SHARED ${SRCS})
 include(FetchContent)
@@ -44,8 +44,6 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
      WORKING_DIRECTORY ${cocos-2d-x_SOURCE_DIR}
      COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
 
-add_subdirectory(${cocos-2d-x_SOURCE_DIR} ${cocos-2d-x_BINARY_DIR})
-
 set(BUILD_EDITOR_COCOSTUDIO OFF)
 set(BUILD_EDITOR_SPINE OFF)
 set(BUILD_EXTENSIONS OFF)
@@ -65,7 +63,10 @@ set(BUILD_EXT_EDTAA3FUNC OFF)
 set(BUILD_EXT_CONVERTUTF OFF)
 set(BUILD_EXT_POLY2TRI OFF)
 set(BUILD_LUA_LIBS OFF)
+add_subdirectory(${cocos-2d-x_SOURCE_DIR} ${cocos-2d-x_BINARY_DIR})
 
-target_include_directories(nakama-cpp-cocos2d-x PUBLIC include PUBLIC ${cocos-2d-x_SOURCE_DIR})
-## link against the inner cocos target
-target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk PRIVATE cocos-2d-x)
+target_include_directories(nakama-cpp-cocos2d-x PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+
+target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk cocos2d)
