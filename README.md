@@ -191,6 +191,14 @@ The cocos2d-x C++ SDK is based on [General C++ SDK](https://github.com/heroiclab
 
 The prerequisites for building the SDK are vcpkg (installed at $VCPKG_ROOT), python 2.7 and CMake.
 
+We build Cocos from source and link our library against it to verify correctness. It requires
+the following:
+
+### OSX
+
+brew install freetype
+
+
 ### Nakama Cocos2d-x Client guide
 
 You can find Nakama Cocos2d-x Client guide [here](https://heroiclabs.com/docs/cocos2d-x-client-guide/).

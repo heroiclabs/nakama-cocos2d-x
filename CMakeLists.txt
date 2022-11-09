@@ -33,8 +33,6 @@ FetchContent_Declare(
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
 )
 
-## slim as much as possible, a lot more that can be done but cocos must provide options to
-## allow us to do it.
 
 # populate variables but don't add subdirectory until we download the remaining dependencies
 FetchContent_Populate(cocos-2d-x)
@@ -44,13 +42,19 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
      WORKING_DIRECTORY ${cocos-2d-x_SOURCE_DIR}
      COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
 
+
+# slim as much as possible, a lot more that can be done but cocos must provide options to
+# allow us to do it.
+# also tried setting the following to OFF:
+# BUILD_EXT_FREETYPE2
+# BUILD_EXT_EDTAA3FUNC
+# but it resulted in a compiler error.
 set(BUILD_EDITOR_COCOSTUDIO OFF)
 set(BUILD_EDITOR_SPINE OFF)
 set(BUILD_EXTENSIONS OFF)
 set(BUILD_LUA_LIBS OFF)
 set(BUILD_EXT_BOX2D OFF)
 set(BUILD_EXT_CHIPMUNK OFF)
-set(BUILD_EXT_FREETYPE2 OFF)
 set(BUILD_EXT_RECAST OFF)
 set(BUILD_EXT_BULLET OFF)
 set(BUILD_EXT_JPEG OFF)
@@ -59,10 +63,10 @@ set(BUILD_EXT_TINYXML2 OFF)
 set(BUILD_EXT_XXHASH OFF)
 set(BUILD_EXT_XXTEA OFF)
 set(BUILD_EXT_CLIPPER OFF)
-set(BUILD_EXT_EDTAA3FUNC OFF)
 set(BUILD_EXT_CONVERTUTF OFF)
 set(BUILD_EXT_POLY2TRI OFF)
 set(BUILD_LUA_LIBS OFF)
+
 add_subdirectory(${cocos-2d-x_SOURCE_DIR} ${cocos-2d-x_BINARY_DIR})
 
 target_include_directories(nakama-cpp-cocos2d-x PUBLIC
