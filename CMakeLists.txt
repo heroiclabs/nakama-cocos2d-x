@@ -49,6 +49,7 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
 # BUILD_EXT_FREETYPE2
 # BUILD_EXT_EDTAA3FUNC
 # but it resulted in a compiler error.
+
 set(BUILD_EDITOR_COCOSTUDIO OFF)
 set(BUILD_EDITOR_SPINE OFF)
 set(BUILD_EXTENSIONS OFF)
@@ -65,7 +66,7 @@ set(BUILD_EXT_XXTEA OFF)
 set(BUILD_EXT_CLIPPER OFF)
 set(BUILD_EXT_CONVERTUTF OFF)
 set(BUILD_EXT_POLY2TRI OFF)
-set(BUILD_LUA_LIBS OFF)
+set(BUILD_LUA_TESTS OFF)
 
 add_subdirectory(${cocos-2d-x_SOURCE_DIR} ${cocos-2d-x_BINARY_DIR})
 

@@ -4,7 +4,7 @@
         {
             "kind": "git",
             "repository": "https://github.com/heroiclabs/nakama-cpp",
-            "baseline": "97c9bb4ac81a1ac6c57b8ebc143ed34d569b042f",
+            "baseline": "3fa3e56e0c763a4797d6983840c3854cbcad32eb",
             "reference": "luke/cocos-iterations",
             "packages": ["nakama-sdk", "wslay"]
         }
