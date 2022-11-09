@@ -29,7 +29,7 @@ include(FetchContent)
 
 FetchContent_Declare(
   cocos-2d-x
-  PATCH_COMMAND patch < ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
+  PATCH_COMMAND  patch < ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
   GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
 )
@@ -70,8 +70,44 @@ set(BUILD_LUA_TESTS OFF)
 
 add_subdirectory(${cocos-2d-x_SOURCE_DIR} ${cocos-2d-x_BINARY_DIR})
 
-target_include_directories(nakama-cpp-cocos2d-x PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
+include(CMakePackageConfigHelpers)
 
-target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk cocos2d)
+configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/nakama-cpp-cocos-2d-x-config.cmake.in
+  "${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp-cocos-2d-x-config.cmake"
+  INSTALL_DESTINATION share/nakama-cpp-cocos-2d-x
+  NO_SET_AND_CHECK_MACRO
+  NO_CHECK_REQUIRED_COMPONENTS_MACRO
+  )
+
+if(APPLE)
+    file(TOUCH ${CMAKE_BINARY_DIR}/dummy.h ${CMAKE_BINARY_DIR}/dummy.cpp)
+    set(DUMMY_CPP ${CMAKE_BINARY_DIR}/dummy.cpp)
+    set(DUMMY_H ${CMAKE_BINARY_DIR}/dummy.h)
+
+    # Just copy over headers into framework dir, because "official" way of doing it
+    # via PUBLIC_HEADER property is full of bugs (see comment on PUBLIC_HEADER property below)
+    set(CMAKE_INSTALL_INCLUDEDIR ${CMAKE_INSTALL_LIBDIR}/nakama-cpp-cocos2d-x.framework/Headers)
+
+    set_target_properties(nakama-sdk PROPERTIES
+        FRAMEWORK TRUE
+        FRAMEWORK_VERSION A
+
+        # we deliberately dont list all real headers, because it is a can of worms. See:
+        # - https://gitlab.kitware.com/cmake/cmake/-/issues/16739
+        # - https://gitlab.kitware.com/cmake/cmake/-/issues/22760
+        # Probably can be removed when proper FILE_SET support lands: https://gitlab.kitware.com/cmake/cmake/-/issues/23386
+        PUBLIC_HEADER "${DUMMY_H}"
+        MACOSX_FRAMEWORK_IDENTIFIER com.heroiclabs.nakama-cpp-cocos2d-x
+        )
+
+endif()
+
+install(TARGETS
+    nakama-cpp-cocos2d-x
+    EXPORT nakama-cpp-cocos2d-x-export
+    FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+install(EXPORT nakama-cpp-cocos2d-x-export DESTINATION share/nakama-cpp-cocos2d-x)
+
+target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk PRIVATE cocos2d)
