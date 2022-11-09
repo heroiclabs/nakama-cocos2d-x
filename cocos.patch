@@ -1,0 +1,104 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 856d9843e1..368a4a0f73 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,21 +47,14 @@ include(PreventInSourceBuilds)
+ # works before build libcocos2d
+ include(CocosBuildSet)
+ 
+-set(BUILD_LUA_LIBS ON) 
++set(BUILD_LUA_LIBS ON)
+ 
+ add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${ENGINE_BINARY_PATH}/cocos/core)
+ 
+ # prevent tests project to build "cocos2d-x/cocos" again
+ set(BUILD_ENGINE_DONE ON)
+ 
+-# add cpp tests default
+-add_subdirectory(${COCOS2DX_ROOT_PATH}/tests/cpp-empty-test ${ENGINE_BINARY_PATH}/tests/cpp-empty-test)
+-add_subdirectory(${COCOS2DX_ROOT_PATH}/tests/cpp-tests ${ENGINE_BINARY_PATH}/tests/cpp-tests)
+-
+ if(BUILD_LUA_LIBS)
+   add_subdirectory(${COCOS2DX_ROOT_PATH}/tests/lua-empty-test/project ${ENGINE_BINARY_PATH}/tests/lua-empty-test)
+   add_subdirectory(${COCOS2DX_ROOT_PATH}/tests/lua-tests/project ${ENGINE_BINARY_PATH}/tests/lua-test)
+ endif(BUILD_LUA_LIBS)
+-
+-# add cpp-template-default into project(Cocos2d-x) for tmp test
+-add_subdirectory(${COCOS2DX_ROOT_PATH}/templates/cpp-template-default ${ENGINE_BINARY_PATH}/tests/HelloCpp)
+diff --git a/cocos/CMakeLists.txt b/cocos/CMakeLists.txt
+index 4accdfeffd..8464677a70 100644
+--- a/cocos/CMakeLists.txt
++++ b/cocos/CMakeLists.txt
+@@ -35,17 +35,11 @@ set(COCOS_CORE_LIB cocos2d)
+ project(cocos2d_libs)
+ 
+ include(2d/CMakeLists.txt)
+-include(3d/CMakeLists.txt)
+ include(platform/CMakeLists.txt)
+-include(physics/CMakeLists.txt)
+-include(physics3d/CMakeLists.txt)
+ include(math/CMakeLists.txt)
+-include(navmesh/CMakeLists.txt)
+-include(renderer/CMakeLists.txt)
+ include(base/CMakeLists.txt)
+ include(ui/CMakeLists.txt)
+ include(network/CMakeLists.txt)
+-include(audio/CMakeLists.txt)
+ 
+ # default value for cocos2dx extensions modules build
+ option(BUILD_EDITOR_COCOSTUDIO "Build editor support for cocostudio" ON)
+@@ -72,37 +66,22 @@ endif(BUILD_EXTENSIONS)
+ 
+ set(COCOS_HEADER cocos2d.h
+     ${COCOS_2D_HEADER}
+-    ${COCOS_3D_HEADER}
+     ${COCOS_PLATFORM_HEADER}
+-    ${COCOS_PHYSICS_HEADER}
+-    ${COCOS_PHYSICS3D_HEADER}
+     ${COCOS_MATH_HEADER}
+-    ${COCOS_NAVMESH_HEADER}
+-    ${COCOS_RENDERER_HEADER}
+     ${COCOS_BASE_HEADER}
+-    ${COCOS_AUDIO_HEADER}
+     ${COCOS_UI_HEADER}
+     ${COCOS_NETWORK_HEADER}
+-    ${COCOS_EDITOR_SUPPORT_HEADER}
+     ${COCOS_EXTENSIONS_HEADER}
+     )
+ 
+ set(COCOS_SRC cocos2d.cpp
+     ${COCOS_2D_SRC}
+-    ${COCOS_3D_SRC}
+     ${COCOS_PLATFORM_SRC}
+-    ${COCOS_PHYSICS_SRC}
+-    ${COCOS_PHYSICS3D_SRC}
+     ${COCOS_MATH_SRC}
+-    ${COCOS_NAVMESH_SRC}
+-    ${COCOS_RENDERER_SRC}
+     ${COCOS_BASE_SRC}
+-    ${COCOS_AUDIO_SRC}
+     ${COCOS_UI_SRC}
+     ${COCOS_NETWORK_SRC}
+-    ${COCOS_EDITOR_SUPPORT_SRC}
+     ${COCOS_EXTENSIONS_SRC}
+-    ${COCOS_STORAGE_SRC}
+     )
+ 
+ list(APPEND COCOS_SRC ${COCOS_HEADER})
+@@ -127,7 +106,6 @@ target_include_directories(cocos2d
+     PUBLIC ${COCOS2DX_ROOT_PATH}/cocos/platform
+     PUBLIC ${COCOS2DX_ROOT_PATH}/cocos/editor-support
+     INTERFACE ${COCOS2DX_ROOT_PATH}/cocos/base
+-    INTERFACE ${COCOS2DX_ROOT_PATH}/cocos/audio/include
+     INTERFACE ${COCOS2DX_ROOT_PATH}/cocos/platform/${PLATFORM_FOLDER}
+ )
+ 
+@@ -150,7 +128,7 @@ endif()
+ 
+ if(${CMAKE_VERSION} VERSION_GREATER "3.16.0")
+     message("CMake 3.16 target_precompile_headers")
+-    target_precompile_headers(cocos2d PRIVATE 
++    target_precompile_headers(cocos2d PRIVATE
+        "$<$<COMPILE_LANGUAGE:CXX>:cocos2d.h>")
+ endif()
+ 

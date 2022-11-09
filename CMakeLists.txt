@@ -29,10 +29,10 @@ include(FetchContent)
 
 FetchContent_Declare(
   cocos-2d-x
+  PATCH_COMMAND patch < ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
   GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
 )
-
 
 # populate variables but don't add subdirectory until we download the remaining dependencies
 FetchContent_Populate(cocos-2d-x)
@@ -44,7 +44,7 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
 
 
 # slim as much as possible, a lot more that can be done but cocos must provide options to
-# allow us to do it.
+# allow us to do it. alternatively we can implement via the patch command.
 # also tried setting the following to OFF:
 # BUILD_EXT_FREETYPE2
 # BUILD_EXT_EDTAA3FUNC
