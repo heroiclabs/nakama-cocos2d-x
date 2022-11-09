@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 The Nakama Authors
+ * Copyright 2022 The Nakama Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,15 @@
 #include "NCocosLogSink.h"
 #include "NCocosHTTP.h"
 
-using namespace Nakama;
-
-
-void NCocosHelper::init(NLogLevel logLevel)
+namespace Nakama
 {
-    NLogger::init(std::make_shared<NCocosLogSink>(), logLevel);
-}
+    void NCocosHelper::init(NLogLevel logLevel)
+    {
+        NLogger::init(std::make_shared<NCocosLogSink>(), logLevel);
+    }
 
-NClientPtr NCocosHelper::createDefaultClient(const NClientParameters &parameters)
-{
-    return createRestClient(parameters, NHttpTransportPtr(new NCocosHTTP()));
+    NClientPtr NCocosHelper::createDefaultClient(const Nakama::NClientParameters &parameters)
+    {
+        return createRestClient(parameters, NHttpTransportPtr(new NCocosHTTP()));
+    }
 }

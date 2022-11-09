@@ -22,9 +22,13 @@
 
 #include "nakama-cpp/Nakama.h"
 
+namespace Nakama {
+
 class NCocosHelper
 {
 public:
     static void init(Nakama::NLogLevel logLevel = Nakama::NLogLevel::Debug);
     static Nakama::NClientPtr createDefaultClient(const Nakama::NClientParameters& parameters);
 };
+
+}

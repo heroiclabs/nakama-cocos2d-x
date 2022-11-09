@@ -25,21 +25,27 @@ find_package(nakama-sdk)
 file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
 
 add_library(nakama-cpp-cocos2d-x SHARED ${SRCS})
+
+target_include_directories(nakama-cpp-cocos2d-x PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include/nakama-cpp-cocos2d-x>
+)
+
 include(FetchContent)
 
 FetchContent_Declare(
-  cocos-2d-x
+  cocos2d-x
   PATCH_COMMAND  patch < ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
   GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
 )
 
 # populate variables but don't add subdirectory until we download the remaining dependencies
-FetchContent_Populate(cocos-2d-x)
+FetchContent_Populate(cocos2d-x)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
      COMMAND "python" "download-deps.py"
-     WORKING_DIRECTORY ${cocos-2d-x_SOURCE_DIR}
+     WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
      COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
 
 
@@ -68,13 +74,13 @@ set(BUILD_EXT_CONVERTUTF OFF)
 set(BUILD_EXT_POLY2TRI OFF)
 set(BUILD_LUA_TESTS OFF)
 
-add_subdirectory(${cocos-2d-x_SOURCE_DIR} ${cocos-2d-x_BINARY_DIR})
+add_subdirectory(${cocos2d-x_SOURCE_DIR} ${cocos2d-x_BINARY_DIR})
 
 include(CMakePackageConfigHelpers)
 
-configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/nakama-cpp-cocos-2d-x-config.cmake.in
-  "${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp-cocos-2d-x-config.cmake"
-  INSTALL_DESTINATION share/nakama-cpp-cocos-2d-x
+configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/nakama-cpp-cocos2d-x-config.cmake.in
+  "${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp-cocos2d-x-config.cmake"
+  INSTALL_DESTINATION share/nakama-cpp-cocos2d-x
   NO_SET_AND_CHECK_MACRO
   NO_CHECK_REQUIRED_COMPONENTS_MACRO
   )

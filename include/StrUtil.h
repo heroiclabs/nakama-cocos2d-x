@@ -21,8 +21,8 @@
 #include <string>
 #include <optional>
 
-NAKAMA_NAMESPACE_BEGIN
-
+namespace Nakama
+{
     typedef std::string Base64Buffer;
 
     /**
@@ -78,4 +78,4 @@ NAKAMA_NAMESPACE_BEGIN
     //Definitely not fully compliant, but good enough for us
     std::optional<URLParts> ParseURL(const std::string& url);
 
-NAKAMA_NAMESPACE_END
+}
