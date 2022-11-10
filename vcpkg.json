@@ -2,11 +2,18 @@
     "name": "nakama-sdk-cocos2d-x",
     "version": "1.0.0",
     "dependencies": [
-      {
-        "name": "nakama-sdk",
-        "features": ["external-ws", "curl", "wslay"],
-        "version>=": "2.6.0#3"
-      }
+        {
+            "name": "nakama-sdk",
+            "version>=": "2.6.0#3",
+            "platform": "ios | osx | linux",
+            "features": ["wslay", "curl"]
+        },
+        {
+            "name": "nakama-sdk",
+            "version>=": "2.6.0#3",
+            "platform": "android | windows",
+            "features": ["libhttpclient-ws"]
+        }
     ],
     "default-features": [],
     "builtin-baseline": "5fcea86177e7c81fa90e721bba2822649dd4b982"
