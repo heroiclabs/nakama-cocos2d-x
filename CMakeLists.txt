@@ -38,7 +38,7 @@ include(FetchContent)
 
 FetchContent_Declare(
   cocos2d-x
-  PATCH_COMMAND  patch < ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
+  PATCH_COMMAND  git apply --whitespace=fix ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
   GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
   GIT_PROGRESS   TRUE
