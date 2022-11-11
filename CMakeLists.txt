@@ -14,6 +14,8 @@
 
 cmake_minimum_required(VERSION 3.23)
 
+set(FETCHCONTENT_QUIET OFF)
+
 set(VCPKG_BUILD_TYPE "release")
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
@@ -31,6 +33,7 @@ target_include_directories(nakama-cpp-cocos2d-x PUBLIC
     $<INSTALL_INTERFACE:include/nakama-cpp-cocos2d-x>
 )
 
+
 include(FetchContent)
 
 FetchContent_Declare(
@@ -38,10 +41,17 @@ FetchContent_Declare(
   PATCH_COMMAND  patch < ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
   GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
+  GIT_PROGRESS   TRUE
+  USES_TERMINAL_DOWNLOAD TRUE
 )
 
+
 # populate variables but don't add subdirectory until we download the remaining dependencies
+message("POPULATING")
+
 FetchContent_Populate(cocos2d-x)
+
+message("EXECUTING PROCESS")
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
      COMMAND "python" "download-deps.py"
