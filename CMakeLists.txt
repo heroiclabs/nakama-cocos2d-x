@@ -14,6 +14,8 @@
 
 cmake_minimum_required(VERSION 3.23)
 
+set(NAKAMA_COCOS2D_X_BUILD_EXAMPLE ON)
+
 set(FETCHCONTENT_QUIET OFF)
 
 set(VCPKG_BUILD_TYPE "release")
@@ -36,9 +38,10 @@ target_include_directories(nakama-cpp-cocos2d-x PUBLIC
 
 include(FetchContent)
 
+## reset hard on HEAD so that patch command is "idempotent": https://gitlab.kitware.com/cmake/cmake/-/issues/16854
 FetchContent_Declare(
   cocos2d-x
-  PATCH_COMMAND  git apply --whitespace=fix ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
+  PATCH_COMMAND  git reset --hard HEAD && git apply --reject --whitespace=fix ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
   GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
   GIT_PROGRESS   TRUE
@@ -127,3 +130,7 @@ install(TARGETS
 install(EXPORT nakama-cpp-cocos2d-x-export DESTINATION share/nakama-cpp-cocos2d-x)
 
 target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk PRIVATE cocos2d)
+
+if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
+    add_subdirectory(example)
+endif()
