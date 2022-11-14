@@ -35,49 +35,28 @@ target_include_directories(nakama-cpp-cocos2d-x PUBLIC
 
 include(FetchContent)
 
+# uses FETCHCONTENT_UPDATES_DISCONNECTED so that the patch is only applied once.
+set(FETCHCONTENT_UPDATES_DISCONNECTED_cocos2d ON)
+
 FetchContent_Declare(
   cocos2d-x
   GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
   GIT_PROGRESS   TRUE
   USES_TERMINAL_DOWNLOAD TRUE
-  PATCH_COMMAND git apply --whitespace=fix ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
 )
 
+# TODO slim as much as possible, a lot that can be done but cocos must provide options to
+# allow us to do it. alternatively we can implement via the patch command but that is a last resort.
+
 # populate variables but don't add subdirectory until we download the remaining dependencies
-# uses FETCHCONTENT_UPDATES_DISCONNECTED so that the patch is only applied once.
-FetchContent_Populate(cocos2d-x FETCHCONTENT_UPDATES_DISCONNECTED)
+FetchContent_Populate(cocos2d-x)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
      COMMAND "python" "download-deps.py"
      WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
      COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
 
-
-# slim as much as possible, a lot more that can be done but cocos must provide options to
-# allow us to do it. alternatively we can implement via the patch command.
-# also tried setting the following to OFF:
-# BUILD_EXT_FREETYPE2
-# BUILD_EXT_EDTAA3FUNC
-# but it resulted in a compiler error.
-
-set(BUILD_EDITOR_COCOSTUDIO OFF)
-set(BUILD_EDITOR_SPINE OFF)
-set(BUILD_EXTENSIONS OFF)
-set(BUILD_LUA_LIBS OFF)
-set(BUILD_EXT_BOX2D OFF)
-set(BUILD_EXT_CHIPMUNK OFF)
-set(BUILD_EXT_RECAST OFF)
-set(BUILD_EXT_BULLET OFF)
-set(BUILD_EXT_JPEG OFF)
-set(BUILD_EXT_UV OFF)
-set(BUILD_EXT_TINYXML2 OFF)
-set(BUILD_EXT_XXHASH OFF)
-set(BUILD_EXT_XXTEA OFF)
-set(BUILD_EXT_CLIPPER OFF)
-set(BUILD_EXT_CONVERTUTF OFF)
-set(BUILD_EXT_POLY2TRI OFF)
-set(BUILD_LUA_TESTS OFF)
 
 add_subdirectory(${cocos2d-x_SOURCE_DIR} ${cocos2d-x_BINARY_DIR})
 
