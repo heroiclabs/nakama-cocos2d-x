@@ -35,14 +35,6 @@ if(XCODE)
     endif()
 endif()
 
-if(NOT DEFINED BUILD_ENGINE_DONE) # to test NakamaCocos2d into root project
-    set(COCOS2DX_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d)
-    set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
-
-    include(CocosBuildSet)
-    add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${ENGINE_BINARY_PATH}/cocos/core)
-endif()
-
 # record sources, headers, resources...
 set(GAME_SOURCE)
 set(GAME_HEADER)
@@ -126,10 +118,10 @@ if(NOT ANDROID)
 else()
     add_library(${APP_NAME} SHARED ${all_code_files})
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos/platform/android ${ENGINE_BINARY_PATH}/cocos/platform)
-    target_link_libraries(${APP_NAME} -Wl,--whole-archive cpp_android_spec -Wl,--no-whole-archive)
+    target_link_libraries(${APP_NAME} PRIVATE -Wl,--whole-archive cpp_android_spec -Wl,--no-whole-archive)
 endif()
 
-target_link_libraries(${APP_NAME} cocos2d)
+target_link_libraries(${APP_NAME} PRIVATE cocos2d)
 target_include_directories(${APP_NAME}
         PRIVATE Classes
         PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
@@ -146,9 +138,6 @@ if(APPLE)
         set_xcode_property(${APP_NAME} INFOPLIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/proj.ios_mac/ios/Info.plist")
         set_xcode_property(${APP_NAME} ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon")
     endif()
-
-    # For code-signing, set the DEVELOPMENT_TEAM:
-    #set_xcode_property(${APP_NAME} DEVELOPMENT_TEAM "GRLXXXX2K9")
 elseif(WINDOWS)
     cocos_copy_target_dll(${APP_NAME})
 endif()
@@ -159,6 +148,4 @@ if(LINUX OR WINDOWS)
 endif()
 
 # use Nakama SDK
-add_subdirectory(nakama-cocos2d-x-sdk ${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp)
-target_link_libraries(${APP_NAME} ext_nakama-cpp)
-CopyNakamaSharedLib(${APP_NAME})
+target_link_libraries(${APP_NAME} PRIVATE nakama-cpp-cocos2d-x)

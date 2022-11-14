@@ -51,7 +51,7 @@ The client object has many methods to execute various features in the server or 
 Include nakama helper header.
 
 ```cpp
-#include "NakamaCocos2d/NCocosHelper.h"
+#include "nakama-cpp-cocos2d-x/NCocosHelper.h"
 ```
 
 Initialize logger with debug logging level.
@@ -189,7 +189,7 @@ The development roadmap is managed as GitHub issues and pull requests are welcom
 
 The cocos2d-x C++ SDK is based on [General C++ SDK](https://github.com/heroiclabs/nakama-cpp)
 
-The prerequisites for building the SDK are vcpkg (installed at $VCPKG_ROOT), python 2.7 and CMake.
+The prerequisites for building the SDK are vcpkg (installed at $VCPKG_ROOT), python 2.7, CMake and git.
 
 We build Cocos from source and link our library against it to verify correctness. It requires
 the following:

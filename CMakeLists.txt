@@ -14,8 +14,6 @@
 
 cmake_minimum_required(VERSION 3.23)
 
-set(NAKAMA_COCOS2D_X_BUILD_EXAMPLE ON)
-
 set(FETCHCONTENT_QUIET OFF)
 
 set(VCPKG_BUILD_TYPE "release")
@@ -32,16 +30,18 @@ add_library(nakama-cpp-cocos2d-x SHARED ${SRCS})
 
 target_include_directories(nakama-cpp-cocos2d-x PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include/nakama-cpp-cocos2d-x>
+    $<INSTALL_INTERFACE:include>
 )
 
+set(APPLY_PATCH OFF)
+if (NOT cocos2d-x_POPULATED)
+    set(APPLY_PATCH ON) ## patch commands are not idempotent and once we patch the downloaded repository it stays there until cache cleared
+endif()
 
 include(FetchContent)
 
-## reset hard on HEAD so that patch command is "idempotent": https://gitlab.kitware.com/cmake/cmake/-/issues/16854
 FetchContent_Declare(
   cocos2d-x
-  PATCH_COMMAND  git reset --hard HEAD && git apply --reject --whitespace=fix ${CMAKE_CURRENT_LIST_DIR}/cocos.patch
   GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
   GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
   GIT_PROGRESS   TRUE
@@ -52,9 +52,15 @@ FetchContent_Declare(
 # populate variables but don't add subdirectory until we download the remaining dependencies
 message("POPULATING")
 
+## git apply is not idempotent, so don't try to  https://gitlab.kitware.com/cmake/cmake/-/issues/16854
+
 FetchContent_Populate(cocos2d-x)
 
 message("EXECUTING PROCESS")
+
+if (APPLY_PATCH)
+    execute_process(COMMAND git apply --reject --whitespace=fix ${CMAKE_CURRENT_LIST_DIR}/cocos.patch)
+endif()
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
      COMMAND "python" "download-deps.py"
