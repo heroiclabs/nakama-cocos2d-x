@@ -25,7 +25,7 @@
 
 cmake_minimum_required(VERSION 3.6)
 
-set(APP_NAME NakamaCocos2d)
+set(APP_NAME nakama-cocos2d-x-example)
 
 project(${APP_NAME})
 

@@ -20,6 +20,7 @@ set(VCPKG_BUILD_TYPE "release")
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
+set(NAKAMA_COCOS2D_X_BUILD_EXAMPLE ON)
 
 find_package(optional-lite)
 find_package(nakama-sdk)
@@ -34,9 +35,6 @@ target_include_directories(nakama-cpp-cocos2d-x PUBLIC
 )
 
 include(FetchContent)
-
-# uses FETCHCONTENT_UPDATES_DISCONNECTED so that the patch is only applied once.
-set(FETCHCONTENT_UPDATES_DISCONNECTED_cocos2d ON)
 
 FetchContent_Declare(
   cocos2d-x
@@ -78,7 +76,7 @@ if(APPLE)
     # via PUBLIC_HEADER property is full of bugs (see comment on PUBLIC_HEADER property below)
     set(CMAKE_INSTALL_INCLUDEDIR ${CMAKE_INSTALL_LIBDIR}/nakama-cpp-cocos2d-x.framework/Headers)
 
-    set_target_properties(nakama-sdk PROPERTIES
+    set_target_properties(nakama-cpp-cocos2d-x PROPERTIES
         FRAMEWORK TRUE
         FRAMEWORK_VERSION A
 
