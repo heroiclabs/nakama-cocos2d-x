@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include "NCocosHTTP.h"
+#include "nakama-cpp-cocos2d-x/NCocosHTTP.h"
 #include "network/HttpClient.h"
-#include "StrUtil.h"
+#include "nakama-cpp-cocos2d-x/StrUtil.h"
 
 USING_NS_CC;
 

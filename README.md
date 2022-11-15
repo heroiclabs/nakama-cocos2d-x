@@ -159,7 +159,7 @@ The client can create one or more realtime clients with the server. Each realtim
 ```cpp
 bool createStatus = true; // if the socket should show the user as online to others.
 // define realtime client in your class as NRtClientPtr rtClient;
-rtClient = NCocosHelper::createRtClient(client, DEFAULT_PORT);
+rtClient = client->createRtClient(DEFAULT_PORT);
 // define listener in your class as NRtDefaultClientListener listener;
 listener.setConnectCallback([]()
 {

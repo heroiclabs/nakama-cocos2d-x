@@ -15,7 +15,7 @@
  */
 
 #include <sstream>
-#include "StrUtil.h"
+#include "nakama-cpp-cocos2d-x/StrUtil.h"
 #include <google/protobuf/stubs/strutil.h>
 
 #include <regex>

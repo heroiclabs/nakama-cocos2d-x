@@ -230,7 +230,7 @@ void HelloWorld::connect()
         m_label->setString(msg.username + ": " + msg.content);
     });
 
-    m_rtClient = NCocosHelper::createRtClient(m_client, DEFAULT_PORT);
+    m_rtClient = this->m_client->createRtClient(DEFAULT_PORT);
     m_rtClient->setListener(m_rtListener.get());
 
 	CCLOG("Connect...");

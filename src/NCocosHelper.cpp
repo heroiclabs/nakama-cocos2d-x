@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include "NCocosHelper.h"
-#include "NCocosLogSink.h"
-#include "NCocosHTTP.h"
+#include "nakama-cpp-cocos2d-x/NCocosHelper.h"
+#include "nakama-cpp-cocos2d-x/NCocosLogSink.h"
+#include "nakama-cpp-cocos2d-x/NCocosHTTP.h"
 
 namespace Nakama
 {
