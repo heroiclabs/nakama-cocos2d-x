@@ -94,11 +94,12 @@ elseif(APPLE)
              proj.ios_mac/ios/Prefix.pch
              ${APP_UI_RES}
              )
-    elseif(MACOSX)
+    elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         set(APP_UI_RES
             proj.ios_mac/mac/Icon.icns
             proj.ios_mac/mac/Info.plist
             )
+
         list(APPEND GAME_SOURCE
              proj.ios_mac/mac/main.cpp
              proj.ios_mac/mac/Prefix.pch
@@ -132,7 +133,7 @@ setup_cocos_app_config(${APP_NAME})
 if(APPLE)
     set_target_properties(${APP_NAME} PROPERTIES RESOURCE "${APP_UI_RES}")
 
-    if(MACOSX)
+    if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         set_xcode_property(${APP_NAME} INFOPLIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/proj.ios_mac/mac/Info.plist")
     elseif(IOS)
         set_xcode_property(${APP_NAME} INFOPLIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/proj.ios_mac/ios/Info.plist")
