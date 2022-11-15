@@ -94,6 +94,8 @@ bool HelloWorld::init()
     // add a label shows "Hello World"
     // create and initialize a label
 
+    printf("creating hello world");
+
     m_label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     if (m_label == nullptr)
     {
