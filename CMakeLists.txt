@@ -89,6 +89,10 @@ install(TARGETS
     FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
+install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
+        FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
 install(EXPORT nakama-cpp-cocos2d-x-export DESTINATION share/nakama-cpp-cocos2d-x)
 
 target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk PRIVATE cocos2d)
