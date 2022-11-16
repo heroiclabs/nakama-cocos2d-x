@@ -29,6 +29,14 @@ set(APP_NAME nakama-cocos2d-x-example)
 
 project(${APP_NAME})
 
+
+### This needs to be one of the first commands in order to prevent code signing issues.
+if (${CMAKE_SYSTEM_NAME} STREQUAL "iOS" OR ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    # CMake needs to implement a cleaner way of doing this: https://gitlab.kitware.com/cmake/cmake/-/issues/22997 &&
+    # https://gitlab.kitware.com/cmake/cmake/-/issues/22240
+    set(CMAKE_BUILD_WITH_INSTALL_RPATH YES)
+endif()
+
 if(XCODE)
     if(NOT DEFINED CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET)
         SET (CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET 8.0)
@@ -122,6 +130,21 @@ else()
     target_link_libraries(${APP_NAME} PRIVATE -Wl,--whole-archive cpp_android_spec -Wl,--no-whole-archive)
 endif()
 
+
+if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
+    set_target_properties(${APP_NAME} PROPERTIES
+        INSTALL_RPATH @executable_path/Frameworks
+    )
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    set_target_properties(${APP_NAME} PROPERTIES
+        INSTALL_RPATH @executable_path/../Frameworks
+    )
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    set_target_properties(${APP_NAME} PROPERTIES
+        INSTALL_RPATH $ORIGIN
+    )
+endif()
+
 target_link_libraries(${APP_NAME} PRIVATE cocos2d)
 target_include_directories(${APP_NAME}
         PRIVATE Classes
@@ -150,3 +173,9 @@ endif()
 
 # use Nakama SDK
 target_link_libraries(${APP_NAME} PRIVATE nakama-cpp-cocos2d-x)
+
+install(TARGETS
+    nakama-cocos2d-x-example
+    BUNDLE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)

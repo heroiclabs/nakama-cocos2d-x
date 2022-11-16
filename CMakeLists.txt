@@ -49,7 +49,7 @@ set(BUILD_EXTENSIONS OFF)
 FetchContent_Declare(
   cocos2d-x
   GIT_REPOSITORY https://github.com/heroiclabs/cocos2d-x ## TODO switch to cocos mainline once they accept the PR
-  GIT_TAG        b26d115cb5a18282f96adb9a3a7fbb3608ec75a7
+  GIT_TAG        97af9163c56662df842d39887e44cddca24216d1
   GIT_PROGRESS   TRUE
   USES_TERMINAL_DOWNLOAD TRUE
 )
@@ -95,9 +95,4 @@ target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk PRIVATE cocos2d)
 
 if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
     add_subdirectory(example)
-    install(TARGETS
-        nakama-cocos2d-x-example
-        BUNDLE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    )
 endif()
