@@ -145,6 +145,15 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     )
 endif()
 
+if (APPLE)
+    set_target_properties(${APP_NAME} PROPERTIES
+            XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
+            XCODE_EMBED_FRAMEWORKS ${_NAKAMA_PROJECT}/out/${CMAKE_INSTALL_LIBDIR}/nakama-cpp-cocos2d-x.framework ## todo figure out why passing target doesn't work
+            XCODE_EMBED_FRAMEWORKS_CODE_SIGN_ON_COPY		"YES"		# frameworks must be signed by the same developer as the binary
+            XCODE_EMBED_FRAMEWORKS_REMOVE_HEADERS_ON_COPY	"YES")
+endif()
+
+
 target_link_libraries(${APP_NAME} PRIVATE cocos2d)
 target_include_directories(${APP_NAME}
         PRIVATE Classes
