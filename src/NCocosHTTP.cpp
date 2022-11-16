@@ -69,7 +69,7 @@ namespace Nakama {
             }
             url += it.first;
             url += '=';
-            url += encodeURIComponent(it.second);
+            url += urlEncode(it.second);
         }
 
         cocosReq->setUrl(url);

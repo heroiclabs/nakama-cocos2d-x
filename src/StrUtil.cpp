@@ -24,24 +24,37 @@ namespace Nakama {
 
 using namespace std;
 
-std::string encodeURIComponent(std::string decoded)
+std::string urlEncode(std::string str)
 {
-    std::ostringstream oss;
-    std::regex r("[-.0-9A-Za-z_~]");
+    string result;
+    const char* chars = str.c_str();
+    char bufHex[10];
+    size_t len = str.size();
 
-    for (char c : decoded)
+    for (size_t i = 0; i < len; i++)
     {
-        if (std::regex_match(std::string(1, c), r))
-        {
-            oss << c;
-        }
+        char c = chars[i];
+        // uncomment this if you want to encode spaces with +
+        /*if (c==' ') new_str += '+';
+        else */if (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~')
+            result += c;
         else
         {
-            oss <<'%' << std::uppercase << std::hex << static_cast<uint16_t>(0xff & c) ;
+            sprintf(bufHex, "%X", c);
+
+            if ((uint8_t)c < 16)
+                result += "%0";
+            else
+                result += "%";
+
+            result += bufHex;
         }
     }
-    return oss.str();
+
+    return result;
 }
+
+
 
 
 } // namespace Nakama
