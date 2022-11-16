@@ -20,15 +20,15 @@
             }
         },
         {
-            "name": "win-x64",
+            "name": "win-x86",
             "inherits": [
                 "default"
             ],
             "generator": "Visual Studio 17 2022",
             "cacheVariables": {
                 "WindowsDesktop": "ON",
-                "VCPKG_HOST_TRIPLET": "x64-windows-release",
-                "VCPKG_TARGET_TRIPLET": "x64-windows-release"
+                "VCPKG_HOST_TRIPLET": "x86-windows-release",
+                "VCPKG_TARGET_TRIPLET": "x86-windows-release"
             },
             "condition": {
                 "type": "equals",
@@ -164,14 +164,14 @@
     ],
     "buildPresets": [
         {
-            "name": "release-win-x64",
-            "configurePreset": "win-x64",
+            "name": "release-win-x86",
+            "configurePreset": "win-x86",
             "configuration": "MinSizeRel",
             "verbose": true
         },
         {
-            "name": "debug-win-x64",
-            "configurePreset": "win-x64",
+            "name": "debug-win-x86",
+            "configurePreset": "win-x86",
             "configuration": "Debug"
         },
         {
