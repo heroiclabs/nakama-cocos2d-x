@@ -2,6 +2,11 @@
     "registries":
     [
         {
+            "kind": "builtin",
+            "baseline": "5fcea86177e7c81fa90e721bba2822649dd4b982",
+            "packages": []
+        },
+        {
             "kind": "git",
             "repository": "https://github.com/heroiclabs/nakama-cpp",
             "baseline": "9827a554628be576e16310f8a8364b5a102c1547",
