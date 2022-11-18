@@ -83,19 +83,22 @@ if (APPLE)
         )
 endif()
 
+target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk PRIVATE cocos2d)
+
 install(TARGETS
     nakama-cpp-cocos2d-x
     EXPORT nakama-cpp-cocos2d-x-export
+    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
     FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
 install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
         FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
 install(EXPORT nakama-cpp-cocos2d-x-export DESTINATION share/nakama-cpp-cocos2d-x)
 
-target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk PRIVATE cocos2d)
 
 if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
     add_subdirectory(example)
