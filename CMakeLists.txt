@@ -49,21 +49,17 @@ set(BUILD_EXTENSIONS OFF)
 FetchContent_Declare(
   cocos2d-x
   GIT_REPOSITORY https://github.com/heroiclabs/cocos2d-x ## TODO switch to cocos mainline once they accept the PR
-  GIT_TAG        170ade95f7a510f1188a32d7030258d1aef1046d
+  GIT_TAG        b26d115cb5a18282f96adb9a3a7fbb3608ec75a7
   GIT_PROGRESS   TRUE
   USES_TERMINAL_DOWNLOAD TRUE
 )
 
-# populate variables but don't add subdirectory until we download the remaining dependencies
-FetchContent_Populate(cocos2d-x)
+FetchContent_MakeAvailable(cocos2d-x)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
      COMMAND "python" "download-deps.py"
      WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
      COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
-
-
-add_subdirectory(${cocos2d-x_SOURCE_DIR} ${cocos2d-x_BINARY_DIR})
 
 include(CMakePackageConfigHelpers)
 
@@ -83,21 +79,21 @@ if (APPLE)
         )
 endif()
 
-target_link_libraries(nakama-cpp-cocos2d-x PUBLIC nakama-sdk PRIVATE cocos2d)
+target_link_libraries(nakama-cpp-cocos2d-x PRIVATE cocos2d PUBLIC nakama-sdk)
 
+## we install but can't export because cocos2d isn't setup to be installable in a relocatable way.
 install(TARGETS
     nakama-cpp-cocos2d-x
     EXPORT nakama-cpp-cocos2d-x-export
     RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
     FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDE_DIR}
 )
 
 install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
-        FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
-
-install(EXPORT nakama-cpp-cocos2d-x-export DESTINATION share/nakama-cpp-cocos2d-x)
 
 
 if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
