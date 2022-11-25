@@ -54,6 +54,21 @@ configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/nakama-cpp-cocos2d-x-c
   NO_CHECK_REQUIRED_COMPONENTS_MACRO
 )
 
+# no ZERO_CHECK target for Xcode
+set(CMAKE_SUPPRESS_REGENERATION true)
+
+# bitcode will be deprecated in Xcode 14 which is in beta at the time of this writing
+# https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes
+set_target_properties(cocos2d external PROPERTIES
+    XCODE_ATTRIBUTE_ENABLE_BITCODE "NO"
+    XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
+    XCODE_ATTRIBUTE_CODE_SIGNING_STYLE "AUTOMATIC"
+    XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
+    XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "$ENV{NAKAMA_EXAMPLE_DEVELOPMENT_TEAM}"
+    XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
+    XCODE_ATTRIBUTE_CODE_SIGN_STYLE Automatic
+)
+
 if (APPLE)
     set_target_properties(nakama-cpp-cocos2d-x PROPERTIES
         FRAMEWORK TRUE
