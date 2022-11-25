@@ -24,6 +24,9 @@
 
 #include "HelloWorldScene.h"
 #include "nakama-cpp-cocos2d-x/NCocosHelper.h"
+#include "nakama-cpp/Nakama.h"
+
+using namespace Nakama;
 
 USING_NS_CC;
 
@@ -232,7 +235,7 @@ void HelloWorld::connect()
         m_label->setString(msg.username + ": " + msg.content);
     });
 
-    m_rtClient = this->m_client->createRtClient(DEFAULT_PORT);
+    m_rtClient = this->m_client->createRtClient();
     m_rtClient->setListener(m_rtListener.get());
 
 	printf("Connect...");

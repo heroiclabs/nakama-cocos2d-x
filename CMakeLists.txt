@@ -54,13 +54,14 @@ FetchContent_Declare(
   USES_TERMINAL_DOWNLOAD TRUE
 )
 
-FetchContent_MakeAvailable(cocos2d-x)
+FetchContent_Populate(cocos2d-x)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
      COMMAND "python" "download-deps.py"
      WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
      COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
 
+add_subdirectory(${cocos2d-x_SOURCE_DIR} ${cocos2d-x_BINARY_DIR})
 include(CMakePackageConfigHelpers)
 
 configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/nakama-cpp-cocos2d-x-config.cmake.in
@@ -94,7 +95,6 @@ install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
     FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
-
 
 if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
     add_subdirectory(example)
