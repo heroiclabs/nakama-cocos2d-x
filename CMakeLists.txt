@@ -85,5 +85,5 @@ install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
 )
 
 if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
-    #add_subdirectory(example)
+    add_subdirectory(example)
 endif()
