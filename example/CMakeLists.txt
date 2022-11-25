@@ -168,8 +168,6 @@ target_include_directories(${APP_NAME}
 # mark app resources
 setup_cocos_app_config(${APP_NAME})
 if(APPLE)
-    set_target_properties(${APP_NAME} PROPERTIES RESOURCE "${APP_UI_RES}")
-
     if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         set_xcode_property(${APP_NAME} INFOPLIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/proj.ios_mac/mac/Info.plist")
     elseif(IOS)

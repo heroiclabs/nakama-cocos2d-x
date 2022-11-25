@@ -189,30 +189,35 @@
             "name": "debug-macosx-arm64",
             "configurePreset": "macosx-arm64-host_x64",
             "configuration": "Debug",
+            "nativeToolOptions": ["-allowProvisioningUpdates"],
             "verbose": true
         },
         {
             "name": "release-macosx-arm64",
             "configurePreset": "macosx-arm64-host_x64",
             "configuration": "MinSizeRel",
+            "nativeToolOptions": ["-allowProvisioningUpdates"],
             "verbose": true
         },
         {
             "name": "debug-macosx-x64",
             "configurePreset": "macosx-x64-host_x64",
             "configuration": "Debug",
+            "nativeToolOptions": ["-allowProvisioningUpdates"],
             "verbose": true
         },
         {
             "name": "release-macosx-x64",
             "configurePreset": "macosx-x64-host_x64",
             "configuration": "MinSizeRel",
+            "nativeToolOptions": ["-allowProvisioningUpdates"],
             "verbose": true
         },
         {
             "name": "release-ios-arm64",
             "configurePreset": "ios-arm64-host_x64",
             "configuration": "MinSizeRel",
+            "nativeToolOptions": ["-allowProvisioningUpdates"],
             "verbose": true
         }
     ]

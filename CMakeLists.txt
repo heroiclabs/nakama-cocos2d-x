@@ -20,7 +20,6 @@ set(VCPKG_BUILD_TYPE release)
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
-set(NAKAMA_COCOS2D_X_BUILD_EXAMPLE ON)
 
 find_package(optional-lite)
 find_package(nakama-sdk)
@@ -28,9 +27,13 @@ find_package(nakama-sdk)
 file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
 file(GLOB HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
 
+## cocos-2d-x flag
+set(BUILD_CPP_TESTS OFF)
 set(BUILD_LUA_LIBS OFF)
 set(BUILD_CPP_TEMPLATE OFF)
-set(BUILD_CPP_TESTS OFF)
+set(BUILD_EDITOR_COCOSTUDIO OFF)
+set(BUILD_EDITOR_SPINE OFF)
+set(BUILD_EXTENSIONS OFF)
 
 ### cocos is not installable so we resort to an add_subdirectory workaround.
 add_subdirectory($ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-src $ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-build-${TARGET_TRIPLET})
@@ -41,14 +44,6 @@ target_include_directories(nakama-cpp-cocos2d-x PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
-
-## cocos-2d-x flags
-set(BUILD_CPP_TESTS OFF)
-set(BUILD_LUA_LIBS OFF)
-set(BUILD_CPP_TEMPLATE OFF)
-set(BUILD_EDITOR_COCOSTUDIO OFF)
-set(BUILD_EDITOR_SPINE OFF)
-set(BUILD_EXTENSIONS OFF)
 
 include(CMakePackageConfigHelpers)
 
