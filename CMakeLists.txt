@@ -33,7 +33,7 @@ set(BUILD_CPP_TEMPLATE OFF)
 set(BUILD_CPP_TESTS OFF)
 
 ### cocos is not installable so we resort to an add_subdirectory workaround.
-add_subdirectory($ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-src $ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-build)
+add_subdirectory($ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-src $ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-build-${TARGET_TRIPLET})
 
 add_library(nakama-cpp-cocos2d-x SHARED ${SRCS})
 
