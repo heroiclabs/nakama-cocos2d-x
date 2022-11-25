@@ -13,8 +13,11 @@
             "version>=": "2.6.0#3",
             "platform": "android | windows",
             "features": ["libhttpclient-ws"]
+        },
+        {
+            "name": "cocos2d-x"
         }
     ],
     "default-features": [],
-    "builtin-baseline": "5fcea86177e7c81fa90e721bba2822649dd4b982"
+    "builtin-baseline": "62d01b70df227850b728f5050418b917ad6d2b32"
 }

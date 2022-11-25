@@ -3,15 +3,15 @@
     [
         {
             "kind": "builtin",
-            "baseline": "5fcea86177e7c81fa90e721bba2822649dd4b982",
+            "baseline": "62d01b70df227850b728f5050418b917ad6d2b32",
             "packages": []
         },
         {
             "kind": "git",
             "repository": "https://github.com/heroiclabs/nakama-vcpkg-registry",
-            "baseline": "a281e16f62a119076981117c5e6736c90f1e9d3b",
+            "baseline": "8bf3dfb09e9a5e5cefeb96fe3d3241af2f3d9f9f",
             "reference": "master",
-            "packages": ["nakama-sdk", "wslay"]
+            "packages": ["nakama-sdk", "wslay", "cocos2d-x"]
         }
     ]
 }
