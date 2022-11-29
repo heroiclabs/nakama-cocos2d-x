@@ -12,13 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.25)
 
 set(FETCHCONTENT_QUIET OFF)
 
 set(VCPKG_BUILD_TYPE release)
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
+
+ # tell CMake it's okay that we override the cocos options from parent directory
+cmake_policy(SET CMP0077 NEW)
+
+
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(optional-lite)
@@ -94,6 +99,4 @@ install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
     RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
-    add_subdirectory(example)
-endif()
+add_subdirectory(example)
