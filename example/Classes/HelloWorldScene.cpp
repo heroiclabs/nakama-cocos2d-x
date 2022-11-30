@@ -182,7 +182,7 @@ bool HelloWorld::init()
     m_client->authenticateDevice(
         getDeviceId(),
         userName,
-        true,
+        false,
         vars,
         std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         loginFailedCallback);
