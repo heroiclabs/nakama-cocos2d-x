@@ -32,13 +32,13 @@ find_package(nakama-sdk)
 file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
 file(GLOB HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
 
-## cocos-2d-x flag
-set(BUILD_CPP_TESTS OFF)
-set(BUILD_LUA_LIBS OFF)
-set(BUILD_CPP_TEMPLATE OFF)
-set(BUILD_EDITOR_COCOSTUDIO OFF)
-set(BUILD_EDITOR_SPINE OFF)
-set(BUILD_EXTENSIONS OFF)
+## cocos-2d-x flags
+set(BUILD_CPP_TESTS CACHE INTERNAL OFF)
+set(BUILD_LUA_LIBS CACHE INTERNAL OFF)
+set(BUILD_CPP_TEMPLATE CACHE INTERNAL OFF)
+set(BUILD_EDITOR_COCOSTUDIO CACHE INTERNAL OFF)
+set(BUILD_EDITOR_SPINE CACHE INTERNAL OFF)
+set(BUILD_EXTENSIONS CACHE INTERNAL OFF)
 
 ### cocos is not installable so we resort to an add_subdirectory workaround.
 add_subdirectory($ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-src $ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-build-${TARGET_TRIPLET})
