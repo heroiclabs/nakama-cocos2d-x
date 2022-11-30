@@ -41,6 +41,7 @@ set(BUILD_EDITOR_SPINE CACHE INTERNAL OFF)
 set(BUILD_EXTENSIONS CACHE INTERNAL OFF)
 
 ### cocos is not installable so we resort to an add_subdirectory workaround.
+
 add_subdirectory($ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-src $ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-build-${TARGET_TRIPLET})
 
 add_library(nakama-cpp-cocos2d-x SHARED ${SRCS})
@@ -85,7 +86,7 @@ endif()
 
 target_link_libraries(nakama-cpp-cocos2d-x PRIVATE cocos2d PUBLIC nakama-sdk)
 
-## we install but can't export because cocos2d isn't setup to be installable in a relocatable way.
+# we install but can't export because cocos2d isn't setup to be installable in a relocatable way.
 install(TARGETS
     nakama-cpp-cocos2d-x
     EXPORT nakama-cpp-cocos2d-x-export
@@ -98,5 +99,7 @@ install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
     FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
+
+install(DIRECTORY ${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-third-party DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 add_subdirectory(example)

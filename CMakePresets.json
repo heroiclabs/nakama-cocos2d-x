@@ -17,8 +17,7 @@
                 "CMAKE_BUILD_TYPE": "MinSizeRel",
                 "CMAKE_CONFIGURATION_TYPES": "Debug;MinSizeRel",
                 "CMAKE_INSTALL_LIBDIR": "${presetName}",
-                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/triplets",
-                "BUILD_SHARED_LIBS": "ON"
+                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/triplets"
             }
         },
         {

@@ -145,11 +145,6 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     )
 endif()
 
-set(NAKAMA_FRAMEWORKS
-    ${CMAKE_SOURCE_DIR}/out/${CMAKE_INSTALL_LIBDIR}/nakama-cpp-cocos2d-x.framework ## todo figure out why passing target doesn't work
-    ${CMAKE_SOURCE_DIR}/out/${CMAKE_INSTALL_LIBDIR}/nakama-sdk.framework
-)
-
 if (APPLE)
     set_target_properties(${APP_NAME} PROPERTIES
             XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
