@@ -173,7 +173,7 @@ bool HelloWorld::init()
         onError();
     };
 
-    printf("Login...");
+    printf("Login...\n");
 
     NStringMap vars;
 
@@ -202,7 +202,7 @@ void HelloWorld::onLoginSucceeded(NSessionPtr session)
 {
     m_session = session;
 
-    printf("Login succeeded. user id: %s", m_session->getUserId().c_str());
+    printf("Login succeeded. user id: %s \n", m_session->getUserId().c_str());
 
     CCASSERT(m_session->getUsername() == userName, "Wrong user name");
     CCASSERT(m_session->getVariable("test") == "value", "Wrong value");
@@ -218,7 +218,7 @@ void HelloWorld::connect()
 
     m_rtListener->setConnectCallback([this]()
     {
-        printf("Connected!");
+        printf("Connected! \n");
         joinChat("chat-room");
         m_nakamaLogo->setColor(Color3B::GREEN);
     });
@@ -231,21 +231,21 @@ void HelloWorld::connect()
     m_rtListener->setChannelMessageCallback([this](const NChannelMessage& msg)
     {
         // msg.content is JSON string
-        printf("OnChannelMessage %s", msg.content.c_str());
+        printf("OnChannelMessage %s\n", msg.content.c_str());
         m_label->setString(msg.username + ": " + msg.content);
     });
 
     m_rtClient = this->m_client->createRtClient();
     m_rtClient->setListener(m_rtListener.get());
 
-	printf("Connect...");
+	printf("Connect...\n");
 
     m_rtClient->connect(m_session, true/*, NRtClientProtocol::Json*/);
 }
 
 void HelloWorld::joinChat(const std::string& topicName)
 {
-    printf("Joining room %s", topicName.c_str());
+    printf("Joining room %s\nf", topicName.c_str());
 
     m_rtClient->joinChat(
         topicName,
@@ -256,7 +256,7 @@ void HelloWorld::joinChat(const std::string& topicName)
         {
             m_chatId = channel->id;
 
-            printf("Joined topic id %s", channel->id.c_str());
+            printf("Joined topic id %s\n", channel->id.c_str());
 
             sendChatMessage("Hey dude!");
 
@@ -274,11 +274,11 @@ void HelloWorld::sendChatMessage(const std::string& message)
     // data must be JSON
     std::string data = "{\"msg\":\"" + message + "\"}";
 
-    printf("sending topic message %s", message.c_str());
+    printf("sending topic message %s\n", message.c_str());
 
     m_rtClient->writeChatMessage(m_chatId, data, [](const NChannelMessageAck& ack)
     {
-        printf("Sent OK. message id %s", ack.messageId.c_str());
+        printf("Sent OK. message id %s\n", ack.messageId.c_str());
     },
     [this](const NRtError& error)
     {
