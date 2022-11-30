@@ -14,6 +14,7 @@
             "installDir": "out",
             "hidden": true,
             "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel",
                 "CMAKE_CONFIGURATION_TYPES": "Debug;MinSizeRel",
                 "CMAKE_INSTALL_LIBDIR": "${presetName}",
                 "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/triplets",
