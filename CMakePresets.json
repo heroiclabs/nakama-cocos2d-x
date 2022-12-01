@@ -15,7 +15,7 @@
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "MinSizeRel",
-                "CMAKE_CONFIGURATION_TYPES": "Debug;MinSizeRel",
+                "CMAKE_CONFIGURATION_TYPES": "MinSizeRel",
                 "CMAKE_INSTALL_LIBDIR": "${presetName}",
                 "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/triplets"
             }
@@ -170,39 +170,17 @@
             "configuration": "MinSizeRel",
             "verbose": true
         },
-        {
-            "name": "debug-win-x86",
-            "configurePreset": "win-x86",
-            "configuration": "Debug"
-        },
+
         {
             "name": "release-linux-amd64",
             "configurePreset": "linux-amd64",
             "configuration": "MinSizeRel"
         },
-        {
-            "name": "debug-linux-amd64",
-            "configurePreset": "linux-amd64",
-            "configuration": "Debug"
-        },
-        {
-            "name": "debug-macosx-arm64",
-            "configurePreset": "macosx-arm64-host_x64",
-            "configuration": "Debug",
-            "nativeToolOptions": ["-allowProvisioningUpdates"],
-            "verbose": true
-        },
+
         {
             "name": "release-macosx-arm64",
             "configurePreset": "macosx-arm64-host_x64",
             "configuration": "MinSizeRel",
-            "nativeToolOptions": ["-allowProvisioningUpdates"],
-            "verbose": true
-        },
-        {
-            "name": "debug-macosx-x64",
-            "configurePreset": "macosx-x64-host_x64",
-            "configuration": "Debug",
             "nativeToolOptions": ["-allowProvisioningUpdates"],
             "verbose": true
         },

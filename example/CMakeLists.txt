@@ -146,10 +146,23 @@ endif()
 
 if (APPLE)
     set_target_properties(${APP_NAME} PROPERTIES
-            XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
-            XCODE_EMBED_FRAMEWORKS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-sdk.framework"
-            XCODE_EMBED_FRAMEWORKS_CODE_SIGN_ON_COPY		"YES"		# frameworks must be signed by the same developer as the binary
-            XCODE_EMBED_FRAMEWORKS_REMOVE_HEADERS_ON_COPY	"YES")
+    MACOSX_BUNDLE_GUI_IDENTIFIER "com.example"
+    XCODE_ATTRIBUTE_ENABLE_BITCODE "NO"
+    XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "com.heroiclabs.example"
+    XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
+    XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS ${CMAKE_CURRENT_SOURCE_DIR}/example.entitlements
+    XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
+    XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "$ENV{NAKAMA_TEST_DEVELOPMENT_TEAM}"
+    XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
+    # targets don't work for embedding frameworks, and can't find a better way to get path
+    XCODE_EMBED_FRAMEWORKS ${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-sdk.framework
+    XCODE_EMBED_FRAMEWORKS_CODE_SIGN_ON_COPY		"YES"		# frameworks must be signed by the same developer as the binary
+	XCODE_EMBED_FRAMEWORKS_REMOVE_HEADERS_ON_COPY	"YES"
+    XCODE_ATTRIBUTE_CODE_SIGN_STYLE Automatic
+    MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/example.plist
+
+
+    )
 endif()
 
 

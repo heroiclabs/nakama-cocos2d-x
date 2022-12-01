@@ -1,6 +1,6 @@
 {
     "name": "nakama-sdk-cocos2d-x",
-    "version": "1.0.0",
+    "version": "2.6.0",
     "dependencies": [
         {
             "name": "nakama-sdk",
