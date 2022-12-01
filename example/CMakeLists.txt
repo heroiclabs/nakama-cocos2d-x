@@ -29,7 +29,6 @@ set(APP_NAME nakama-cocos2d-x-example)
 
 project(${APP_NAME})
 
-
 ### This needs to be one of the first commands in order to prevent code signing issues.
 if (${CMAKE_SYSTEM_NAME} STREQUAL "iOS" OR ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     # CMake needs to implement a cleaner way of doing this: https://gitlab.kitware.com/cmake/cmake/-/issues/22997 &&

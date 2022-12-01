@@ -14,15 +14,12 @@
 
 cmake_minimum_required(VERSION 3.25)
 
-set(FETCHCONTENT_QUIET OFF)
-
 set(VCPKG_BUILD_TYPE release)
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
 
  # tell CMake it's okay that we override the cocos options from parent directory
 cmake_policy(SET CMP0077 NEW)
-
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -45,18 +42,6 @@ include(CMakePackageConfigHelpers)
 
 # no ZERO_CHECK target for Xcode
 set(CMAKE_SUPPRESS_REGENERATION true)
-
-# bitcode will be deprecated in Xcode 14 which is in beta at the time of this writing
-# https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes
-set_target_properties(cocos2d external PROPERTIES
-    XCODE_ATTRIBUTE_ENABLE_BITCODE "NO"
-    XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
-    XCODE_ATTRIBUTE_CODE_SIGNING_STYLE "AUTOMATIC"
-    XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
-    XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "$ENV{NAKAMA_EXAMPLE_DEVELOPMENT_TEAM}"
-    XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
-    XCODE_ATTRIBUTE_CODE_SIGN_STYLE Automatic
-)
 
 install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
     FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
