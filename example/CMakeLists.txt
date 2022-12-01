@@ -148,8 +148,7 @@ endif()
 if (APPLE)
     set_target_properties(${APP_NAME} PROPERTIES
             XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
-            # Even though Xcode is a multi-config generator, for frameworks it can only do one configuration at a time, defaulting to ${CMAKE_BUILD_TYPE} it appears: https://cmake.org/pipermail/cmake/2013-May/054675.html
-            XCODE_EMBED_FRAMEWORKS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-sdk.framework;${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}/nakama-cpp-cocos2d-x.framework"
+            XCODE_EMBED_FRAMEWORKS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-sdk.framework"
             XCODE_EMBED_FRAMEWORKS_CODE_SIGN_ON_COPY		"YES"		# frameworks must be signed by the same developer as the binary
             XCODE_EMBED_FRAMEWORKS_REMOVE_HEADERS_ON_COPY	"YES")
 endif()
@@ -180,7 +179,7 @@ if(LINUX OR WINDOWS)
 endif()
 
 # use Nakama SDK
-target_link_libraries(${APP_NAME} PRIVATE nakama-cpp-cocos2d-x)
+target_link_libraries(${APP_NAME} PRIVATE nakama-sdk)
 
 install(TARGETS
     nakama-cocos2d-x-example

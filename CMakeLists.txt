@@ -29,9 +29,6 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(optional-lite)
 find_package(nakama-sdk)
 
-file(GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
-file(GLOB HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
-
 ## cocos-2d-x flags
 set(BUILD_CPP_TESTS CACHE INTERNAL OFF)
 set(BUILD_LUA_LIBS CACHE INTERNAL OFF)
@@ -44,21 +41,7 @@ set(BUILD_EXTENSIONS CACHE INTERNAL OFF)
 
 add_subdirectory($ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-src $ENV{VCPKG_ROOT}/buildtrees/cocos2d-x/cocos2d-x-build-${TARGET_TRIPLET})
 
-add_library(nakama-cpp-cocos2d-x SHARED ${SRCS})
-
-target_include_directories(nakama-cpp-cocos2d-x PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
-)
-
 include(CMakePackageConfigHelpers)
-
-configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/nakama-cpp-cocos2d-x-config.cmake.in
-  "${CMAKE_CURRENT_BINARY_DIR}/nakama-cpp-cocos2d-x-config.cmake"
-  INSTALL_DESTINATION share/nakama-cpp-cocos2d-x
-  NO_SET_AND_CHECK_MACRO
-  NO_CHECK_REQUIRED_COMPONENTS_MACRO
-)
 
 # no ZERO_CHECK target for Xcode
 set(CMAKE_SUPPRESS_REGENERATION true)
@@ -73,26 +56,6 @@ set_target_properties(cocos2d external PROPERTIES
     XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "$ENV{NAKAMA_EXAMPLE_DEVELOPMENT_TEAM}"
     XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
     XCODE_ATTRIBUTE_CODE_SIGN_STYLE Automatic
-)
-
-if (APPLE)
-    set_target_properties(nakama-cpp-cocos2d-x PROPERTIES
-        FRAMEWORK TRUE
-        FRAMEWORK_VERSION A
-        PUBLIC_HEADER "${HEADERS}"
-        MACOSX_FRAMEWORK_IDENTIFIER com.heroiclabs.nakama-cpp-cocos2d-x
-        )
-endif()
-
-target_link_libraries(nakama-cpp-cocos2d-x PRIVATE cocos2d PUBLIC nakama-sdk)
-
-# we install but can't export because cocos2d isn't setup to be installable in a relocatable way.
-install(TARGETS
-    nakama-cpp-cocos2d-x
-    EXPORT nakama-cpp-cocos2d-x-export
-    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDE_DIR}
 )
 
 install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk

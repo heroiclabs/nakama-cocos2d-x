@@ -23,7 +23,6 @@
  ****************************************************************************/
 
 #include "HelloWorldScene.h"
-#include "nakama-cpp-cocos2d-x/NCocosHelper.h"
 #include "nakama-cpp/Nakama.h"
 
 using namespace Nakama;
@@ -147,8 +146,6 @@ bool HelloWorld::init()
         this->addChild(m_nakamaLogo, 0);
     }
 
-    NCocosHelper::init(NLogLevel::Debug);
-
     auto tickCallback = [this](float dt)
     {
         m_client->tick();
@@ -166,7 +163,7 @@ bool HelloWorld::init()
     parameters.port = DEFAULT_PORT;
     parameters.ssl = false;
 
-    m_client = NCocosHelper::createDefaultClient(parameters);
+    m_client = createDefaultClient(parameters);
 
     auto loginFailedCallback = [this](const NError& error)
     {

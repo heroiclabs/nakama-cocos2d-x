@@ -6,13 +6,13 @@
             "name": "nakama-sdk",
             "version>=": "2.6.0#3",
             "platform": "ios | osx | linux",
-            "features": ["wslay", "curl", "distribute-protobuf", "distribute-optional-lite"]
+            "features": ["libhttpclient-http", "wslay", "curl", "distribute-protobuf", "distribute-optional-lite"]
         },
         {
             "name": "nakama-sdk",
             "version>=": "2.6.0#3",
             "platform": "android | windows",
-            "features": ["libhttpclient-ws", "distribute-protobuf", "distribute-optional-lite"]
+            "features": ["libhttpclient-ws", "libhttpclient-http", "distribute-protobuf", "distribute-optional-lite"]
         },
         {
             "name": "cocos2d-x"
