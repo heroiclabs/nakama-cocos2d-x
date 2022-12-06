@@ -29,6 +29,7 @@ if (DEFINED ANDROID_ABI)
 endif()
 
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
+include(GNUInstallDirs)
 
 # tell CMake it's okay that we override the cocos options from parent directory
 cmake_policy(SET CMP0077 NEW)
@@ -44,13 +45,14 @@ include(CMakePackageConfigHelpers)
 # no ZERO_CHECK target for Xcode
 set(CMAKE_SUPPRESS_REGENERATION true)
 
-if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
+if (FALSE) ## TODO CHANGE THIS BACK
     add_subdirectory(example)
-
-    install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
-        FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    )
-
-    install(DIRECTORY ${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-third-party DESTINATION ${CMAKE_INSTALL_LIBDIR})
 endif()
+
+
+install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
+    FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+install(DIRECTORY ${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-third-party DESTINATION ${CMAKE_INSTALL_PREFIX})
