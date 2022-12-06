@@ -40,7 +40,7 @@ set(BUILD_EXTENSIONS CACHE INTERNAL OFF)
 FetchContent_Declare(
     cocos2d-x
     GIT_REPOSITORY https://github.com/heroiclabs/cocos2d-x ## TODO switch to cocos mainline once they accept the PR
-    GIT_TAG        2b58dc8aa85573908e230dfef6dcb48408a0010a
+    GIT_TAG        efe57ec70469aff6d6ab212821b512a1939f114d
     GIT_PROGRESS   TRUE
     USES_TERMINAL_DOWNLOAD TRUE
 )

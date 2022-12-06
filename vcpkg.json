@@ -13,9 +13,6 @@
             "version>=": "2.6.0#3",
             "platform": "android | windows",
             "features": ["libhttpclient-ws", "libhttpclient-http", "distribute-protobuf", "distribute-optional-lite"]
-        },
-        {
-            "name": "cocos2d-x"
         }
     ],
     "default-features": [],

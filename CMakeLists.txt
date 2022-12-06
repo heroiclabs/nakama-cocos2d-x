@@ -45,7 +45,7 @@ include(CMakePackageConfigHelpers)
 # no ZERO_CHECK target for Xcode
 set(CMAKE_SUPPRESS_REGENERATION true)
 
-if (FALSE) ## TODO CHANGE THIS BACK
+if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
     add_subdirectory(example)
 endif()
 
