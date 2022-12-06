@@ -29,6 +29,32 @@ set(APP_NAME nakama-cocos2d-x-example)
 
 project(${APP_NAME})
 
+# cocos-2d-x flags
+set(BUILD_CPP_TESTS CACHE INTERNAL OFF)
+set(BUILD_LUA_LIBS CACHE INTERNAL OFF)
+set(BUILD_CPP_TEMPLATE CACHE INTERNAL OFF)
+set(BUILD_EDITOR_COCOSTUDIO CACHE INTERNAL OFF)
+set(BUILD_EDITOR_SPINE CACHE INTERNAL OFF)
+set(BUILD_EXTENSIONS CACHE INTERNAL OFF)
+
+FetchContent_Declare(
+    cocos2d-x
+    GIT_REPOSITORY https://github.com/heroiclabs/cocos2d-x ## TODO switch to cocos mainline once they accept the PR
+    GIT_TAG        2b58dc8aa85573908e230dfef6dcb48408a0010a
+    GIT_PROGRESS   TRUE
+    USES_TERMINAL_DOWNLOAD TRUE
+)
+
+# populate variables but don't add subdirectory until we download the remaining dependencies
+FetchContent_Populate(cocos2d-x)
+
+execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
+    COMMAND "python" "download-deps.py"
+    WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
+    COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
+
+add_subdirectory(${cocos2d-x_SOURCE_DIR} ${cocos2d-x_BINARY_DIR})
+
 ### This needs to be one of the first commands in order to prevent code signing issues.
 if (${CMAKE_SYSTEM_NAME} STREQUAL "iOS" OR ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     # CMake needs to implement a cleaner way of doing this: https://gitlab.kitware.com/cmake/cmake/-/issues/22997 &&
@@ -160,8 +186,6 @@ if (APPLE)
 	XCODE_EMBED_FRAMEWORKS_REMOVE_HEADERS_ON_COPY	"YES"
     XCODE_ATTRIBUTE_CODE_SIGN_STYLE Automatic
     MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/example.plist
-
-
     )
 endif()
 
