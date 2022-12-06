@@ -13,7 +13,14 @@
             "version>=": "2.6.0#3",
             "platform": "android | windows",
             "features": ["libhttpclient-ws", "libhttpclient-http", "distribute-protobuf", "distribute-optional-lite"]
+        },
+        {
+            "name": "gtk",
+            "platform": "android | linux"
         }
+    ],
+    "overrides": [
+        { "name": "gtk", "version": "3.22.19-4" }
     ],
     "default-features": [],
     "builtin-baseline": "62d01b70df227850b728f5050418b917ad6d2b32"

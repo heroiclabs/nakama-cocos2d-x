@@ -16,7 +16,7 @@ include(FetchContent)
 
 cmake_minimum_required(VERSION 3.25)
 
-option(NAKAMA_COCOS2D_X_BUILD_EXAMPLE ON)
+option(NAKAMA_COCOS2D_X_BUILD_EXAMPLE "Whether or not to build an example project." ON)
 set(VCPKG_BUILD_TYPE release)
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 
