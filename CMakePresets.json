@@ -11,12 +11,11 @@
             "displayName": "Default",
             "description": "",
             "binaryDir": "build/${presetName}",
-            "installDir": "out",
+            "installDir": "out/${presetName}",
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "MinSizeRel",
                 "CMAKE_CONFIGURATION_TYPES": "MinSizeRel",
-                "CMAKE_INSTALL_LIBDIR": "${presetName}",
                 "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/triplets"
             }
         },
@@ -160,6 +159,80 @@
             "environment": {
                 "CC": "/usr/bin/gcc-11",
                 "CXX": "/usr/bin/g++-11"
+            }
+        },
+        {
+            "name": "android-default",
+            "inherits": [
+                "default"
+            ],
+            "hidden": true,
+            "generator": "Ninja Multi-Config",
+            "cacheVariables": {
+                "ANDROID_USE_LEGACY_TOOLCHAIN_FILE": "FALSE",
+                "ANDROID_ARM_NEON": "ON",
+                "ANDROID_STL": "c++_shared",
+                "ANDROID_PLATFORM": "android-21",
+                "CMAKE_SYSTEM_NAME": "Android"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            },
+            "environment": {
+                "NDK": "$env{ANDROID_NDK_HOME}"
+            }
+        },
+        {
+            "name": "android-armeabi-v7a-host_osx_x64",
+            "inherits": [
+                "android-default"
+            ],
+            "generator": "Ninja Multi-Config",
+            "cacheVariables": {
+                "VCPKG_HOST_TRIPLET": "x64-osx-release",
+                "VCPKG_TARGET_TRIPLET": "arm-android-heroic",
+                "ANDROID_ABI": "armeabi-v7a"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
+        },
+        {
+            "name": "android-arm64-v8a-host_osx_x64",
+            "inherits": [
+                "android-default"
+            ],
+            "generator": "Ninja Multi-Config",
+            "cacheVariables": {
+                "VCPKG_HOST_TRIPLET": "x64-osx-release",
+                "VCPKG_TARGET_TRIPLET": "arm64-android-heroic",
+                "ANDROID_ABI": "arm64-v8a"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
+        },
+        {
+            "name": "android-x64-host_osx_x64",
+            "inherits": [
+                "android-default"
+            ],
+            "generator": "Ninja Multi-Config",
+            "cacheVariables": {
+                "VCPKG_HOST_TRIPLET": "x64-osx-heroic",
+                "VCPKG_TARGET_TRIPLET": "x64-android-heroic",
+                "ANDROID_ABI": "x86_64"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
             }
         }
     ],
