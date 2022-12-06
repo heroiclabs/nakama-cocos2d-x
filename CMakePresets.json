@@ -219,7 +219,7 @@
             ],
             "generator": "Ninja Multi-Config",
             "cacheVariables": {
-                "VCPKG_HOST_TRIPLET": "x64-osx-heroic",
+                "VCPKG_HOST_TRIPLET": "x64-osx-release",
                 "VCPKG_TARGET_TRIPLET": "x64-android-heroic",
                 "ANDROID_ABI": "x86_64"
             },
