@@ -36,8 +36,8 @@ You'll need to setup the server and database before you can connect with the cli
 Add following to your `CMakeLists.txt` file:
 
 ```cmake
-find_package(nakama-cpp-cocos2d-x)
-target_link_libraries(${APP_NAME} nakama-cpp-cocos2d-x)
+find_package(nakama-sdk)
+target_link_libraries(${APP_NAME} nakama-sdk)
 ```
 
 ## Threading model
