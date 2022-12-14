@@ -4,6 +4,28 @@ All notable changes to this project are documented below.
 
 The format is based on [keep a changelog](http://keepachangelog.com/) and this project uses [semantic versioning](http://semver.org/).
 
+## [2.5.1] - [2022-01-17]
+### Added
+- Added realtime parties support.
+
+### Fixed
+- Fixed assignment of cursor in listing of storage objects.
+- Fixed join group chat by correcting NChannelType enum values.
+
+## [2.4.0] - [2020-11-01]
+### Added
+- Support server 2.13.0
+- Added authentication with Apple ID: `authenticateApple`, `linkApple` and `unlinkApple`
+- Added `demoteGroupUsers`
+- Added `NClientInterface::rpc` with `http key`
+- Added `disableTime` to `NAccount`
+- Added `updateTime` to `NFriend`
+- Improve future-compatibility with server changes
+
+### Fixed
+- Fix listFriends failing on 2.3.0 against 2.13.0 server
+- fix crash when response is received after NClient was deleted
+
 ## [2.3.0] - [2020-03-01]
 ### Fixed
 - RPC call fails when body is empty.
