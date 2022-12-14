@@ -9,7 +9,7 @@
         {
             "kind": "git",
             "repository": "https://github.com/heroiclabs/nakama-vcpkg-registry",
-            "baseline": "85cbebcc92dba86b0c1417ab395b3dc993aff431",
+            "baseline": "f849d0e7c283120fa3bf52a9e7923da5c1760374",
             "reference": "master",
             "packages": ["nakama-sdk", "wslay", "cocos2d-x"]
         }

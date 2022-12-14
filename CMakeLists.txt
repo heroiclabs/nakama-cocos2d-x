@@ -16,7 +16,7 @@ include(FetchContent)
 
 cmake_minimum_required(VERSION 3.25)
 
-option(NAKAMA_COCOS2D_X_BUILD_EXAMPLE "Whether or not to build an example project." ON)
+option(NAKAMA_COCOS2D_X_BUILD_EXAMPLE "Whether or not to build an example project." OFF)
 set(VCPKG_BUILD_TYPE release)
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 
@@ -46,7 +46,7 @@ include(CMakePackageConfigHelpers)
 set(CMAKE_SUPPRESS_REGENERATION true)
 
 if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
-    add_subdirectory(example)
+   # add_subdirectory(example)
 endif()
 
 if (APPLE)
