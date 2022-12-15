@@ -1,18 +1,18 @@
 /****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
+
  http://www.cocos2d-x.org
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,7 +23,9 @@
  ****************************************************************************/
 
 #include "HelloWorldScene.h"
-#include "NakamaCocos2d/NCocosHelper.h"
+#include "nakama-cpp/Nakama.h"
+
+using namespace Nakama;
 
 USING_NS_CC;
 
@@ -94,6 +96,8 @@ bool HelloWorld::init()
     // add a label shows "Hello World"
     // create and initialize a label
 
+    printf("creating hello world");
+
     m_label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     if (m_label == nullptr)
     {
@@ -142,8 +146,6 @@ bool HelloWorld::init()
         this->addChild(m_nakamaLogo, 0);
     }
 
-    NCocosHelper::init(NLogLevel::Debug);
-
     auto tickCallback = [this](float dt)
     {
         m_client->tick();
@@ -161,14 +163,14 @@ bool HelloWorld::init()
     parameters.port = DEFAULT_PORT;
     parameters.ssl = false;
 
-    m_client = NCocosHelper::createDefaultClient(parameters);
+    m_client = createDefaultClient(parameters);
 
     auto loginFailedCallback = [this](const NError& error)
     {
         onError();
     };
 
-    CCLOG("Login...");
+    printf("Login...\n");
 
     NStringMap vars;
 
@@ -177,7 +179,7 @@ bool HelloWorld::init()
     m_client->authenticateDevice(
         getDeviceId(),
         userName,
-        true,
+        false,
         vars,
         std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         loginFailedCallback);
@@ -197,7 +199,7 @@ void HelloWorld::onLoginSucceeded(NSessionPtr session)
 {
     m_session = session;
 
-    CCLOG("Login succeeded. user id: %s", m_session->getUserId().c_str());
+    printf("Login succeeded. user id: %s \n", m_session->getUserId().c_str());
 
     CCASSERT(m_session->getUsername() == userName, "Wrong user name");
     CCASSERT(m_session->getVariable("test") == "value", "Wrong value");
@@ -213,7 +215,7 @@ void HelloWorld::connect()
 
     m_rtListener->setConnectCallback([this]()
     {
-        CCLOG("Connected!");
+        printf("Connected! \n");
         joinChat("chat-room");
         m_nakamaLogo->setColor(Color3B::GREEN);
     });
@@ -226,21 +228,21 @@ void HelloWorld::connect()
     m_rtListener->setChannelMessageCallback([this](const NChannelMessage& msg)
     {
         // msg.content is JSON string
-        CCLOG("OnChannelMessage %s", msg.content.c_str());
+        printf("OnChannelMessage %s\n", msg.content.c_str());
         m_label->setString(msg.username + ": " + msg.content);
     });
 
-    m_rtClient = NCocosHelper::createRtClient(m_client, DEFAULT_PORT);
+    m_rtClient = this->m_client->createRtClient();
     m_rtClient->setListener(m_rtListener.get());
 
-	CCLOG("Connect...");
+	printf("Connect...\n");
 
     m_rtClient->connect(m_session, true/*, NRtClientProtocol::Json*/);
 }
 
 void HelloWorld::joinChat(const std::string& topicName)
 {
-    CCLOG("Joining room %s", topicName.c_str());
+    printf("Joining room %s\nf", topicName.c_str());
 
     m_rtClient->joinChat(
         topicName,
@@ -251,7 +253,7 @@ void HelloWorld::joinChat(const std::string& topicName)
         {
             m_chatId = channel->id;
 
-            CCLOG("Joined topic id %s", channel->id.c_str());
+            printf("Joined topic id %s\n", channel->id.c_str());
 
             sendChatMessage("Hey dude!");
 
@@ -269,11 +271,11 @@ void HelloWorld::sendChatMessage(const std::string& message)
     // data must be JSON
     std::string data = "{\"msg\":\"" + message + "\"}";
 
-    CCLOG("sending topic message %s", message.c_str());
+    printf("sending topic message %s\n", message.c_str());
 
     m_rtClient->writeChatMessage(m_chatId, data, [](const NChannelMessageAck& ack)
     {
-        CCLOG("Sent OK. message id %s", ack.messageId.c_str());
+        printf("Sent OK. message id %s\n", ack.messageId.c_str());
     },
     [this](const NRtError& error)
     {
