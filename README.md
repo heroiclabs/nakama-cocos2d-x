@@ -44,7 +44,7 @@ target_link_libraries(${APP_NAME} nakama-sdk)
 You will need to include `optional-lite` as well if you do not bring it in yourself.
 
 ```cmake
-set(nakama-sdk_DIR <path-to-nakama-sdk>/share/optional-lite)
+set(optional-lite_DIR <path-to-nakama-sdk>/share/optional-lite)
 find_package(optional-lite)
 target_link_libraries(${APP_NAME} nonstd::optional-lite)
 ```
