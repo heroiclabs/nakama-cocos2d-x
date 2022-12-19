@@ -36,8 +36,25 @@ You'll need to setup the server and database before you can connect with the cli
 Add following to your `CMakeLists.txt` file:
 
 ```cmake
+set(nakama-sdk_DIR <path-to-nakama-sdk>/share/nakama-sdk)
 find_package(nakama-sdk)
 target_link_libraries(${APP_NAME} nakama-sdk)
+```
+
+You will need to include `optional-lite` as well if you do not bring it in yourself.
+
+```cmake
+set(nakama-sdk_DIR <path-to-nakama-sdk>/share/optional-lite)
+find_package(optional-lite)
+target_link_libraries(${APP_NAME} nonstd::optional-lite)
+```
+
+Some users also like to include protobuf for their own serialization in their app. To include this, do the following:
+
+```cmake
+set(protobuf_DIR <path-to-nakama-sdk>/share/protobuf)
+find_package(Protobuf)
+target_link_libraries(protobuf::libprotobuf)
 ```
 
 ## Threading model
@@ -59,6 +76,21 @@ NClientPtr client = createDefaultClient(parameters);
 ```
 
 The `createDefaultClient` will create HTTP/1.1 client to use REST API.
+
+### Android
+
+On Android, networking libraries for native activities implemented by Cocos require access to the Java virtual machine in order to run properly. Cocos exposes a helper for access to the JavaVM it uses. This must be passed to the platform parameters in the SDK:
+
+```cpp
+#include <JniHelper.h>
+
+NClientParameters parameters;
+// ... initialization of parameters
+parameters.platformParams.javaVM = JniHelper::getJavaVM ();
+NClientPtr client = createDefaultClient(parameters);
+```
+
+Also see: https://cocos2d-x.org/reference/native-cpp/V3.3/df/df6/classcocos2d_1_1_jni_helper.html#a34abff3be15bc790ad2a09f9b7383488
 
 ## Tick
 
