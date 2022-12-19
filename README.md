@@ -54,7 +54,7 @@ Some users also like to include protobuf for their own serialization in their ap
 ```cmake
 set(protobuf_DIR <path-to-nakama-sdk>/share/protobuf)
 find_package(Protobuf)
-target_link_libraries(protobuf::libprotobuf)
+target_link_libraries(${APP_NAME} protobuf::libprotobuf)
 ```
 
 ## Threading model
