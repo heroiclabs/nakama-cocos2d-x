@@ -56,7 +56,8 @@ install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
     RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-file(GLOB LIBPROTOBUF "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/libprotobuf*.[a|so|dll|lib]")
+file(GLOB LIBPROTOBUF "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libprotobuf.[a|so|dll|lib]")
+
 install(FILES ${LIBPROTOBUF} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 ## republish include files
