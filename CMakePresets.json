@@ -210,7 +210,7 @@
                 "lhs": "${hostSystemName}",
                 "rhs": "Darwin"
             },
-            "installDir": "out/android-arm64"
+            "installDir": "out/android-arm64-v8a"
         },
         {
             "name": "android-x64-host_osx_x64",
