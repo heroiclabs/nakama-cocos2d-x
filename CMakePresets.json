@@ -40,7 +40,6 @@
             "inherits": [
                 "default"
             ],
-            "installDir": "out",
             "generator": "Xcode",
             "cacheVariables": {
                 "VCPKG_HOST_TRIPLET": "arm64-osx-release",
@@ -51,7 +50,8 @@
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Darwin"
-            }
+            },
+            "installDir": "out/macosx-arm64"
         },
         {
             "name": "macosx-arm64-host_x64",
@@ -61,7 +61,8 @@
             "cacheVariables": {
                 "VCPKG_HOST_TRIPLET": "x64-osx-release",
                 "CMAKE_OSX_ARCHITECTURES": "arm64"
-            }
+            },
+            "installDir": "out/macosx-arm64"
         },
         {
             "name": "macosx-x64-host_x64",
@@ -72,7 +73,8 @@
                 "VCPKG_HOST_TRIPLET": "x64-osx-release",
                 "VCPKG_TARGET_TRIPLET": "x64-osx-release",
                 "CMAKE_OSX_ARCHITECTURES": "x86_64"
-            }
+            },
+            "installDir": "out/macosx-x64"
         },
         {
             "name": "macosx-x64-host_arm64",
@@ -82,7 +84,9 @@
             "cacheVariables": {
                 "VCPKG_HOST_TRIPLET": "arm64-osx-release",
                 "CMAKE_OSX_ARCHITECTURES": "x86_64"
-            }
+            },
+            "installDir": "out/macosx-x64"
+
         },
         {
             "name": "ios-arm64-host_arm64",
@@ -92,18 +96,19 @@
             "cacheVariables": {
                 "VCPKG_TARGET_TRIPLET": "arm64-ios-release",
                 "CMAKE_SYSTEM_NAME": "iOS"
-            }
+            },
+            "installDir": "out/ios-arm64"
         },
         {
             "name": "ios-arm64-host_x64",
             "inherits": [
                 "ios-arm64-host_arm64"
             ],
-            "installDir": "out",
             "cacheVariables": {
                 "VCPKG_TARGET_TRIPLET": "arm64-ios-release",
                 "VCPKG_HOST_TRIPLET": "x64-osx-release"
-            }
+            },
+            "installDir": "out/ios-arm64"
         },
         {
             "name": "iphonesimulator-x64-host_arm64",

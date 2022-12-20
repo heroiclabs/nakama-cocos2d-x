@@ -48,8 +48,14 @@ FetchContent_Declare(
 # populate variables but don't add subdirectory until we download the remaining dependencies
 FetchContent_Populate(cocos2d-x)
 
+
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
     COMMAND "python" "download-deps.py"
+    WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
+    COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
+
+execute_process(COMMAND ${CMAKE_COMMAND}
+    COMMAND "python" "setup.py"
     WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
     COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
 

@@ -52,8 +52,8 @@ target_link_libraries(${APP_NAME} nonstd::optional-lite)
 Some users also like to include protobuf for their own serialization in their app. To include this, do the following:
 
 ```cmake
-set(protobuf_DIR <path-to-nakama-sdk>/share/protobuf)
-find_package(Protobuf)
+set(Protobuf_DIR <path-to-nakama-sdk>/share/protobuf)
+find_package(Protobuf CONFIG REQUIRED)
 target_link_libraries(${APP_NAME} protobuf::libprotobuf)
 ```
 
