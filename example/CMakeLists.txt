@@ -44,13 +44,16 @@ FetchContent_Populate(cocos2d-x)
 
 get_filename_component(NAKAMA_PROJECT "${CMAKE_SOURCE_DIR}" DIRECTORY)
 
-set(NAKAMA_TRIPLET "")
+set(NAKAMA_TRIPLET "UNDEFINED")
 
-if (NOT ${NAKAMA_TRIPLET})
+if (${NAKAMA_TRIPLET} STREQUAL "UNDEFINED")
     message(FATAL_ERROR "Set the Nakama triplet to match the directory in 'out' that you'd like to test.")
 endif()
 
-set(nakama-sdk_DIR ${NAKAMA_PROJECT}/${NAKAMA_TRIPLET}/share)
+set(nakama-sdk_DIR ${NAKAMA_PROJECT}/out/${NAKAMA_TRIPLET}/share/nakama-sdk)
+
+message(${nakama-sdk_DIR})
+find_package(nakama-sdk REQUIRED)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
     COMMAND "python" "download-deps.py"
