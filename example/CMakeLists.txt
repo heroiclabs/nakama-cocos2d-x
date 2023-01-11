@@ -44,15 +44,17 @@ FetchContent_Populate(cocos2d-x)
 
 get_filename_component(NAKAMA_PROJECT "${CMAKE_SOURCE_DIR}" DIRECTORY)
 
+# TODO figure out better way to parameterize this, does cocos cli accept CMake cache variables?
 set(NAKAMA_TRIPLET "UNDEFINED")
 
 if (${NAKAMA_TRIPLET} STREQUAL "UNDEFINED")
     message(FATAL_ERROR "Set the Nakama triplet to match the directory in 'out' that you'd like to test.")
 endif()
 
+set(optional-lite_DIR ${NAKAMA_PROJECT}/out/${NAKAMA_TRIPLET}/share/optional-lite)
 set(nakama-sdk_DIR ${NAKAMA_PROJECT}/out/${NAKAMA_TRIPLET}/share/nakama-sdk)
 
-message(${nakama-sdk_DIR})
+find_package(optional-lite REQUIRED)
 find_package(nakama-sdk REQUIRED)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
@@ -199,7 +201,7 @@ if (APPLE)
         XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "$ENV{NAKAMA_TEST_DEVELOPMENT_TEAM}"
         XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
         # targets don't work for embedding frameworks, and can't find a better way to get path
-        XCODE_EMBED_FRAMEWORKS ${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-sdk.framework
+        XCODE_EMBED_FRAMEWORKS ${NAKAMA_PROJECT}/out/${NAKAMA_TRIPLET}/lib/nakama-sdk.framework
         XCODE_EMBED_FRAMEWORKS_CODE_SIGN_ON_COPY		"YES"		# frameworks must be signed by the same developer as the binary
         XCODE_EMBED_FRAMEWORKS_REMOVE_HEADERS_ON_COPY	"YES"
         XCODE_ATTRIBUTE_CODE_SIGN_STYLE Automatic
