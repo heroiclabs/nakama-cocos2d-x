@@ -12,11 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include(FetchContent)
-
 cmake_minimum_required(VERSION 3.25)
 
-option(NAKAMA_COCOS2D_X_BUILD_EXAMPLE "Whether or not to build an example project." OFF)
 set(VCPKG_BUILD_TYPE release)
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Vcpkg toolchain file")
 
@@ -31,24 +28,15 @@ endif()
 project(nakama-cpp-cocos2d-x LANGUAGES CXX)
 include(GNUInstallDirs)
 
-# tell CMake it's okay that we override the cocos options from parent directory
-cmake_policy(SET CMP0077 NEW)
-
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(optional-lite)
 find_package(nakama-sdk)
 
-### cocos is not installable so we resort to an add_subdirectory workaround.
 include(CMakePackageConfigHelpers)
 
 # no ZERO_CHECK target for Xcode
 set(CMAKE_SUPPRESS_REGENERATION true)
-
-if (NAKAMA_COCOS2D_X_BUILD_EXAMPLE)
-   # add_subdirectory(example)
-endif()
-
 
 # republish libraries
 install(IMPORTED_RUNTIME_ARTIFACTS nakama-sdk
@@ -67,7 +55,14 @@ install(FILES ${LIBPROTOC_TOOL} DESTINATION ${CMAKE_INSTALL_PREFIX}/tools/protob
 
 ## republish include files
 install(DIRECTORY ${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include/google DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*")
-install(DIRECTORY ${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include/nakama-cpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*")
+
+if (APPLE)
+    set(NAKAMA_INCLUDES ${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-sdk.framework/Headers)
+else()
+    set(NAKAMA_INCLUDES ${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include/nakama-cpp)
+endif()
+
+install(DIRECTORY ${NAKAMA_INCLUDES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*")
 install(DIRECTORY ${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include/nonstd DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*")
 
 ## republish config files

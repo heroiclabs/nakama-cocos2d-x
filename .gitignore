@@ -9,3 +9,4 @@ example/cocos2d
 .DS_Store
 build
 out
+example/*-build
