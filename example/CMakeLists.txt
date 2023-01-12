@@ -23,29 +23,16 @@
 # THE SOFTWARE.
 # ****************************************************************************/
 
-include(FetchContent)
-
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.10)
 
 set(APP_NAME nakama-cocos2d-x-example)
 
 project(${APP_NAME})
 
-FetchContent_Declare(
-    cocos2d-x
-    GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
-    GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
-    GIT_PROGRESS   TRUE
-    USES_TERMINAL_DOWNLOAD TRUE
-)
-
-# populate variables but don't add subdirectory until we download the remaining dependencies
-FetchContent_Populate(cocos2d-x)
-
 get_filename_component(NAKAMA_PROJECT "${CMAKE_SOURCE_DIR}" DIRECTORY)
 
 # TODO figure out better way to parameterize this, does cocos cli accept CMake cache variables?
-set(NAKAMA_TRIPLET "UNDEFINED")
+set(NAKAMA_TRIPLET "android-arm64-v8a")
 
 if (${NAKAMA_TRIPLET} STREQUAL "UNDEFINED")
     message(FATAL_ERROR "Set the Nakama triplet to match the directory in 'out' that you'd like to test.")
@@ -57,17 +44,7 @@ set(nakama-sdk_DIR ${NAKAMA_PROJECT}/out/${NAKAMA_TRIPLET}/share/nakama-sdk)
 find_package(optional-lite REQUIRED)
 find_package(nakama-sdk REQUIRED)
 
-execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
-    COMMAND "python" "download-deps.py"
-    WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
-    COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
-
-execute_process(COMMAND ${CMAKE_COMMAND}
-    COMMAND "python" "setup.py"
-    WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
-    COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
-
-include(${cocos2d-x_SOURCE_DIR}/cmake/Modules/CocosBuildHelpers.cmake)
+set(COCOS2DX_ROOT_PATH $ENV{COCOS_2DX_ROOT})
 
 ### This needs to be one of the first commands in order to prevent code signing issues.
 if (${CMAKE_SYSTEM_NAME} STREQUAL "iOS" OR ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -82,11 +59,9 @@ if(XCODE)
     endif()
 endif()
 
-set(COCOS2DX_ROOT_PATH ${cocos2d-x_SOURCE_DIR})
 set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
-include(${cocos2d-x_SOURCE_DIR}/cmake/Modules/CocosBuildSet.cmake)
-
-add_subdirectory(${cocos2d-x_SOURCE_DIR}/cocos ${cocos2d-x_SOURCE_DIR}/cocos/core)
+include(CocosBuildSet)
+add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${COCOS2DX_ROOT_PATH}/cocos/core)
 
 # record sources, headers, resources...
 set(GAME_SOURCE)
@@ -172,7 +147,7 @@ if(NOT ANDROID)
 else()
     add_library(${APP_NAME} SHARED ${all_code_files})
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos/platform/android ${ENGINE_BINARY_PATH}/cocos/platform)
-    target_link_libraries(${APP_NAME} PRIVATE -Wl,--whole-archive cpp_android_spec -Wl,--no-whole-archive)
+    target_link_libraries(${APP_NAME} -Wl,--whole-archive cpp_android_spec -Wl,--no-whole-archive)
 endif()
 
 
