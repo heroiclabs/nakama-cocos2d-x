@@ -11,10 +11,15 @@
         {
             "name": "nakama-sdk",
             "version>=": "2.6.0#3",
-            "platform": "android | windows",
+            "platform": "windows",
             "features": ["libhttpclient-ws", "libhttpclient-http"]
         },
-        "protobuf"
+        {
+            "name": "nakama-sdk",
+            "version>=": "2.6.0#3",
+            "platform": "android",
+            "features": ["wslay", "curl", "cpprestsdk-http", "logs"]
+        }
     ],
     "overrides": [
     ],

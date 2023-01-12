@@ -207,6 +207,9 @@ You can find Nakama Cocos2d-x Client guide [here](https://heroiclabs.com/docs/co
 
 You can find the Cocos2d-x C++ Client example [here](https://github.com/heroiclabs/nakama-cocos2d-x/tree/master/example)
 
+To run the example, build our SDK and then use the cocos CLI in the example folder as documented in their README.
+The example project will find the SDK in the `out` directory using the triplet you specify in the example `CMakeLists.txt`.
+See `NAKAMA_TRIPLET` in that file.
 ## License
 
 This project is licensed under the [Apache-2 License](https://github.com/heroiclabs/nakama-dotnet/blob/master/LICENSE).

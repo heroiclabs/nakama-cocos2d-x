@@ -23,24 +23,18 @@
 # THE SOFTWARE.
 # ****************************************************************************/
 
+include(FetchContent)
+
 cmake_minimum_required(VERSION 3.24)
 
 set(APP_NAME nakama-cocos2d-x-example)
 
 project(${APP_NAME})
 
-# cocos-2d-x flags
-set(BUILD_CPP_TESTS CACHE INTERNAL OFF)
-set(BUILD_LUA_LIBS CACHE INTERNAL OFF)
-set(BUILD_CPP_TEMPLATE CACHE INTERNAL OFF)
-set(BUILD_EDITOR_COCOSTUDIO CACHE INTERNAL OFF)
-set(BUILD_EDITOR_SPINE CACHE INTERNAL OFF)
-set(BUILD_EXTENSIONS CACHE INTERNAL OFF)
-
 FetchContent_Declare(
     cocos2d-x
-    GIT_REPOSITORY https://github.com/heroiclabs/cocos2d-x ## TODO switch to cocos mainline once they accept the PR
-    GIT_TAG        5aa9d933d49cddc0a1f16daec96254f2b81e7ead
+    GIT_REPOSITORY https://github.com/cocos2d/cocos2d-x
+    GIT_TAG        90f6542cf7fb081335f04e474b880d7ce8c445a1
     GIT_PROGRESS   TRUE
     USES_TERMINAL_DOWNLOAD TRUE
 )
@@ -48,6 +42,20 @@ FetchContent_Declare(
 # populate variables but don't add subdirectory until we download the remaining dependencies
 FetchContent_Populate(cocos2d-x)
 
+get_filename_component(NAKAMA_PROJECT "${CMAKE_SOURCE_DIR}" DIRECTORY)
+
+# TODO figure out better way to parameterize this, does cocos cli accept CMake cache variables?
+set(NAKAMA_TRIPLET "UNDEFINED")
+
+if (${NAKAMA_TRIPLET} STREQUAL "UNDEFINED")
+    message(FATAL_ERROR "Set the Nakama triplet to match the directory in 'out' that you'd like to test.")
+endif()
+
+set(optional-lite_DIR ${NAKAMA_PROJECT}/out/${NAKAMA_TRIPLET}/share/optional-lite)
+set(nakama-sdk_DIR ${NAKAMA_PROJECT}/out/${NAKAMA_TRIPLET}/share/nakama-sdk)
+
+find_package(optional-lite REQUIRED)
+find_package(nakama-sdk REQUIRED)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "yes" # accept metal support
     COMMAND "python" "download-deps.py"
@@ -59,7 +67,7 @@ execute_process(COMMAND ${CMAKE_COMMAND}
     WORKING_DIRECTORY ${cocos2d-x_SOURCE_DIR}
     COMMAND_ECHO STDOUT ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE COMMAND_ERROR_IS_FATAL ANY)
 
-add_subdirectory(${cocos2d-x_SOURCE_DIR} ${cocos2d-x_BINARY_DIR})
+include(${cocos2d-x_SOURCE_DIR}/cmake/Modules/CocosBuildHelpers.cmake)
 
 ### This needs to be one of the first commands in order to prevent code signing issues.
 if (${CMAKE_SYSTEM_NAME} STREQUAL "iOS" OR ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -73,6 +81,12 @@ if(XCODE)
         SET (CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET 8.0)
     endif()
 endif()
+
+set(COCOS2DX_ROOT_PATH ${cocos2d-x_SOURCE_DIR})
+set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
+include(${cocos2d-x_SOURCE_DIR}/cmake/Modules/CocosBuildSet.cmake)
+
+add_subdirectory(${cocos2d-x_SOURCE_DIR}/cocos ${cocos2d-x_SOURCE_DIR}/cocos/core)
 
 # record sources, headers, resources...
 set(GAME_SOURCE)
@@ -178,25 +192,25 @@ endif()
 
 if (APPLE)
     set_target_properties(${APP_NAME} PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER "com.example"
-    XCODE_ATTRIBUTE_ENABLE_BITCODE "NO"
-    XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "com.heroiclabs.example"
-    XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
-    XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS ${CMAKE_CURRENT_SOURCE_DIR}/example.entitlements
-    XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
-    XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "$ENV{NAKAMA_TEST_DEVELOPMENT_TEAM}"
-    XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
-    # targets don't work for embedding frameworks, and can't find a better way to get path
-    XCODE_EMBED_FRAMEWORKS ${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/nakama-sdk.framework
-    XCODE_EMBED_FRAMEWORKS_CODE_SIGN_ON_COPY		"YES"		# frameworks must be signed by the same developer as the binary
-	XCODE_EMBED_FRAMEWORKS_REMOVE_HEADERS_ON_COPY	"YES"
-    XCODE_ATTRIBUTE_CODE_SIGN_STYLE Automatic
-    MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/example.plist
+        MACOSX_BUNDLE_GUI_IDENTIFIER "com.example"
+        XCODE_ATTRIBUTE_ENABLE_BITCODE "NO"
+        XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "com.heroiclabs.example"
+        XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
+        XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS ${CMAKE_CURRENT_SOURCE_DIR}/example.entitlements
+        XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
+        XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "$ENV{NAKAMA_TEST_DEVELOPMENT_TEAM}"
+        XCODE_LINK_BUILD_PHASE_MODE KNOWN_LOCATION
+        # targets don't work for embedding frameworks, and can't find a better way to get path
+        XCODE_EMBED_FRAMEWORKS ${NAKAMA_PROJECT}/out/${NAKAMA_TRIPLET}/lib/nakama-sdk.framework
+        XCODE_EMBED_FRAMEWORKS_CODE_SIGN_ON_COPY		"YES"		# frameworks must be signed by the same developer as the binary
+        XCODE_EMBED_FRAMEWORKS_REMOVE_HEADERS_ON_COPY	"YES"
+        XCODE_ATTRIBUTE_CODE_SIGN_STYLE Automatic
+        MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/example.plist
     )
 endif()
 
 
-target_link_libraries(${APP_NAME} PRIVATE cocos2d)
+target_link_libraries(${APP_NAME} cocos2d)
 target_include_directories(${APP_NAME}
         PRIVATE Classes
         PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
@@ -221,10 +235,4 @@ if(LINUX OR WINDOWS)
 endif()
 
 # use Nakama SDK
-target_link_libraries(${APP_NAME} PRIVATE nakama-sdk)
-
-install(TARGETS
-    nakama-cocos2d-x-example
-    BUNDLE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
-)
+target_link_libraries(${APP_NAME} nakama-sdk)
