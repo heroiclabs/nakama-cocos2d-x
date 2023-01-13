@@ -214,6 +214,11 @@ Make sure cocos2d-x is installed and that you've manually set `COCOS_2DX_ROOT` t
 To run the example, build our SDK and then use the cocos CLI in the example folder as documented in their README.
 The example project will find the SDK in the `out` directory using the triplet you specify in the example `CMakeLists.txt`.
 See `NAKAMA_TRIPLET` in that file.
+
+For Android you will also need to pass the appropriate app-abi, for example:
+
+`cocos compile -pandroid --app-abi arm64-v8a`
+
 ## License
 
 This project is licensed under the [Apache-2 License](https://github.com/heroiclabs/nakama-dotnet/blob/master/LICENSE).
