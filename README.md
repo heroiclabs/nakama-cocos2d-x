@@ -217,7 +217,7 @@ See `NAKAMA_TRIPLET` in that file.
 
 For Android you will also need to pass the appropriate app-abi, for example:
 
-`cocos compile -pandroid --app-abi arm64-v8a`
+`cocos compile -pandroid --app-abi arm64-v8a -m debug`
 
 ## License
 
