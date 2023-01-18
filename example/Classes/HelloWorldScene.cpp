@@ -167,7 +167,7 @@ bool HelloWorld::init()
 
     NClientParameters parameters;
     parameters.serverKey = "defaultkey";
-    parameters.host = "192.168.86.26";
+    parameters.host = "127.0.0.1";
     parameters.port = 7350;
     parameters.ssl = false;
 
