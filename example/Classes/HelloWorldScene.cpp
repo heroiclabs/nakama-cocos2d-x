@@ -22,6 +22,12 @@
  THE SOFTWARE.
  ****************************************************************************/
 
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#include <jni.h>
+#include "platform/android/jni/JniHelper.h"
+#endif
+
 #include "HelloWorldScene.h"
 #include "nakama-cpp/Nakama.h"
 
@@ -33,6 +39,8 @@ const std::string userName = "cocos2d-x-test-user";
 
 Scene* HelloWorld::createScene()
 {
+    CCLOG("scene created");
+
     return HelloWorld::create();
 }
 
@@ -43,8 +51,8 @@ HelloWorld::~HelloWorld()
 // Print useful error message instead of segfaulting when files are not there.
 static void problemLoading(const char* filename)
 {
-    printf("Error while loading: %s\n", filename);
-    printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
+    CCLOG("Error while loading: %s\n", filename);
+    CCLOG("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
 // on "init" you need to initialize your instance
@@ -96,7 +104,7 @@ bool HelloWorld::init()
     // add a label shows "Hello World"
     // create and initialize a label
 
-    printf("creating hello world");
+    CCLOG("creating hello world");
 
     m_label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     if (m_label == nullptr)
@@ -158,19 +166,24 @@ bool HelloWorld::init()
     getScheduler()->schedule(tickCallback, this, 0.05f /*sec*/, CC_REPEAT_FOREVER, 0, false, "nakama-tick");
 
     NClientParameters parameters;
-
+    parameters.serverKey = "defaultkey";
     parameters.host = "127.0.0.1";
-    parameters.port = DEFAULT_PORT;
+    parameters.port = 7350;
     parameters.ssl = false;
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    parameters.platformParams.javaVM = JniHelper::getJavaVM ();
+#endif
 
     m_client = createDefaultClient(parameters);
 
     auto loginFailedCallback = [this](const NError& error)
     {
+        CCLOG("Error: %s...\n", error.message.c_str());
         onError();
     };
 
-    printf("Login...\n");
+    CCLOG("Login...\n");
 
     NStringMap vars;
 
@@ -179,7 +192,7 @@ bool HelloWorld::init()
     m_client->authenticateDevice(
         getDeviceId(),
         userName,
-        false,
+        true,
         vars,
         std::bind(&HelloWorld::onLoginSucceeded, this, std::placeholders::_1),
         loginFailedCallback);
@@ -199,7 +212,7 @@ void HelloWorld::onLoginSucceeded(NSessionPtr session)
 {
     m_session = session;
 
-    printf("Login succeeded. user id: %s \n", m_session->getUserId().c_str());
+    CCLOG("Login succeeded. user id: %s \n", m_session->getUserId().c_str());
 
     CCASSERT(m_session->getUsername() == userName, "Wrong user name");
     CCASSERT(m_session->getVariable("test") == "value", "Wrong value");
@@ -215,34 +228,36 @@ void HelloWorld::connect()
 
     m_rtListener->setConnectCallback([this]()
     {
-        printf("Connected! \n");
+        CCLOG("Connected! \n");
         joinChat("chat-room");
         m_nakamaLogo->setColor(Color3B::GREEN);
     });
 
     m_rtListener->setErrorCallback([this](const NRtError& error)
     {
+        CCLOG("Socket Error: %s...\n", error.message.c_str());
+
         onError();
     });
 
     m_rtListener->setChannelMessageCallback([this](const NChannelMessage& msg)
     {
         // msg.content is JSON string
-        printf("OnChannelMessage %s\n", msg.content.c_str());
+        CCLOG("OnChannelMessage %s\n", msg.content.c_str());
         m_label->setString(msg.username + ": " + msg.content);
     });
 
     m_rtClient = this->m_client->createRtClient();
     m_rtClient->setListener(m_rtListener.get());
 
-	printf("Connect...\n");
+	CCLOG("Connect...\n");
 
     m_rtClient->connect(m_session, true/*, NRtClientProtocol::Json*/);
 }
 
 void HelloWorld::joinChat(const std::string& topicName)
 {
-    printf("Joining room %s\nf", topicName.c_str());
+    CCLOG("Joining room %s\nf", topicName.c_str());
 
     m_rtClient->joinChat(
         topicName,
@@ -253,7 +268,7 @@ void HelloWorld::joinChat(const std::string& topicName)
         {
             m_chatId = channel->id;
 
-            printf("Joined topic id %s\n", channel->id.c_str());
+            CCLOG("Joined topic id %s\n", channel->id.c_str());
 
             sendChatMessage("Hey dude!");
 
@@ -271,11 +286,11 @@ void HelloWorld::sendChatMessage(const std::string& message)
     // data must be JSON
     std::string data = "{\"msg\":\"" + message + "\"}";
 
-    printf("sending topic message %s\n", message.c_str());
+    CCLOG("sending topic message %s\n", message.c_str());
 
     m_rtClient->writeChatMessage(m_chatId, data, [](const NChannelMessageAck& ack)
     {
-        printf("Sent OK. message id %s\n", ack.messageId.c_str());
+        CCLOG("Sent OK. message id %s\n", ack.messageId.c_str());
     },
     [this](const NRtError& error)
     {

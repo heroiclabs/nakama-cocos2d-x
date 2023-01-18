@@ -79,6 +79,8 @@ The `createDefaultClient` will create HTTP/1.1 client to use REST API.
 
 ### Android
 
+The prebuilt library is built against Android NDK 23.2.8568313.
+
 On Android, networking libraries for native activities implemented by Cocos require access to the Java virtual machine in order to run properly. Cocos exposes a helper for access to the JavaVM it uses. This must be passed to the platform parameters in the SDK:
 
 ```cpp
@@ -86,7 +88,7 @@ On Android, networking libraries for native activities implemented by Cocos requ
 
 NClientParameters parameters;
 // ... initialization of parameters
-parameters.platformParams.javaVM = JniHelper::getJavaVM ();
+parameters.platformParams.javaVM = JniHelper::getJavaVM();
 NClientPtr client = createDefaultClient(parameters);
 ```
 
@@ -207,9 +209,16 @@ You can find Nakama Cocos2d-x Client guide [here](https://heroiclabs.com/docs/co
 
 You can find the Cocos2d-x C++ Client example [here](https://github.com/heroiclabs/nakama-cocos2d-x/tree/master/example)
 
+Make sure cocos2d-x is installed and that you've manually set `COCOS_2DX_ROOT` to the repository.
+
 To run the example, build our SDK and then use the cocos CLI in the example folder as documented in their README.
 The example project will find the SDK in the `out` directory using the triplet you specify in the example `CMakeLists.txt`.
 See `NAKAMA_TRIPLET` in that file.
+
+For Android you will also need to pass the appropriate app-abi, for example:
+
+`cocos compile -pandroid --app-abi arm64-v8a -m debug`
+
 ## License
 
 This project is licensed under the [Apache-2 License](https://github.com/heroiclabs/nakama-dotnet/blob/master/LICENSE).
