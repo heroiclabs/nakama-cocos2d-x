@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.heroiclabs.nakamacocos2d"
-        minSdkVersion PROP_MIN_SDK_VERSION
+        minSdkVersion 21
         targetSdkVersion PROP_TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
@@ -70,8 +70,10 @@ android {
             renderscriptDebuggable true
         }
     }
+}
 
-    implementation files("../../out/android-arm64-v8a/lib/libnakama-sdk.aar")
+dependencies {
+    implementation files("../../../out/android-arm64-v8a/lib/libnakama-sdk.aar")
 }
 
 android.applicationVariants.all { variant ->

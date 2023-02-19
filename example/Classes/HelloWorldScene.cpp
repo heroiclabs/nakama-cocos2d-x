@@ -171,10 +171,6 @@ bool HelloWorld::init()
     parameters.port = 7350;
     parameters.ssl = false;
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    parameters.platformParams.javaVM = JniHelper::getJavaVM ();
-#endif
-
     m_client = createDefaultClient(parameters);
 
     auto loginFailedCallback = [this](const NError& error)
