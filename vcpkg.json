@@ -6,7 +6,7 @@
             "name": "nakama-sdk",
             "version>=": "2.7.0",
             "platform": "ios | osx | linux",
-            "features": ["libhttpclient-http", "wslay", "curl"]
+            "features": ["libhttpclient-http", "wslay", "curl-io"]
         },
         {
             "name": "nakama-sdk",
