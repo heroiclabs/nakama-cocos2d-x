@@ -4,21 +4,21 @@
     "dependencies": [
         {
             "name": "nakama-sdk",
-            "version>=": "2.6.0#3",
+            "version>=": "2.7.0",
             "platform": "ios | osx | linux",
-            "features": ["libhttpclient-http", "wslay", "curl"]
+            "features": ["libhttpclient-http", "wslay", "curl-io"]
         },
         {
             "name": "nakama-sdk",
-            "version>=": "2.6.0#3",
+            "version>=": "2.7.0",
             "platform": "windows",
             "features": ["libhttpclient-ws", "libhttpclient-http"]
         },
         {
             "name": "nakama-sdk",
-            "version>=": "2.6.0#3",
+            "version>=": "2.7.0",
             "platform": "android",
-            "features": ["cpprestsdk", "logs"]
+            "features": ["curl-io", "curl-http", "wslay", "logs"]
         }
     ],
     "overrides": [

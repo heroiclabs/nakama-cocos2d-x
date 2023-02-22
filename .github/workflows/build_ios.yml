@@ -1,0 +1,37 @@
+name: Build iOS
+on: [workflow_call, workflow_dispatch]
+jobs:
+  build_ios:
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        preset: ["ios-arm64-host_x64", "iphonesimulator-x64-host_x64"]
+        build-type: [MinSizeRel]
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v3 ## only used for its github action scripts, vcpkg is what pulls it in as an actual dependency
+        with:
+          repository: heroiclabs/nakama-cpp
+          path: nakama-cpp
+          ref: v2.7.0
+      - uses: actions/checkout@v3
+        with:
+          path: nakama-cocos2d-x
+      - run: |
+            brew install pkg-config
+        shell: bash
+      - uses: ./nakama-cpp/.github/actions/setup-vcpkg
+        with:
+          github_token: ${{ secrets.github_token }}
+          vcpkg-path: vcpkg
+      - uses: ./nakama-cpp/.github/actions/build-library-and-upload
+        with:
+          nakama-cpp-path: nakama-cocos2d-x
+          preset: ${{ matrix.preset }}
+          build-type: ${{ matrix.build-type }}
+      - if: failure()
+        uses: ./nakama-cpp/.github/actions/handle-failure
+        with:
+          nakama-cpp-path: nakama-cocos2d-x
+          vcpkg-path: vcpkg
+
