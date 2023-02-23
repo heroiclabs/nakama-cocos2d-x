@@ -77,23 +77,6 @@ NClientPtr client = createDefaultClient(parameters);
 
 The `createDefaultClient` will create HTTP/1.1 client to use REST API.
 
-### Android
-
-The prebuilt library is built against Android NDK 23.2.8568313.
-
-On Android, networking libraries for native activities implemented by Cocos require access to the Java virtual machine in order to run properly. Cocos exposes a helper for access to the JavaVM it uses. This must be passed to the platform parameters in the SDK:
-
-```cpp
-#include <JniHelper.h>
-
-NClientParameters parameters;
-// ... initialization of parameters
-parameters.platformParams.javaVM = JniHelper::getJavaVM();
-NClientPtr client = createDefaultClient(parameters);
-```
-
-Also see: https://cocos2d-x.org/reference/native-cpp/V3.3/df/df6/classcocos2d_1_1_jni_helper.html#a34abff3be15bc790ad2a09f9b7383488
-
 ## Tick
 
 The `tick` method pumps requests queue and executes callbacks in your thread. You must call it periodically (recommended every 50ms) in your thread.
