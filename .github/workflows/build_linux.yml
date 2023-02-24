@@ -12,7 +12,7 @@ jobs:
         with:
           repository: heroiclabs/nakama-cpp
           path: nakama-cpp
-          ref: v2.7.0
+          ref: 4c38c7ba0a4656fb148806a189a0c34c63f3d773
       - uses: actions/checkout@v3
         with:
           path: nakama-cocos2d-x

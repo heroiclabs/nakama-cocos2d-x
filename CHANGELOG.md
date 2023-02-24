@@ -7,8 +7,7 @@ The format is based on [keep a changelog](http://keepachangelog.com/) and this p
 ## [2.6.0] - [2023-02-19]
 
 ### Changed
-
-- Updated to Nakama 2.7.0.
+- Updated to Nakama 2.7.1
 - Remove buggy Cocos adapters. The new adapters are now native to nakama-cpp.
 
 ## [2.5.1] - [2022-01-17]
