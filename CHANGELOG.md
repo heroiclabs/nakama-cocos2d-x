@@ -4,6 +4,10 @@ All notable changes to this project are documented below.
 
 The format is based on [keep a changelog](http://keepachangelog.com/) and this project uses [semantic versioning](http://semver.org/).
 
+## [2.7.0] - [2023-06-27]
+### Changed
+- Updated to Nakama 2.8.0
+
 ## [2.6.0] - [2023-02-19]
 
 ### Changed
