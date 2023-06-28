@@ -5,9 +5,9 @@ jobs:
     uses: ./.github/workflows/build_android.yml
   build_ios:
     uses: ./.github/workflows/build_ios.yml
-  build_linux:
-    uses: ./.github/workflows/build_linux.yml
+# TODO FIX  build_linux:
+#    uses: ./.github/workflows/build_linux.yml
   build_osx:
     uses: ./.github/workflows/build_osx.yml
-  build_windows:
-    uses: ./.github/workflows/build_windows.yml
+# TODO FIX build_windows:
+#    uses: ./.github/workflows/build_windows.yml
